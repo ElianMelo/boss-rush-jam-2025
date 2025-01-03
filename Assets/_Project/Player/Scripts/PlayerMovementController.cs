@@ -114,6 +114,9 @@ public class PlayerMovementController : MonoBehaviour
         if(drilling)
         {
             RotatePlayer();
+        } else
+        {
+            transform.rotation = Quaternion.Euler(0f, cameraOrientation.transform.rotation.eulerAngles.y, 0f);
         }
     }
 
