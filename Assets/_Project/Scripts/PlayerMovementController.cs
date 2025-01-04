@@ -5,11 +5,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [Header("Rotator")]
     public float rotationSpeed;
     public float rotationFactor;
+    public float timeRotateBack;
+    public float diveExitForce;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -22,6 +26,7 @@ public class PlayerMovementController : MonoBehaviour
     public float maxYSpeed;
 
     public float groundDrag;
+    public float airDrag;
 
     [Header("Dashing")]
     public float dashForce;
@@ -41,6 +46,7 @@ public class PlayerMovementController : MonoBehaviour
     private bool running;
     private bool backwards;
     private bool drilling;
+    private bool canDrill;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -57,12 +63,19 @@ public class PlayerMovementController : MonoBehaviour
 
     private Vector3 moveDirection;
 
+    private Animator playerAnimator;
     private Rigidbody playerRb;
 
     private int maxJumps = 2;
     private int jumps;
 
     public MovementState state;
+
+    private IEnumerator rotateCoroutine;
+
+    private readonly static string JumpAnim = "Jump";
+    private readonly static string RunningAnim = "Running";
+    private readonly static string DrillingAnim = "Drilling";
 
     public enum MovementState
     {
@@ -77,6 +90,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start()
     {
+        playerAnimator = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
@@ -102,6 +116,10 @@ public class PlayerMovementController : MonoBehaviour
         {
             playerRb.drag = groundDrag;
         }
+        if(drilling)
+        {
+            playerRb.drag = airDrag;
+        }
         else
         {
             playerRb.drag = 0f;
@@ -114,21 +132,30 @@ public class PlayerMovementController : MonoBehaviour
         if(drilling)
         {
             RotatePlayer();
-        } else
+        } else 
         {
-            transform.rotation = Quaternion.Euler(0f, cameraOrientation.transform.rotation.eulerAngles.y, 0f);
+            if(moveDirection != Vector3.zero)
+            {
+                transform.forward = moveDirection;
+            }
         }
     }
 
     private void GetInputs()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
         {
             jumps -= 1;
             Jump();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Mouse0) && !drilling)
+        {
+            canDrill = true;
+            StartCoroutine(DelayedCanDrill());
         }
     }
 
@@ -162,10 +189,7 @@ public class PlayerMovementController : MonoBehaviour
         else
         {
             state = MovementState.air;
-            if (desiredMoveSpeed < sprintSpeed)
-                desiredMoveSpeed = walkSpeed;
-            else
-                desiredMoveSpeed = sprintSpeed;
+            desiredMoveSpeed = sprintSpeed;
         }
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
@@ -220,10 +244,11 @@ public class PlayerMovementController : MonoBehaviour
         if (drilling)
         {
             moveDirection = drillOrientation.forward;
-            currentMoveSpeed = moveSpeed / 4;
+            currentMoveSpeed = moveSpeed / 2;
         } else
         {
             moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+            moveDirection.y = 0f;
             currentMoveSpeed = moveSpeed;
         }
 
@@ -231,7 +256,6 @@ public class PlayerMovementController : MonoBehaviour
         if (OnSlope())
         {
             playerRb.AddForce(GetSlopMoveDirection() * currentMoveSpeed * 20f, ForceMode.Force);
-
             // Check!!!
             //if (playerRb.velocity.y > 0)
             //    playerRb.AddForce(Vector3.down * 80f, ForceMode.Force);
@@ -239,10 +263,15 @@ public class PlayerMovementController : MonoBehaviour
 
         // on ground
         if (grounded)
+        {
             playerRb.AddForce(moveDirection.normalized * currentMoveSpeed * 10f, ForceMode.Force);
+        }
         // in air
         else if (!grounded)
+        {
             playerRb.AddForce(moveDirection.normalized * currentMoveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+            
         // turn gravity off while on slope
         // playerRb.useGravity = !OnSlope();
     }
@@ -256,9 +285,13 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("DiveGround"))
+        if(!drilling && other.CompareTag("DiveGround"))
         {
             playerRb.useGravity = false;
+            if (rotateCoroutine != null)
+            {
+                StopCoroutine(rotateCoroutine);
+            }
             transform.LookAt(other.transform);
             transform.Rotate(new Vector3(90f, 0f, 0f));
             drilling = true;
@@ -270,17 +303,41 @@ public class PlayerMovementController : MonoBehaviour
         if (other.CompareTag("DiveGround"))
         {
             playerRb.useGravity = true;
-            StartCoroutine(SmoothRotate(0.3f));
-            drilling = false;
+            Vector3 exitVelocity = playerRb.velocity;
+            playerRb.velocity = playerRb.velocity.normalized;
+            playerRb.AddForce(drillOrientation.forward * diveExitForce, ForceMode.Impulse);
+            if (rotateCoroutine != null)
+            {
+                StopCoroutine(rotateCoroutine);
+            }
+            rotateCoroutine = SmoothRotate(timeRotateBack);
+            StartCoroutine(rotateCoroutine);
+            StartCoroutine(DelayedDrill());
         }
+    }
+
+    private IEnumerator DelayedDrill()
+    {
+        yield return new WaitForSeconds(timeRotateBack);
+        drilling = false;
+    }
+
+    private IEnumerator DelayedCanDrill()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canDrill = false;
     }
 
     private IEnumerator SmoothRotate(float waitingTime)
     {
         float currentTimer = 0f;
-        while(currentTimer < waitingTime)
+        float initialXRotation = transform.rotation.eulerAngles.x;
+        while (currentTimer < waitingTime)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, 0f), currentTimer / waitingTime);
+            transform.rotation = Quaternion.Slerp(
+                Quaternion.Euler(initialXRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z), 
+                Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z)
+                , currentTimer / waitingTime);
             currentTimer += Time.deltaTime;
             yield return null;
         }
@@ -292,6 +349,11 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             grounded = true;
+            //float y = transform.rotation.eulerAngles.y;
+            transform.up = collision.contacts[0].normal;
+            //float x = transform.rotation.eulerAngles.x;
+            //float z = 0f;
+            //transform.rotation = Quaternion.Euler(x, y, z);
         }
     }
 
@@ -314,7 +376,16 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
         // limiting speed on ground or in air
-        else
+        else if(drilling)
+        {
+            Vector3 flatVel = new Vector3(playerRb.velocity.x, playerRb.velocity.y, playerRb.velocity.z);
+
+            if (flatVel.magnitude > moveSpeed)
+            {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                playerRb.velocity = new Vector3(limitedVel.x, limitedVel.y, limitedVel.z);
+            }
+        } else
         {
             Vector3 flatVel = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
 
@@ -334,7 +405,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Jump()
     {
-
+        playerAnimator.SetTrigger(JumpAnim);
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
         playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
@@ -358,6 +429,8 @@ public class PlayerMovementController : MonoBehaviour
     private void CheckAnimation()
     {
         running = !(horizontalInput == 0 && verticalInput == 0);
+        playerAnimator.SetBool(RunningAnim, running);
+        playerAnimator.SetBool(DrillingAnim, drilling);
     }
 
     

@@ -21,7 +21,7 @@ public class MouseRotator : MonoBehaviour
 
     public float speed = 1f;
     public Camera camera;
-    public Transform playerTransform;
+    // public Transform playerTransform;
 
     private void Start()
     {
@@ -94,7 +94,7 @@ public class MouseRotator : MonoBehaviour
 
 
         //Set the player rotation based on the look transform
-        playerTransform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        // playerTransform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         //reset the y rotation of the look transform
         transform.localEulerAngles = new Vector3(angles.x, 0, 0);
     }
