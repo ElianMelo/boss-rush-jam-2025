@@ -1,11 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.EventSystems;
 
 public class PlayerMovementController : MonoBehaviour
 {
@@ -37,16 +31,11 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftControl;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     private bool grounded;
-    private bool running;
-    private bool backwards;
-    private bool drilling;
-    private bool canDrill;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -76,14 +65,15 @@ public class PlayerMovementController : MonoBehaviour
     private readonly static string JumpAnim = "Jump";
     private readonly static string RunningAnim = "Running";
     private readonly static string DrillingAnim = "Drilling";
+    private readonly static string FallingAnim = "Falling";
 
     public enum MovementState
     {
-        walking,
-        sprinting,
+        idle,
+        running,
         dashing,
-        diving,
-        air
+        drilling,
+        airing
     }
 
     public bool dashing;
@@ -111,12 +101,11 @@ public class PlayerMovementController : MonoBehaviour
             Mathf.Clamp(playerRb.velocity.y, playerRb.velocity.y, 20f),
             Mathf.Clamp(playerRb.velocity.z, playerRb.velocity.z, 20f));
 
-        if (state == MovementState.walking ||
-            state == MovementState.sprinting)
+        if (state == MovementState.running)
         {
             playerRb.drag = groundDrag;
         }
-        if(drilling)
+        if(state == MovementState.drilling)
         {
             playerRb.drag = airDrag;
         }
@@ -129,7 +118,7 @@ public class PlayerMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        if(drilling)
+        if(state == MovementState.drilling)
         {
             RotatePlayer();
         } else 
@@ -152,9 +141,9 @@ public class PlayerMovementController : MonoBehaviour
             Jump();
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0) && !drilling)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && state != MovementState.drilling)
         {
-            canDrill = true;
+            // canDrill = true;
             StartCoroutine(DelayedCanDrill());
         }
     }
@@ -173,22 +162,16 @@ public class PlayerMovementController : MonoBehaviour
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
         }
-        // Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
-        {
-            state = MovementState.sprinting;
-            desiredMoveSpeed = sprintSpeed;
-        }
         // Mode - Walking
-        else if (grounded)
+        else if (grounded && state != MovementState.drilling)
         {
-            state = MovementState.walking;
+            state = MovementState.running;
             desiredMoveSpeed = walkSpeed;
         }
         // Mode - Air
         else
         {
-            state = MovementState.air;
+            // state = MovementState.airing;
             desiredMoveSpeed = sprintSpeed;
         }
 
@@ -241,7 +224,7 @@ public class PlayerMovementController : MonoBehaviour
         if (state == MovementState.dashing) return;
         float currentMoveSpeed = 0f;
 
-        if (drilling)
+        if (state == MovementState.drilling)
         {
             moveDirection = drillOrientation.forward;
             currentMoveSpeed = moveSpeed / 2;
@@ -256,9 +239,6 @@ public class PlayerMovementController : MonoBehaviour
         if (OnSlope())
         {
             playerRb.AddForce(GetSlopMoveDirection() * currentMoveSpeed * 20f, ForceMode.Force);
-            // Check!!!
-            //if (playerRb.velocity.y > 0)
-            //    playerRb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
 
         // on ground
@@ -271,9 +251,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             playerRb.AddForce(moveDirection.normalized * currentMoveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-            
-        // turn gravity off while on slope
-        // playerRb.useGravity = !OnSlope();
+        
     }
 
     private void RotatePlayer()
@@ -285,7 +263,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!drilling && other.CompareTag("DiveGround"))
+        if(state != MovementState.drilling && other.CompareTag("DiveGround"))
         {
             playerRb.useGravity = false;
             if (rotateCoroutine != null)
@@ -294,7 +272,7 @@ public class PlayerMovementController : MonoBehaviour
             }
             transform.LookAt(other.transform);
             transform.Rotate(new Vector3(90f, 0f, 0f));
-            drilling = true;
+            state = MovementState.drilling;
         }
     }
 
@@ -319,24 +297,24 @@ public class PlayerMovementController : MonoBehaviour
     private IEnumerator DelayedDrill()
     {
         yield return new WaitForSeconds(timeRotateBack);
-        drilling = false;
+        state = MovementState.airing;
     }
 
     private IEnumerator DelayedCanDrill()
     {
         yield return new WaitForSeconds(0.2f);
-        canDrill = false;
+        // canDrill = false;
     }
 
     private IEnumerator SmoothRotate(float waitingTime)
     {
         float currentTimer = 0f;
         float initialXRotation = transform.rotation.eulerAngles.x;
-        while (currentTimer < waitingTime)
+        while (currentTimer <= waitingTime)
         {
             transform.rotation = Quaternion.Slerp(
                 Quaternion.Euler(initialXRotation, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z), 
-                Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z)
+                Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f)
                 , currentTimer / waitingTime);
             currentTimer += Time.deltaTime;
             yield return null;
@@ -349,11 +327,7 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             grounded = true;
-            //float y = transform.rotation.eulerAngles.y;
             transform.up = collision.contacts[0].normal;
-            //float x = transform.rotation.eulerAngles.x;
-            //float z = 0f;
-            //transform.rotation = Quaternion.Euler(x, y, z);
         }
     }
 
@@ -376,7 +350,7 @@ public class PlayerMovementController : MonoBehaviour
             }
         }
         // limiting speed on ground or in air
-        else if(drilling)
+        else if(state == MovementState.drilling)
         {
             Vector3 flatVel = new Vector3(playerRb.velocity.x, playerRb.velocity.y, playerRb.velocity.z);
 
@@ -425,14 +399,12 @@ public class PlayerMovementController : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
-    // Keep old
     private void CheckAnimation()
     {
-        running = !(horizontalInput == 0 && verticalInput == 0);
-        playerAnimator.SetBool(RunningAnim, running);
-        playerAnimator.SetBool(DrillingAnim, drilling);
+        playerAnimator.SetBool(RunningAnim, state == MovementState.running);
+        playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
+        playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
     }
-
     
 }
 

@@ -1295,11 +1295,10 @@ MonoBehaviour:
   jumpForce: 7
   airMultiplier: 4
   jumpKey: 32
-  sprintKey: 306
   playerHeight: 0.1
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   maxSlopeAngle: 0
   drillOrientation: {fileID: 1945489019}
   orientation: {fileID: 838846038}
