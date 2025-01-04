@@ -63,6 +63,8 @@ public class PlayerMovementController : MonoBehaviour
     private IEnumerator rotateCoroutine;
 
     private readonly static string JumpAnim = "Jump";
+    private readonly static string AttackAnim = "Attack";
+
     private readonly static string RunningAnim = "Running";
     private readonly static string DrillingAnim = "Drilling";
     private readonly static string FallingAnim = "Falling";
@@ -143,8 +145,9 @@ public class PlayerMovementController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0) && state != MovementState.drilling)
         {
+            playerAnimator.SetTrigger(AttackAnim);
             // canDrill = true;
-            StartCoroutine(DelayedCanDrill());
+            // StartCoroutine(DelayedCanDrill());
         }
     }
 
@@ -263,14 +266,22 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(state != MovementState.drilling && other.CompareTag("DiveGround"))
+        if(other.CompareTag("DiveGround"))
+        {
+            StartDrilling(other.transform);
+        }
+    }
+
+    public void StartDrilling(Transform other)
+    {
+        if (state != MovementState.drilling)
         {
             playerRb.useGravity = false;
             if (rotateCoroutine != null)
             {
                 StopCoroutine(rotateCoroutine);
             }
-            transform.LookAt(other.transform);
+            transform.LookAt(other);
             transform.Rotate(new Vector3(90f, 0f, 0f));
             state = MovementState.drilling;
         }
@@ -278,20 +289,25 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("DiveGround"))
+        if (other.CompareTag("DiveGround") || other.CompareTag("DiveGroundTrigger"))
         {
-            playerRb.useGravity = true;
-            Vector3 exitVelocity = playerRb.velocity;
-            playerRb.velocity = playerRb.velocity.normalized;
-            playerRb.AddForce(drillOrientation.forward * diveExitForce, ForceMode.Impulse);
-            if (rotateCoroutine != null)
-            {
-                StopCoroutine(rotateCoroutine);
-            }
-            rotateCoroutine = SmoothRotate(timeRotateBack);
-            StartCoroutine(rotateCoroutine);
-            StartCoroutine(DelayedDrill());
+            StopDrilling();
         }
+    }
+
+    public void StopDrilling()
+    {
+        if (state != MovementState.drilling) return;
+        playerRb.useGravity = true;
+        playerRb.velocity = playerRb.velocity.normalized;
+        playerRb.AddForce(drillOrientation.forward * diveExitForce, ForceMode.Impulse);
+        if (rotateCoroutine != null)
+        {
+            StopCoroutine(rotateCoroutine);
+        }
+        rotateCoroutine = SmoothRotate(timeRotateBack);
+        StartCoroutine(rotateCoroutine);
+        StartCoroutine(DelayedDrill());
     }
 
     private IEnumerator DelayedDrill()
@@ -324,7 +340,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
         {
             grounded = true;
             transform.up = collision.contacts[0].normal;
@@ -333,7 +349,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
         {
             grounded = false;
         }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - DiveGround
+  - DiveGroundTrigger
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - Ground
   - DiveGround
-  - 
-  - 
+  - DiveGroundTrigger
+  - Player
   - 
   - 
   - 
