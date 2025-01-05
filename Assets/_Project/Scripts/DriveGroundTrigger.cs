@@ -23,7 +23,6 @@ public class DriveGroundTrigger : MonoBehaviour
     public void EnableColllider()
     {
         driveGroundSolid.enabled = true;
-        StartCoroutine(SafeDisableCollider());
     }
 
     public void DisableCollider()
@@ -32,9 +31,4 @@ public class DriveGroundTrigger : MonoBehaviour
         driveGroundSolid.enabled = false;
     }
 
-    private IEnumerator SafeDisableCollider()
-    {
-        yield return new WaitForSeconds(0.1f);
-        DisableCollider();
-    }
 }

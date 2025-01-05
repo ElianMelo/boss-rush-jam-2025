@@ -93,7 +93,7 @@ public class PlayerMovementController : MonoBehaviour
         // grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (grounded) jumps = maxJumps;
 
-        GetInputs();
+        GetInputsActions();
         SpeedControl();
         StateHandler();
         CheckAnimation();
@@ -132,12 +132,12 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void GetInputs()
+    private void GetInputsActions()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0 && state != MovementState.drilling)
         {
             jumps -= 1;
             Jump();
@@ -146,8 +146,6 @@ public class PlayerMovementController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0) && state != MovementState.drilling)
         {
             playerAnimator.SetTrigger(AttackAnim);
-            // canDrill = true;
-            // StartCoroutine(DelayedCanDrill());
         }
     }
 
@@ -340,6 +338,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (state == MovementState.drilling) return;
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
         {
             grounded = true;
@@ -417,7 +416,8 @@ public class PlayerMovementController : MonoBehaviour
 
     private void CheckAnimation()
     {
-        playerAnimator.SetBool(RunningAnim, state == MovementState.running);
+        var isRunning = state == MovementState.running && (verticalInput != 0 || horizontalInput != 0);
+        playerAnimator.SetBool(RunningAnim, isRunning);
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
     }
