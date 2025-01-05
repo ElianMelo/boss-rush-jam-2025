@@ -8,6 +8,7 @@ public class PlayerMovementController : MonoBehaviour
     public float rotationFactor;
     public float timeRotateBack;
     public float diveExitForce;
+    private float calculatedTimeRotateBack;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -82,6 +83,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start()
     {
+        calculatedTimeRotateBack = timeRotateBack;
         playerAnimator = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         playerRb.freezeRotation = true;
@@ -297,20 +299,27 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (state != MovementState.drilling) return;
         playerRb.useGravity = true;
+        Vector3 exitDirection = drillOrientation.eulerAngles;
+        calculatedTimeRotateBack = timeRotateBack;
         playerRb.velocity = playerRb.velocity.normalized;
         playerRb.AddForce(drillOrientation.forward * diveExitForce, ForceMode.Impulse);
         if (rotateCoroutine != null)
         {
             StopCoroutine(rotateCoroutine);
         }
-        rotateCoroutine = SmoothRotate(timeRotateBack);
+        if(exitDirection.x < 40)
+        {
+            Debug.Log("Fast Recovery!");
+            calculatedTimeRotateBack /= 5;
+        }
+        rotateCoroutine = SmoothRotate(calculatedTimeRotateBack);
         StartCoroutine(rotateCoroutine);
         StartCoroutine(DelayedDrill());
     }
 
     private IEnumerator DelayedDrill()
     {
-        yield return new WaitForSeconds(timeRotateBack);
+        yield return new WaitForSeconds(calculatedTimeRotateBack);
         state = MovementState.airing;
     }
 
