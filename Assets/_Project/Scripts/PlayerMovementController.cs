@@ -56,7 +56,7 @@ public class PlayerMovementController : MonoBehaviour
     private Animator playerAnimator;
     private Rigidbody playerRb;
 
-    private int maxJumps = 2;
+    private int maxJumps = 1;
     private int jumps;
 
     public MovementState state;
@@ -172,9 +172,13 @@ public class PlayerMovementController : MonoBehaviour
             desiredMoveSpeed = walkSpeed;
         }
         // Mode - Air
+        else if (!grounded && state != MovementState.drilling)
+        {
+            state = MovementState.airing;
+        }
+        // Mode - Regular
         else
         {
-            // state = MovementState.airing;
             desiredMoveSpeed = sprintSpeed;
         }
 
@@ -309,7 +313,6 @@ public class PlayerMovementController : MonoBehaviour
         }
         if(exitDirection.x < 40)
         {
-            Debug.Log("Fast Recovery!");
             calculatedTimeRotateBack /= 5;
         }
         rotateCoroutine = SmoothRotate(calculatedTimeRotateBack);
