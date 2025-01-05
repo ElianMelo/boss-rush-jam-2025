@@ -326,12 +326,6 @@ public class PlayerMovementController : MonoBehaviour
         state = MovementState.airing;
     }
 
-    private IEnumerator DelayedCanDrill()
-    {
-        yield return new WaitForSeconds(0.2f);
-        // canDrill = false;
-    }
-
     private IEnumerator SmoothRotate(float waitingTime)
     {
         float currentTimer = 0f;
@@ -354,12 +348,12 @@ public class PlayerMovementController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
         {
             grounded = true;
-            transform.up = collision.contacts[0].normal;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
+        // todo: create a better check
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
         {
             grounded = false;
