@@ -30,9 +30,6 @@ public class PlayerMovementController : MonoBehaviour
     public float jumpForce;
     public float airMultiplier;
 
-    [Header("Keybinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -65,6 +62,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private readonly static string JumpAnim = "Jump";
     private readonly static string AttackAnim = "Attack";
+    private readonly static string DashAnim = "Dash";
 
     private readonly static string RunningAnim = "Running";
     private readonly static string DrillingAnim = "Drilling";
@@ -92,7 +90,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-        // grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (grounded) jumps = maxJumps;
 
         GetInputsActions();
@@ -138,16 +136,23 @@ public class PlayerMovementController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+        if (state == MovementState.drilling) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0 && state != MovementState.drilling)
+        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
         {
             jumps -= 1;
             Jump();
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0) && state != MovementState.drilling)
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             playerAnimator.SetTrigger(AttackAnim);
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            // dashing = true;
+            playerAnimator.SetTrigger(DashAnim);
         }
     }
 
@@ -302,6 +307,7 @@ public class PlayerMovementController : MonoBehaviour
     public void StopDrilling()
     {
         if (state != MovementState.drilling) return;
+        jumps = 1;
         playerRb.useGravity = true;
         Vector3 exitDirection = drillOrientation.eulerAngles;
         calculatedTimeRotateBack = timeRotateBack;
@@ -354,10 +360,10 @@ public class PlayerMovementController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         // todo: create a better check
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
-        {
-            grounded = false;
-        }
+        //if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround"))
+        //{
+        //    grounded = false;
+        //}
     }
 
     private void SpeedControl()

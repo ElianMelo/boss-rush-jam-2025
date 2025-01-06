@@ -3449,11 +3449,10 @@ MonoBehaviour:
   dashForce: 300
   jumpForce: 7
   airMultiplier: 4
-  jumpKey: 32
   playerHeight: 0.1
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   maxSlopeAngle: 0
   drillOrientation: {fileID: 1945489019}
   orientation: {fileID: 838846038}
