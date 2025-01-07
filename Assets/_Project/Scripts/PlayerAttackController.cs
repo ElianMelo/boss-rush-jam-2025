@@ -30,6 +30,11 @@ public class PlayerAttackController : MonoBehaviour
         StartCoroutine(SafeDisableCollider());
     }
 
+    public void UnsafeEnableLanceCollider()
+    {
+        lanceCollider.enabled = true;
+    }
+
     public void DisableLanceCollider()
     {
         lanceCollider.enabled = false;

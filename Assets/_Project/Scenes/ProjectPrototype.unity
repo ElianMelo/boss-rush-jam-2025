@@ -3490,6 +3490,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c387641bbde5f43429acf8b2ce4b6005,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1767585763}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c387641bbde5f43429acf8b2ce4b6005,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1767585759}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c387641bbde5f43429acf8b2ce4b6005,
         type: 3}
@@ -3528,14 +3532,14 @@ MonoBehaviour:
   rotationFactor: 0.8
   timeRotateBack: 0.5
   diveExitForce: 20
+  smoothFollowMoveDirectionFactor: 0.01
   walkSpeed: 4
   sprintSpeed: 4
-  dashSpeed: 40
-  dashSpeedChangeFactor: 70
+  dashSpeed: 10
+  dashSpeedChangeFactor: 100
   maxYSpeed: 0
   groundDrag: 4
   airDrag: 0
-  dashForce: 300
   jumpForce: 7
   airMultiplier: 4
   playerHeight: 0.1
@@ -3635,6 +3639,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanceCollider: {fileID: 1382599100}
+--- !u!114 &1767585763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767585756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e82f9db722017547bb06af720ec91ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1767585757}
+  playerCam: {fileID: 1767585757}
+  dashForce: 40
+  dashUpwardForce: 0
+  dashDuration: 0.666
+  dashCd: 1
+  dashKey: 304
 --- !u!1 &1772363676
 GameObject:
   m_ObjectHideFlags: 0

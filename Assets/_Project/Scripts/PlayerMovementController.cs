@@ -1,13 +1,17 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [Header("Movement Class")]
+
     [Header("Rotator")]
     public float rotationSpeed;
     public float rotationFactor;
     public float timeRotateBack;
     public float diveExitForce;
+    public float smoothFollowMoveDirectionFactor;
     private float calculatedTimeRotateBack;
 
     [Header("Movement")]
@@ -22,9 +26,6 @@ public class PlayerMovementController : MonoBehaviour
 
     public float groundDrag;
     public float airDrag;
-
-    [Header("Dashing")]
-    public float dashForce;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -56,18 +57,13 @@ public class PlayerMovementController : MonoBehaviour
     private int maxJumps = 1;
     private int jumps;
 
+    private Vector3 smoothDampvelocity = Vector3.zero;
+
     public MovementState state;
 
+    private PlayerDashingController playerDashingController;
+
     private IEnumerator rotateCoroutine;
-
-    private readonly static string JumpAnim = "Jump";
-    private readonly static string AttackLeftAnim = "AttackLeft";
-    private readonly static string AttackRightAnim = "AttackRight";
-    private readonly static string DashAnim = "Dash";
-
-    private readonly static string RunningAnim = "Running";
-    private readonly static string DrillingAnim = "Drilling";
-    private readonly static string FallingAnim = "Falling";
 
     public enum MovementState
     {
@@ -83,11 +79,22 @@ public class PlayerMovementController : MonoBehaviour
     [Header("VFX Handler")]
     public ParticleSystem drillingVfx;
 
+    private readonly static string JumpAnim = "Jump";
+    private readonly static string DashAnim = "Dash";
+    private readonly static string AttackLeftAnim = "AttackLeft";
+    private readonly static string AttackRightAnim = "AttackRight";
+
+    private readonly static string RunningAnim = "Running";
+    private readonly static string DrillingAnim = "Drilling";
+    private readonly static string FallingAnim = "Falling";
+    private readonly static string DashingAnim = "Dashing";
+
     private void Start()
     {
         calculatedTimeRotateBack = timeRotateBack;
         playerAnimator = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
+        playerDashingController = GetComponent<PlayerDashingController>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
     }
@@ -123,6 +130,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (dashing) return;
         Move();
         if(state == MovementState.drilling)
         {
@@ -131,9 +139,14 @@ public class PlayerMovementController : MonoBehaviour
         {
             if(moveDirection != Vector3.zero)
             {
-                transform.forward = moveDirection;
+                SmoothRotateForward();
             }
         }
+    }
+
+    private void SmoothRotateForward()
+    {
+        transform.forward = Vector3.SmoothDamp(transform.forward, moveDirection, ref smoothDampvelocity, smoothFollowMoveDirectionFactor);
     }
 
     private void GetInputsActions()
@@ -156,12 +169,6 @@ public class PlayerMovementController : MonoBehaviour
         {
             playerAnimator.SetTrigger(AttackRightAnim);
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            // dashing = true;
-            playerAnimator.SetTrigger(DashAnim);
-        }
     }
 
     private float desiredMoveSpeed;
@@ -172,7 +179,7 @@ public class PlayerMovementController : MonoBehaviour
     private void StateHandler()
     {
         // Mode - Dashing
-        if (dashing)
+        if (dashing && state != MovementState.drilling)
         {
             state = MovementState.dashing;
             desiredMoveSpeed = dashSpeed;
@@ -188,11 +195,12 @@ public class PlayerMovementController : MonoBehaviour
         else if (!grounded && state != MovementState.drilling)
         {
             state = MovementState.airing;
+            desiredMoveSpeed = walkSpeed;
         }
         // Mode - Regular
         else
         {
-            desiredMoveSpeed = sprintSpeed;
+            desiredMoveSpeed = walkSpeed;
         }
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
@@ -293,6 +301,10 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (state != MovementState.drilling)
         {
+            if(state == MovementState.dashing)
+            {
+                playerDashingController.ForcedResetDash();
+            }
             drillingVfx.Play();
             playerRb.useGravity = false;
             if (rotateCoroutine != null)
@@ -440,8 +452,14 @@ public class PlayerMovementController : MonoBehaviour
     {
         var isRunning = state == MovementState.running && (verticalInput != 0 || horizontalInput != 0);
         playerAnimator.SetBool(RunningAnim, isRunning);
+        playerAnimator.SetBool(DashingAnim, state == MovementState.dashing);
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
+    }
+
+    public void CallDashAnimation()
+    {
+        playerAnimator.SetTrigger(DashAnim);
     }
 
 }
