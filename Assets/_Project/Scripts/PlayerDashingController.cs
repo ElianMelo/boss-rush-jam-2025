@@ -20,6 +20,8 @@ public class PlayerDashingController : MonoBehaviour
     public float dashCd;
     private float dashCdTimer;
 
+    private bool stopVfx = false;
+
     [Header("Input")]
     public KeyCode dashKey = KeyCode.LeftShift;
 
@@ -46,6 +48,7 @@ public class PlayerDashingController : MonoBehaviour
         pm.dashing = true;
         rb.useGravity = false;
         pm.CallDashAnimation();
+        pm.drillingVfx.Play();
         pa.UnsafeEnableLanceCollider();
         Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
 
@@ -64,11 +67,17 @@ public class PlayerDashingController : MonoBehaviour
 
     public void ForcedResetDash()
     {
+        stopVfx = true;
         ResetDash();
     }
 
     private void ResetDash()
     {
+        if (stopVfx || pm.state != PlayerMovementController.MovementState.drilling)
+        {
+            pm.drillingVfx.Stop();
+            stopVfx = false;
+        }
         pm.dashing = false;
         rb.useGravity = true;
         pa.DisableLanceCollider();

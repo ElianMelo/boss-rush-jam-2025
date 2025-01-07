@@ -7,7 +7,7 @@ public class DriveGroundTrigger : MonoBehaviour
     public Collider driveGroundSolid;
     public GameObject vfxDiggedVFX;
     private PlayerAttackController attackController;
-    private float checkVfxTimer = .2f;
+    private Collider lastCheckPlayerCollider;
 
     public void SetAttackController(PlayerAttackController otherAttackController)
     {
@@ -18,7 +18,7 @@ public class DriveGroundTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(CheckDrillingForVFX(other));
+            lastCheckPlayerCollider = other;
         }
     }
 
@@ -30,22 +30,6 @@ public class DriveGroundTrigger : MonoBehaviour
             InstantiateVFX(other);
             attackController.StopDrilling(this);
         }
-    }
-
-    public IEnumerator CheckDrillingForVFX(Collider other)
-    {
-        float timer = 0;
-        while(timer < checkVfxTimer)
-        {
-            timer += Time.deltaTime;
-            if(attackController != null && attackController.IsDrilling)
-            {
-                InstantiateVFX(other);
-                timer = checkVfxTimer;
-            }
-            yield return null;
-        }
-        yield return null;
     }
 
     public void InstantiateVFX(Collider other)
@@ -63,6 +47,10 @@ public class DriveGroundTrigger : MonoBehaviour
     public void DisableCollider()
     {
         StopAllCoroutines();
+        if(lastCheckPlayerCollider != null)
+        {
+            InstantiateVFX(lastCheckPlayerCollider);
+        }
         driveGroundSolid.enabled = false;
     }
 
