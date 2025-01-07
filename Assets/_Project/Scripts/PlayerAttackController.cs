@@ -6,6 +6,7 @@ public class PlayerAttackController : MonoBehaviour
 {
     private PlayerMovementController playerMovementController;
     public Collider lanceCollider;
+    public bool IsDrilling;
 
     private void Start()
     {
@@ -14,12 +15,14 @@ public class PlayerAttackController : MonoBehaviour
 
     public void StartDrilling(DriveGroundTrigger driveGroundTrigger)
     {
+        IsDrilling = true;
         driveGroundTrigger.DisableCollider();
         playerMovementController.StartDrilling(driveGroundTrigger.transform);
     }
 
     public void StopDrilling(DriveGroundTrigger driveGroundTrigger)
     {
+        IsDrilling = false;
         driveGroundTrigger.EnableColllider();
         playerMovementController.StopDrilling();
     }
