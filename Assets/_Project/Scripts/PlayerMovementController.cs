@@ -61,7 +61,8 @@ public class PlayerMovementController : MonoBehaviour
     private IEnumerator rotateCoroutine;
 
     private readonly static string JumpAnim = "Jump";
-    private readonly static string AttackAnim = "Attack";
+    private readonly static string AttackLeftAnim = "AttackLeft";
+    private readonly static string AttackRightAnim = "AttackRight";
     private readonly static string DashAnim = "Dash";
 
     private readonly static string RunningAnim = "Running";
@@ -78,6 +79,9 @@ public class PlayerMovementController : MonoBehaviour
     }
 
     public bool dashing;
+
+    [Header("VFX Handler")]
+    public ParticleSystem drillingVfx;
 
     private void Start()
     {
@@ -146,10 +150,14 @@ public class PlayerMovementController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            playerAnimator.SetTrigger(AttackAnim);
+            playerAnimator.SetTrigger(AttackLeftAnim);
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            playerAnimator.SetTrigger(AttackRightAnim);
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             // dashing = true;
             playerAnimator.SetTrigger(DashAnim);
@@ -285,6 +293,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (state != MovementState.drilling)
         {
+            drillingVfx.Play();
             playerRb.useGravity = false;
             if (rotateCoroutine != null)
             {
@@ -307,6 +316,7 @@ public class PlayerMovementController : MonoBehaviour
     public void StopDrilling()
     {
         if (state != MovementState.drilling) return;
+        drillingVfx.Stop();
         jumps = 1;
         playerRb.useGravity = true;
         Vector3 exitDirection = drillOrientation.eulerAngles;
@@ -433,6 +443,6 @@ public class PlayerMovementController : MonoBehaviour
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
     }
-    
+
 }
 
