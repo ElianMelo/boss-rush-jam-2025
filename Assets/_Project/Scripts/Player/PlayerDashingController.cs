@@ -9,6 +9,7 @@ public class PlayerDashingController : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovementController pm;
     private PlayerAttackController pa;
+    private PlayerVFXController pv;
 
     [Header("Dashing")]
     public float dashForce;
@@ -28,6 +29,7 @@ public class PlayerDashingController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovementController>();
         pa = GetComponent<PlayerAttackController>();
+        pv = GetComponent<PlayerVFXController>();
     }
 
     private void Update()
@@ -46,7 +48,9 @@ public class PlayerDashingController : MonoBehaviour
         pm.dashing = true;
         rb.useGravity = false;
         pm.CallDashAnimation();
-        pm.drillingVfx.Play();
+        pv.EnableBooster();
+        pv.DisableBoosterDelayed(0.1f);
+        pv.EnableDrilling();
         pa.UnsafeEnableLanceCollider();
         Vector3 forceToApply = orientation.forward * dashForce;
 
@@ -73,7 +77,8 @@ public class PlayerDashingController : MonoBehaviour
     {
         if (stopVfx || pm.state != PlayerMovementController.MovementState.drilling)
         {
-            pm.drillingVfx.Stop();
+            pv.DisableDrilling();
+            pv.DisableBooster();
             stopVfx = false;
         }
         pm.dashing = false;

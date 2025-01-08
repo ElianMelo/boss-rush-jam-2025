@@ -8,6 +8,7 @@ public class PlayerDivingController : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovementController pm;
     private PlayerAttackController pa;
+    private PlayerVFXController pv;
 
     [Header("Diving")]
     public float diveForce;
@@ -27,6 +28,7 @@ public class PlayerDivingController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovementController>();
         pa = GetComponent<PlayerAttackController>();
+        pv = GetComponent<PlayerVFXController>();
     }
 
     private void Update()
@@ -44,7 +46,9 @@ public class PlayerDivingController : MonoBehaviour
         if (pm.state == PlayerMovementController.MovementState.drilling) return;
         pm.diving = true;
         pm.CallDiveAnimation();
-        pm.drillingVfx.Play();
+        pv.EnableBooster();
+        pv.DisableBoosterDelayed(0.1f);
+        pv.EnableDrilling();
         pa.UnsafeEnableLanceCollider();
         Vector3 forceToApply = Vector3.down * diveForce;
 
@@ -71,7 +75,8 @@ public class PlayerDivingController : MonoBehaviour
     {
         if (stopVfx || pm.state != PlayerMovementController.MovementState.drilling)
         {
-            pm.drillingVfx.Stop();
+            pv.DisableDrilling();
+            pv.DisableBooster();
             stopVfx = false;
         }
         pm.diving = false;

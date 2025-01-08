@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3423918356368566780}
   - component: {fileID: 5977379804780783715}
   - component: {fileID: 4691513771882696061}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DrillParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

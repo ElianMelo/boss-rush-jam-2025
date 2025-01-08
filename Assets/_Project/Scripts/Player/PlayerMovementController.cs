@@ -65,6 +65,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private PlayerDashingController playerDashingController;
     private PlayerDivingController playerDivingController;
+    private PlayerVFXController playerVFXController;
 
     private IEnumerator rotateCoroutine;
 
@@ -80,9 +81,6 @@ public class PlayerMovementController : MonoBehaviour
 
     public bool dashing;
     public bool diving;
-
-    [Header("VFX Handler")]
-    public ParticleSystem drillingVfx;
 
     private readonly static string JumpAnim = "Jump";
     private readonly static string DashAnim = "Dash";
@@ -103,6 +101,7 @@ public class PlayerMovementController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerDashingController = GetComponent<PlayerDashingController>();
         playerDivingController = GetComponent<PlayerDivingController>();
+        playerVFXController = GetComponent<PlayerVFXController>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
     }
@@ -172,10 +171,14 @@ public class PlayerMovementController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            playerVFXController.EnableBooster();
+            playerVFXController.DisableBoosterDelayed(0.2f);
             playerAnimator.SetTrigger(AttackLeftAnim);
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
+            playerVFXController.EnableBooster();
+            playerVFXController.DisableBoosterDelayed(0.2f);
             playerAnimator.SetTrigger(AttackRightAnim);
         }
     }
@@ -326,7 +329,8 @@ public class PlayerMovementController : MonoBehaviour
             {
                 playerDivingController.ForcedResetDive();
             }
-            drillingVfx.Play();
+            playerVFXController.EnableDrilling();
+            playerVFXController.EnableBooster(true);
             playerRb.useGravity = false;
             if (rotateCoroutine != null)
             {
@@ -349,7 +353,8 @@ public class PlayerMovementController : MonoBehaviour
     public void StopDrilling()
     {
         if (state != MovementState.drilling) return;
-        drillingVfx.Stop();
+        playerVFXController.DisableDrilling();
+        playerVFXController.DisableBooster();
         jumps = 1;
         playerRb.useGravity = true;
         Vector3 exitDirection = drillOrientation.eulerAngles;
@@ -450,6 +455,8 @@ public class PlayerMovementController : MonoBehaviour
     private void Jump()
     {
         playerAnimator.SetTrigger(JumpAnim);
+        playerVFXController.EnableBooster();
+        playerVFXController.DisableBoosterDelayed(0.1f);
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
         playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
