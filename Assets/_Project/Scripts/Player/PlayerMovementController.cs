@@ -369,6 +369,10 @@ public class PlayerMovementController : MonoBehaviour
         {
             calculatedTimeRotateBack /= 5;
         }
+        if (exitDirection.x > 40 && exitDirection.x < 90)
+        {
+            calculatedTimeRotateBack /= 10;
+        }
         rotateCoroutine = SmoothRotate(calculatedTimeRotateBack);
         StartCoroutine(rotateCoroutine);
         StartCoroutine(DelayedDrill());
