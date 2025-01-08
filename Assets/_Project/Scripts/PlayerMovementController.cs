@@ -21,6 +21,8 @@ public class PlayerMovementController : MonoBehaviour
 
     public float dashSpeed;
     public float dashSpeedChangeFactor;
+    public float diveSpeed;
+    public float diveSpeedChangeFactor;
 
     public float maxYSpeed;
 
@@ -62,6 +64,7 @@ public class PlayerMovementController : MonoBehaviour
     public MovementState state;
 
     private PlayerDashingController playerDashingController;
+    private PlayerDivingController playerDivingController;
 
     private IEnumerator rotateCoroutine;
 
@@ -70,17 +73,20 @@ public class PlayerMovementController : MonoBehaviour
         idle,
         running,
         dashing,
+        diving,
         drilling,
         airing
     }
 
     public bool dashing;
+    public bool diving;
 
     [Header("VFX Handler")]
     public ParticleSystem drillingVfx;
 
     private readonly static string JumpAnim = "Jump";
     private readonly static string DashAnim = "Dash";
+    private readonly static string DiveAnim = "Dive";
     private readonly static string AttackLeftAnim = "AttackLeft";
     private readonly static string AttackRightAnim = "AttackRight";
 
@@ -88,6 +94,7 @@ public class PlayerMovementController : MonoBehaviour
     private readonly static string DrillingAnim = "Drilling";
     private readonly static string FallingAnim = "Falling";
     private readonly static string DashingAnim = "Dashing";
+    private readonly static string DivingAnim = "Diving";
 
     private void Start()
     {
@@ -95,6 +102,7 @@ public class PlayerMovementController : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         playerDashingController = GetComponent<PlayerDashingController>();
+        playerDivingController = GetComponent<PlayerDivingController>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
     }
@@ -131,6 +139,7 @@ public class PlayerMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         if (dashing) return;
+        if (diving) return;
         Move();
         if(state == MovementState.drilling)
         {
@@ -161,7 +170,7 @@ public class PlayerMovementController : MonoBehaviour
             Jump();
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             playerAnimator.SetTrigger(AttackLeftAnim);
         }
@@ -185,6 +194,13 @@ public class PlayerMovementController : MonoBehaviour
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
         }
+        // Mode - Dashing
+        else if (diving && state != MovementState.drilling)
+        {
+            state = MovementState.diving;
+            desiredMoveSpeed = diveSpeed;
+            speedChangeFactor = diveSpeedChangeFactor;
+        }
         // Mode - Walking
         else if (grounded && state != MovementState.drilling)
         {
@@ -204,7 +220,7 @@ public class PlayerMovementController : MonoBehaviour
         }
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
-        if (lastState == MovementState.dashing) keepMomentum = true;
+        if (lastState == MovementState.dashing || lastState == MovementState.diving) keepMomentum = true;
 
         if (desiredMoveSpeedHasChanged)
         {
@@ -250,6 +266,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Move()
     {
         if (state == MovementState.dashing) return;
+        if (state == MovementState.diving) return;
         float currentMoveSpeed = 0f;
 
         if (state == MovementState.drilling)
@@ -304,6 +321,10 @@ public class PlayerMovementController : MonoBehaviour
             if(state == MovementState.dashing)
             {
                 playerDashingController.ForcedResetDash();
+            }
+            if(state == MovementState.diving)
+            {
+                playerDivingController.ForcedResetDive();
             }
             drillingVfx.Play();
             playerRb.useGravity = false;
@@ -453,6 +474,7 @@ public class PlayerMovementController : MonoBehaviour
         var isRunning = state == MovementState.running && (verticalInput != 0 || horizontalInput != 0);
         playerAnimator.SetBool(RunningAnim, isRunning);
         playerAnimator.SetBool(DashingAnim, state == MovementState.dashing);
+        playerAnimator.SetBool(DivingAnim, state == MovementState.diving);
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
     }
@@ -460,6 +482,11 @@ public class PlayerMovementController : MonoBehaviour
     public void CallDashAnimation()
     {
         playerAnimator.SetTrigger(DashAnim);
+    }
+
+    public void CallDiveAnimation()
+    {
+        playerAnimator.SetTrigger(DiveAnim);
     }
 
 }

@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDashingController : MonoBehaviour
+public class PlayerDivingController : MonoBehaviour
 {
     [Header("References")]
-    public Transform orientation;
     private Rigidbody rb;
     private PlayerMovementController pm;
     private PlayerAttackController pa;
 
-    [Header("Dashing")]
-    public float dashForce;
-    public float dashDuration;
+    [Header("Diving")]
+    public float diveForce;
+    public float diveDuration;
 
     [Header("Cooldown")]
-    public float dashCd;
-    private float dashCdTimer;
+    public float diveCd;
+    private float diveCdTimer;
 
     private bool stopVfx = false;
 
     [Header("Input")]
-    public KeyCode dashKey = KeyCode.LeftShift;
+    public KeyCode diveKey = KeyCode.LeftControl;
 
     private void Start()
     {
@@ -32,52 +31,50 @@ public class PlayerDashingController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(dashKey))
-            Dash();
-        if (dashCdTimer > 0)
-            dashCdTimer -= Time.deltaTime;
+        if (Input.GetKeyDown(diveKey))
+            Dive();
+        if (diveCdTimer > 0)
+            diveCdTimer -= Time.deltaTime;
     }
 
-    private void Dash()
+    private void Dive()
     {
-        if (dashCdTimer > 0) return;
-        else dashCdTimer = dashCd;
+        if (diveCdTimer > 0) return;
+        else diveCdTimer = diveCd;
         if (pm.state == PlayerMovementController.MovementState.drilling) return;
-        pm.dashing = true;
-        rb.useGravity = false;
-        pm.CallDashAnimation();
+        pm.diving = true;
+        pm.CallDiveAnimation();
         pm.drillingVfx.Play();
         pa.UnsafeEnableLanceCollider();
-        Vector3 forceToApply = orientation.forward * dashForce;
+        Vector3 forceToApply = Vector3.down * diveForce;
 
         delayedForceToApply = forceToApply;
 
-        Invoke(nameof(DelayedDashForce), 0.025f);
-        Invoke(nameof(ResetDash), dashDuration);
+        Invoke(nameof(DelayedDiveForce), 0.025f);
+        Invoke(nameof(ResetDive), diveDuration);
     }
 
     private Vector3 delayedForceToApply;
 
-    private void DelayedDashForce()
+    private void DelayedDiveForce()
     {
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
     }
 
-    public void ForcedResetDash()
+    public void ForcedResetDive()
     {
         stopVfx = true;
-        ResetDash();
+        ResetDive();
     }
 
-    private void ResetDash()
+    private void ResetDive()
     {
         if (stopVfx || pm.state != PlayerMovementController.MovementState.drilling)
         {
             pm.drillingVfx.Stop();
             stopVfx = false;
         }
-        pm.dashing = false;
-        rb.useGravity = true;
+        pm.diving = false;
         pa.DisableLanceCollider();
     }
 }
