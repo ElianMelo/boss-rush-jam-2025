@@ -8,8 +8,6 @@ public class PlayerVFXController : MonoBehaviour
     [SerializeField] private ParticleSystem RightBooster;
     [SerializeField] private ParticleSystem DrillingVfx;
 
-    public bool IsBoosterActive;
-
     public void EnableBooster(bool keepBoosterActive = false)
     {
         if(keepBoosterActive)

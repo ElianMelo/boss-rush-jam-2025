@@ -47,6 +47,7 @@ public class PlayerDashingController : MonoBehaviour
         if (pm.state == PlayerMovementController.MovementState.drilling) return;
         pm.dashing = true;
         rb.useGravity = false;
+        SoundManager.Instance.PlayDashSound();
         pm.CallDashAnimation();
         pv.EnableBooster();
         pv.DisableBoosterDelayed(0.1f);

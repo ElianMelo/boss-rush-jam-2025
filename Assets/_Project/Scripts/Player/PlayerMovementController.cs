@@ -174,12 +174,14 @@ public class PlayerMovementController : MonoBehaviour
             playerVFXController.EnableBooster();
             playerVFXController.DisableBoosterDelayed(0.2f);
             playerAnimator.SetTrigger(AttackLeftAnim);
+            SoundManager.Instance.PlayAttackSound();
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             playerVFXController.EnableBooster();
             playerVFXController.DisableBoosterDelayed(0.2f);
             playerAnimator.SetTrigger(AttackRightAnim);
+            SoundManager.Instance.PlayAttackSound();
         }
     }
 
