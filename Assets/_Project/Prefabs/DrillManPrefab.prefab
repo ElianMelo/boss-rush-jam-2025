@@ -1974,7 +1974,6 @@ MonoBehaviour:
   LeftBooster: {fileID: 6531699476946947317}
   RightBooster: {fileID: 855891052961367985}
   DrillingVfx: {fileID: 4865413849046100097}
-  IsBoosterActive: 0
 --- !u!54 &5117228824525706546
 Rigidbody:
   m_ObjectHideFlags: 0
