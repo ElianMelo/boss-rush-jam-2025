@@ -175,6 +175,7 @@ public class PlayerMovementController : MonoBehaviour
             playerVFXController.DisableBoosterDelayed(0.2f);
             playerAnimator.SetTrigger(AttackLeftAnim);
             SoundManager.Instance.PlayAttackSound();
+            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, false, 0.1f);
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
@@ -182,6 +183,7 @@ public class PlayerMovementController : MonoBehaviour
             playerVFXController.DisableBoosterDelayed(0.2f);
             playerAnimator.SetTrigger(AttackRightAnim);
             SoundManager.Instance.PlayAttackSound();
+            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, true, 0.1f);
         }
     }
 

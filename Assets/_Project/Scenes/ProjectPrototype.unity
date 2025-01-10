@@ -1530,6 +1530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a45288d28c34bb4ba366583d462ca64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionVFX: {fileID: 0}
+  hitVFX: {fileID: 8628709162044451466, guid: d9a90337af3262d49ae55104ea7e54e4, type: 3}
 --- !u!1 &2025662239
 GameObject:
   m_ObjectHideFlags: 0
