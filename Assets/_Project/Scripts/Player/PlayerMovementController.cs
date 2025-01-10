@@ -319,6 +319,14 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("DiveGround") || other.CompareTag("DiveGroundTrigger"))
+        {
+            StopDrilling();
+        }
+    }
+
     public void StartDrilling(Transform other)
     {
         if (state != MovementState.drilling)
@@ -331,6 +339,7 @@ public class PlayerMovementController : MonoBehaviour
             {
                 playerDivingController.ForcedResetDive();
             }
+            SoundManager.Instance.StartDrillingSound();
             playerVFXController.EnableDrilling();
             playerVFXController.EnableBooster(true);
             playerRb.useGravity = false;
@@ -344,19 +353,12 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("DiveGround") || other.CompareTag("DiveGroundTrigger"))
-        {
-            StopDrilling();
-        }
-    }
-
     public void StopDrilling()
     {
         if (state != MovementState.drilling) return;
         playerVFXController.DisableDrilling();
         playerVFXController.DisableBooster();
+        SoundManager.Instance.StopDrillingSound();
         jumps = 1;
         playerRb.useGravity = true;
         Vector3 exitDirection = drillOrientation.eulerAngles;
@@ -461,6 +463,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Jump()
     {
         playerAnimator.SetTrigger(JumpAnim);
+        SoundManager.Instance.PlayJumpSound();
         playerVFXController.EnableBooster();
         playerVFXController.DisableBoosterDelayed(0.1f);
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
