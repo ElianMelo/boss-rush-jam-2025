@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8378511424870202981}
   - component: {fileID: 4240081687501775883}
+  - component: {fileID: 5896655953175192049}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -62,6 +63,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 137c23e7fd890844cae24e58e71f2d41, type: 3}
   dashSound: {fileID: 8300000, guid: 425a39033b38214459861d009dd7d1a2, type: 3}
   jumpSound: {fileID: 8300000, guid: 86611423347673c4f9a45d83c3b9da7b, type: 3}
+--- !u!114 &5896655953175192049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866561144007022768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884ba800c7c8a234eb066c9d59c133af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
 --- !u!1 &6223057083895655608
 GameObject:
   m_ObjectHideFlags: 0

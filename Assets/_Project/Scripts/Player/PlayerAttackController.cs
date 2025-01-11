@@ -62,6 +62,11 @@ public class PlayerAttackController : MonoBehaviour
     public void StartDrilling(DriveGroundTrigger driveGroundTrigger)
     {
         IsDrilling = true;
+        if (driveGroundTrigger.GetWeakPoint() && driveGroundTrigger.GetFirstTime())
+        {
+            BossManager.Instance.TakeDamage(25f);
+            driveGroundTrigger.SetFirstTime(false);
+        }
         driveGroundTrigger.DisableCollider();
         playerMovementController.StartDrilling(driveGroundTrigger.transform);
     }

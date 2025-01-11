@@ -228,6 +228,8 @@ MonoBehaviour:
   driveGroundSolid: {fileID: 1928045404373043801}
   vfxDiggedVFX: {fileID: 591719866423806950, guid: bbd3d07ee1ada55408df4c1642f25be9,
     type: 3}
+  isWeakPoint: 0
+  isFirstTime: 1
 --- !u!54 &722376595529102430
 Rigidbody:
   m_ObjectHideFlags: 0
