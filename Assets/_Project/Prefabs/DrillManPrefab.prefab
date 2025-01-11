@@ -1485,6 +1485,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5435313688949744285, guid: b47a672d84f82814bbfc4476826c628b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lance
+      objectReference: {fileID: 0}
     - target: {fileID: 5494708803734413133, guid: b47a672d84f82814bbfc4476826c628b,
         type: 3}
       propertyPath: m_Layer
@@ -1940,6 +1945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanceCollider: {fileID: 2821035386806423483}
   IsDrilling: 0
+  attackDelay: 0.3
 --- !u!114 &5244535740493703637
 MonoBehaviour:
   m_ObjectHideFlags: 0

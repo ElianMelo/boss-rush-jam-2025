@@ -85,8 +85,6 @@ public class PlayerMovementController : MonoBehaviour
     private readonly static string JumpAnim = "Jump";
     private readonly static string DashAnim = "Dash";
     private readonly static string DiveAnim = "Dive";
-    private readonly static string AttackLeftAnim = "AttackLeft";
-    private readonly static string AttackRightAnim = "AttackRight";
 
     private readonly static string RunningAnim = "Running";
     private readonly static string DrillingAnim = "Drilling";
@@ -169,22 +167,7 @@ public class PlayerMovementController : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            playerVFXController.EnableBooster();
-            playerVFXController.DisableBoosterDelayed(0.2f);
-            playerAnimator.SetTrigger(AttackLeftAnim);
-            SoundManager.Instance.PlayAttackSound();
-            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, false, 0.1f);
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            playerVFXController.EnableBooster();
-            playerVFXController.DisableBoosterDelayed(0.2f);
-            playerAnimator.SetTrigger(AttackRightAnim);
-            SoundManager.Instance.PlayAttackSound();
-            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, true, 0.1f);
-        }
+        
     }
 
     private float desiredMoveSpeed;
