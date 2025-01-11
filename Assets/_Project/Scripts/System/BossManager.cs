@@ -19,6 +19,7 @@ public class BossManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         health = maxHealth;
     }
 
