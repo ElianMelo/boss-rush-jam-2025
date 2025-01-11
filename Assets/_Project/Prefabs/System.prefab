@@ -59,7 +59,7 @@ MonoBehaviour:
   playerDrillingLoopSource: {fileID: 6800641163761983008}
   attackSounds:
   - {fileID: 8300000, guid: 15962db983fd08b47a1c9f91316ea512, type: 3}
-  - {fileID: 8300000, guid: c67f52c76a125714f8528069c4f3689b, type: 3}
+  - {fileID: 8300000, guid: 137c23e7fd890844cae24e58e71f2d41, type: 3}
   dashSound: {fileID: 8300000, guid: 425a39033b38214459861d009dd7d1a2, type: 3}
   jumpSound: {fileID: 8300000, guid: 86611423347673c4f9a45d83c3b9da7b, type: 3}
 --- !u!1 &6223057083895655608
@@ -270,7 +270,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: b9fa2e1468264a74e93798a342628435, type: 3}
+      objectReference: {fileID: 8300000, guid: 9676842932f8bac429abfd1027b036e8, type: 3}
     - target: {fileID: 5926806910009490333, guid: 335c53fc087b1c140849c850798b31aa,
         type: 3}
       propertyPath: m_PlayOnAwake
