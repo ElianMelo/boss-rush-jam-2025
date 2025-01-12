@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237483077319598779}
-  m_Material: {fileID: 13400000, guid: 9575162a968a9a141a22d98b8a662f5b, type: 2}
+  m_Material: {fileID: 13400000, guid: 18cb369a25c4c484bb2134eaeebb4675, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -228,8 +228,7 @@ MonoBehaviour:
   driveGroundSolid: {fileID: 1928045404373043801}
   vfxDiggedVFX: {fileID: 591719866423806950, guid: bbd3d07ee1ada55408df4c1642f25be9,
     type: 3}
-  isWeakPoint: 0
-  isFirstTime: 1
+  WeakPoint: 0
 --- !u!54 &722376595529102430
 Rigidbody:
   m_ObjectHideFlags: 0
