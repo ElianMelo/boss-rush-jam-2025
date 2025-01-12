@@ -15,6 +15,9 @@ public class DriveGroundTrigger : MonoBehaviour
 
     private bool isFirstTime = true;
     private bool isWeakPoint = true;
+
+    private float currentTimer = 0f;
+    private float maxTimer;
     
     private void Start()
     {
@@ -46,18 +49,39 @@ public class DriveGroundTrigger : MonoBehaviour
         if (other.CompareTag("Player") || other.CompareTag("Lance"))
         {
             lastCheckPlayerCollider = other;
+            currentTimer = 0f;
+            StartCoroutine(SafeCheck());
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Lance"))
+        {
+            currentTimer = 0f;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("Player") || other.CompareTag("Lance")) && attackController != null)
+        if ((other.CompareTag("Player")) && attackController != null)
         {
             if (!attackController.IsDrilling) return;
             InstantiateVFX(other);
             attackController.StopDrilling(this);
             StopAllCoroutines();
         }
+    }
+
+    private IEnumerator SafeCheck()
+    {
+        maxTimer = 1f;
+        while (currentTimer < maxTimer)
+        {
+            currentTimer += Time.deltaTime;
+            yield return null;
+        }
+        attackController.StopDrilling(this);
+        yield return null;
     }
 
     public void InstantiateVFX(Collider other)
@@ -74,7 +98,6 @@ public class DriveGroundTrigger : MonoBehaviour
 
     public void DisableCollider()
     {
-        StopAllCoroutines();
         if(lastCheckPlayerCollider != null)
         {
             InstantiateVFX(lastCheckPlayerCollider);

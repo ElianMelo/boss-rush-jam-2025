@@ -314,7 +314,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (other.CompareTag("DiveGround") || other.CompareTag("DiveGroundTrigger"))
         {
-            StopDrilling();
+            playerAttackController.ForcedSafeStopDrilling();
         }
     }
 
