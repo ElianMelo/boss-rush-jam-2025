@@ -16,6 +16,7 @@ public class PlayerAttackController : MonoBehaviour
     private Animator playerAnimator;
 
     private float currentAttackDelay;
+    private DriveGroundTrigger lastDriveGroundTrigger;
 
     private readonly static string AttackLeftAnim = "AttackLeft";
     private readonly static string AttackRightAnim = "AttackRight";
@@ -39,6 +40,8 @@ public class PlayerAttackController : MonoBehaviour
     private void CheckAttackButton()
     {
         if (currentAttackDelay > 0) return;
+        if (playerMovementController.state == PlayerMovementController.MovementState.drilling) return;
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             currentAttackDelay = attackDelay;
@@ -68,6 +71,7 @@ public class PlayerAttackController : MonoBehaviour
             driveGroundTrigger.SetFirstTime(false);
         }
         driveGroundTrigger.DisableCollider();
+        lastDriveGroundTrigger = driveGroundTrigger;
         playerMovementController.StartDrilling(driveGroundTrigger.transform);
     }
 
@@ -76,6 +80,11 @@ public class PlayerAttackController : MonoBehaviour
         IsDrilling = false;
         driveGroundTrigger.EnableColllider();
         playerMovementController.StopDrilling();
+    }
+
+    public void ForcedSafeStopDrilling()
+    {
+        StopDrilling(lastDriveGroundTrigger);
     }
 
     public void EnableLanceCollider()
@@ -96,7 +105,7 @@ public class PlayerAttackController : MonoBehaviour
 
     private IEnumerator SafeDisableCollider()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         DisableLanceCollider();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
@@ -36,6 +37,7 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
+    public LayerMask whatIsDiveGround;
     private bool grounded;
 
     [Header("Slope Handling")]
@@ -65,9 +67,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private PlayerDashingController playerDashingController;
     private PlayerDivingController playerDivingController;
+    private PlayerAttackController playerAttackController;
     private PlayerVFXController playerVFXController;
 
     private IEnumerator rotateCoroutine;
+
+    public bool IsGrounded => grounded;
 
     public enum MovementState
     {
@@ -99,6 +104,7 @@ public class PlayerMovementController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerDashingController = GetComponent<PlayerDashingController>();
         playerDivingController = GetComponent<PlayerDivingController>();
+        playerAttackController = GetComponent<PlayerAttackController>();
         playerVFXController = GetComponent<PlayerVFXController>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
@@ -184,8 +190,8 @@ public class PlayerMovementController : MonoBehaviour
             desiredMoveSpeed = dashSpeed;
             speedChangeFactor = dashSpeedChangeFactor;
         }
-        // Mode - Dashing
-        else if (diving && state != MovementState.drilling)
+        // Mode - Diving
+        else if (diving && state != MovementState.drilling && !grounded)
         {
             state = MovementState.diving;
             desiredMoveSpeed = diveSpeed;

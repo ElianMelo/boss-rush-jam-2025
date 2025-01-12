@@ -14,8 +14,7 @@ public class DriveGroundTrigger : MonoBehaviour
     public bool WeakPoint;
 
     private bool isFirstTime = true;
-    private bool isWeakPoint = true; 
-
+    private bool isWeakPoint = true;
     
     private void Start()
     {
@@ -44,7 +43,7 @@ public class DriveGroundTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Lance"))
         {
             lastCheckPlayerCollider = other;
         }
@@ -52,11 +51,12 @@ public class DriveGroundTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && attackController != null)
+        if ((other.CompareTag("Player") || other.CompareTag("Lance")) && attackController != null)
         {
             if (!attackController.IsDrilling) return;
             InstantiateVFX(other);
             attackController.StopDrilling(this);
+            StopAllCoroutines();
         }
     }
 

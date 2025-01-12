@@ -156,6 +156,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiveGroundSolid
       objectReference: {fileID: 0}
+    - target: {fileID: 2025866442248649491, guid: 44735af94e64b2043b8c7289f346d936,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025866442248649491, guid: 44735af94e64b2043b8c7289f346d936,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025866442248649491, guid: 44735af94e64b2043b8c7289f346d936,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4080050625730250503, guid: 44735af94e64b2043b8c7289f346d936,
         type: 3}
       propertyPath: m_LocalScale.x

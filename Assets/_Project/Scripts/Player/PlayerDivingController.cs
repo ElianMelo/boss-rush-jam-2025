@@ -44,7 +44,9 @@ public class PlayerDivingController : MonoBehaviour
         if (diveCdTimer > 0) return;
         else diveCdTimer = diveCd;
         if (pm.state == PlayerMovementController.MovementState.drilling) return;
+        if (pm.IsGrounded) return;
         pm.diving = true;
+        pm.dashing = false;
         SoundManager.Instance.PlayDashSound();
         pm.CallDiveAnimation();
         pv.EnableBooster();

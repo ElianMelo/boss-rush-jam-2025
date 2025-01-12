@@ -116,10 +116,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.09
-  m_Height: 2.1273196
+  m_Radius: 0.24
+  m_Height: 2.42
   m_Direction: 1
-  m_Center: {x: 0.00000016857375, y: -0.039840464, z: 0.00000024253404}
+  m_Center: {x: 0.00000016857375, y: -0.12, z: 0.00000024253404}
 --- !u!114 &9078241149294820041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
   rayRange: 1
 --- !u!54 &2025226614850884175
 Rigidbody:
@@ -1922,6 +1922,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 192
+  whatIsDiveGround:
+    serializedVersion: 2
+    m_Bits: 256
   maxSlopeAngle: 0
   drillOrientation: {fileID: 9050588710579571564}
   orientation: {fileID: 0}
@@ -1976,7 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diveForce: 10
-  diveDuration: 0.666
+  diveDuration: 0.888
   diveCd: 0.3
   diveKey: 306
 --- !u!114 &818480878656885302
@@ -2023,7 +2026,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &8815653163748874822
 CapsuleCollider:
   m_ObjectHideFlags: 0
