@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: b47a672d84f82814bbfc4476826c628b
+guid: 67d191fdf71bd0f459f371100c58f38c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Maya_Blinn1
-    second: {fileID: 2100000, guid: 5a2f639a3f8d10840982a35f2cb883d0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: f45f3a6e3bde2b041b56470914b600e0, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
