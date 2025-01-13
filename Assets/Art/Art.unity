@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e0ec6d38c692c9045a0686dcf8e396d3, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -320,6 +320,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Drillman (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535068474294313622, guid: b47a672d84f82814bbfc4476826c628b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535068474294313622, guid: b47a672d84f82814bbfc4476826c628b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535068474294313622, guid: b47a672d84f82814bbfc4476826c628b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -913,8 +928,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587865362}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09379743, y: -0.5656376, z: 0.06490184, w: 0.8167275}
-  m_LocalPosition: {x: 0.62568945, y: 0.18905663, z: -0.23378326}
+  m_LocalRotation: {x: -0.031028952, y: 0.96743065, z: -0.19753265, w: -0.15522891}
+  m_LocalPosition: {x: 2.9649122, y: 1.502037, z: -0.74987555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
