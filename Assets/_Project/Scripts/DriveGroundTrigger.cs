@@ -60,14 +60,7 @@ public class DriveGroundTrigger : MonoBehaviour
         {
             lastCheckPlayerCollider = other;
             currentTimer = 0f;
-            if (turtleWeekSpot != null)
-            {
-                attackController.StopDrilling(this);
-                turtleWeekSpot.SetupScene();
-            } else
-            {
-                StartCoroutine(SafeCheck());
-            }
+            StartCoroutine(SafeCheck());
         }
     }
     private void OnTriggerStay(Collider other)
@@ -86,6 +79,10 @@ public class DriveGroundTrigger : MonoBehaviour
             InstantiateVFX(other);
             attackController.StopDrilling(this);
             StopAllCoroutines();
+            if (turtleWeekSpot != null)
+            {
+                turtleWeekSpot.SetupScene();
+            }
         }
     }
 
