@@ -18,7 +18,17 @@ public class DriveGroundTrigger : MonoBehaviour
 
     private float currentTimer = 0f;
     private float maxTimer;
-    
+
+    private TurtleWeekSpot turtleWeekSpot;
+    private PlayerAttackController playerAttackController;
+
+    private void Awake()
+    {
+        turtleWeekSpot = GetComponent<TurtleWeekSpot>();
+        playerAttackController = FindObjectOfType<PlayerAttackController>();
+        SetAttackController(playerAttackController);
+    }
+
     private void Start()
     {
         isWeakPoint = WeakPoint;
@@ -50,7 +60,14 @@ public class DriveGroundTrigger : MonoBehaviour
         {
             lastCheckPlayerCollider = other;
             currentTimer = 0f;
-            StartCoroutine(SafeCheck());
+            if (turtleWeekSpot != null)
+            {
+                attackController.StopDrilling(this);
+                turtleWeekSpot.SetupScene();
+            } else
+            {
+                StartCoroutine(SafeCheck());
+            }
         }
     }
     private void OnTriggerStay(Collider other)
