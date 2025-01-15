@@ -1907,6 +1907,7 @@ MonoBehaviour:
   timeRotateBack: 0.5
   diveExitForce: 20
   smoothFollowMoveDirectionFactor: 0.01
+  smoothFrictionFactor: 0.1
   walkSpeed: 4
   sprintSpeed: 4
   dashSpeed: 10

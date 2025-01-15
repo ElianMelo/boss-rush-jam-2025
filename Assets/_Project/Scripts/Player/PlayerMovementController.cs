@@ -13,6 +13,7 @@ public class PlayerMovementController : MonoBehaviour
     public float timeRotateBack;
     public float diveExitForce;
     public float smoothFollowMoveDirectionFactor;
+    public float smoothFrictionFactor;
     private float calculatedTimeRotateBack;
 
     [Header("Movement")]
@@ -285,6 +286,7 @@ public class PlayerMovementController : MonoBehaviour
         // on ground
         if (grounded)
         {
+            playerRb.velocity = Vector3.SmoothDamp(playerRb.velocity, Vector3.zero, ref smoothDampvelocity, smoothFrictionFactor);
             playerRb.AddForce(moveDirection.normalized * currentMoveSpeed * 10f, ForceMode.Force);
         }
         // in air
