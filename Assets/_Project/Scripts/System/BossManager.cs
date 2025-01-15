@@ -26,6 +26,21 @@ public class BossManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        healthSlider.value = health / maxHealth;
+        StartCoroutine(SmoothChangeHealth());
+        // healthSlider.value = health / maxHealth;
+    }
+
+    private IEnumerator SmoothChangeHealth()
+    {
+        float currentTimer = 0;
+        float timer = 4f;
+        float target = health / maxHealth;
+        while (currentTimer < timer)
+        {
+            healthSlider.value = Mathf.Lerp(healthSlider.value, target, currentTimer / timer);
+            currentTimer += Time.deltaTime;
+            yield return null;
+        }
+        yield return null;
     }
 }

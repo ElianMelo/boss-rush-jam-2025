@@ -68,6 +68,7 @@ public class PlayerAttackController : MonoBehaviour
         if (driveGroundTrigger.GetWeakPoint() && driveGroundTrigger.GetFirstTime())
         {
             BossManager.Instance.TakeDamage(25f);
+            ScreenShakeManager.Instance.ShakeScreen();
             driveGroundTrigger.SetFirstTime(false);
         }
         driveGroundTrigger.DisableCollider();
