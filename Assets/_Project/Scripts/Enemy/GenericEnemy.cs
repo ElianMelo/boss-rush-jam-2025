@@ -2,11 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GenericEnemy : MonoBehaviour
 {
     public GameObject explosionVFX;
     public GameObject hitVFX;
+
+    private NavMeshAgent navMeshAgent;
+    private Transform playerTransform;
+
+    private void Start()
+    {
+        playerTransform = FindObjectOfType<PlayerMovementController>().transform;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        navMeshAgent.SetDestination(playerTransform.position);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
