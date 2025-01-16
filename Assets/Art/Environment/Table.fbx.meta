@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 3243aaa083550d747ac0801dc887c2ef
+guid: da840114c89c768409d81754427c856a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: DroneArmoured
-    second: {fileID: 2100000, guid: 76e7677686bcd4849bc95fd2de07cf82, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

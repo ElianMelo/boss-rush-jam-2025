@@ -3,7 +3,17 @@ guid: 2fdcc68f7c3b1574187bf1b7dcd7eb75
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bikerman2
+    second: {fileID: 2100000, guid: b08272a6f9478a64fb90ac2578697b06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kart
+    second: {fileID: 2100000, guid: ccef7f16996174e4daac9bde89948bf2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
