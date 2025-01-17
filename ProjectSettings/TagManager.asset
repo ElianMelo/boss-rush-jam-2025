@@ -4,11 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - mid
-  - bot
-  - top
-  - Enemy
-  - Invunerable
+  - Ground
+  - DiveGround
+  - DiveGroundTrigger
+  - Lance
   layers:
   - Default
   - TransparentFX
@@ -17,11 +16,11 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Flipper
-  - Obstacle
-  - Enemy
-  - Invunerable
-  - ObstacleBroken
+  - DiveGround
+  - DiveGroundTrigger
+  - Player
+  - 
+  - 
   - 
   - 
   - 
