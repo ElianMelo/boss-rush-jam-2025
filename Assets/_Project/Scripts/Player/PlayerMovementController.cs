@@ -95,6 +95,7 @@ public class PlayerMovementController : MonoBehaviour
     private readonly static string RunningAnim = "Running";
     private readonly static string DrillingAnim = "Drilling";
     private readonly static string FallingAnim = "Falling";
+    private readonly static string VerticalVelocityAnim = "VerticalVelocity";
     private readonly static string DashingAnim = "Dashing";
     private readonly static string DivingAnim = "Diving";
 
@@ -486,6 +487,8 @@ public class PlayerMovementController : MonoBehaviour
         playerAnimator.SetBool(DivingAnim, state == MovementState.diving);
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
+        playerAnimator.SetFloat(VerticalVelocityAnim, Mathf.Lerp(0, 1, Mathf.Abs(playerRb.velocity.y) / 20));
+        // Debug.Log(playerRb.velocity.y);
     }
 
     public void CallDashAnimation()
