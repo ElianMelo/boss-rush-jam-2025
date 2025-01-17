@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa0458940120c7347b839a0dab4f0de6
+guid: 11a4f6f67856f854290510fedf9972f6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: 6a6faabb244ff9d41938e60630235c82, type: 2}
+      name: Earth
+    second: {fileID: 2100000, guid: be63f99778bac85419114a41cedf50a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground
+    second: {fileID: 2100000, guid: 7bf69d00a0104854ead389ea5fc32301, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
