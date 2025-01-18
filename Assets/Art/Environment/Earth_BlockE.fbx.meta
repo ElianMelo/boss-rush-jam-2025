@@ -12,7 +12,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Earth1
+    second: {fileID: 2100000, guid: be63f99778bac85419114a41cedf50a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Ground
+    second: {fileID: 2100000, guid: 7bf69d00a0104854ead389ea5fc32301, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground1
     second: {fileID: 2100000, guid: 7bf69d00a0104854ead389ea5fc32301, type: 2}
   materials:
     materialImportMode: 2
