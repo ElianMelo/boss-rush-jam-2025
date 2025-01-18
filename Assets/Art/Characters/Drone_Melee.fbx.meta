@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Drone_Melee4
+    second: {fileID: 2100000, guid: 8997465646908ee45b617acdc629201e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: standardSurface1
     second: {fileID: 2100000, guid: 76e7677686bcd4849bc95fd2de07cf82, type: 2}
   materials:
