@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class BossManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public Slider healthSlider;
 
-    public static BossManager Instance;
+    public static PlayerManager Instance;
 
     private float maxHealth = 100;
     private float health;
@@ -27,9 +27,9 @@ public class BossManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if (health <= 0)
+        if(health <= 0)
         {
-            Scene scene = SceneManager.GetActiveScene();
+            Scene scene = SceneManager.GetActiveScene(); 
             SceneManager.LoadScene(scene.name);
         }
         StartCoroutine(SmoothChangeHealth());

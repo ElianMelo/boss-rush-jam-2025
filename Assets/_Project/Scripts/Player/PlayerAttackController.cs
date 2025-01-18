@@ -37,6 +37,14 @@ public class PlayerAttackController : MonoBehaviour
         CheckAttackButton();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("EnemyAttack"))
+        {
+            PlayerManager.Instance.TakeDamage(10f);
+        }
+    }
+
     private void CheckAttackButton()
     {
         if (currentAttackDelay > 0) return;
