@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3243aaa083550d747ac0801dc887c2ef
+guid: 521e2ebdaa155ba44bba41919dee2ed4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: DroneArmoured
-    second: {fileID: 2100000, guid: adb75c7cddc2bf34fad09e577329475d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: 76e7677686bcd4849bc95fd2de07cf82, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: ed52e7e5f8504f144a2d2cf1ad93c058, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
