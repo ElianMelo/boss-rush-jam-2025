@@ -107,6 +107,7 @@ MonoBehaviour:
     type: 3}
   hitVFX: {fileID: 8628709162044451466, guid: d9a90337af3262d49ae55104ea7e54e4, type: 3}
   attackCollider: {fileID: 8945992781419936363}
+  deathForce: 200
 --- !u!136 &5898535850292534581
 CapsuleCollider:
   m_ObjectHideFlags: 0

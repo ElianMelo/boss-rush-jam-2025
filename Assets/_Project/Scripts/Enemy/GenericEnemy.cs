@@ -9,10 +9,13 @@ public class GenericEnemy : MonoBehaviour
     public GameObject explosionVFX;
     public GameObject hitVFX;
     public Collider attackCollider;
+    public float deathForce;
 
     private NavMeshAgent navMeshAgent;
     private Transform playerTransform;
+    private Rigidbody enemyRigidbody;
     private Animator animator;
+    private bool canAttack = true;
 
     private bool isFollowingPlayer = false;
 
@@ -20,6 +23,7 @@ public class GenericEnemy : MonoBehaviour
     {
         playerTransform = FindObjectOfType<PlayerMovementController>().transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyRigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(CheckDistancePlayer());
     }
@@ -39,8 +43,14 @@ public class GenericEnemy : MonoBehaviour
             {
                 isFollowingPlayer = true;
             }
-            if (Vector3.Distance(transform.position, playerTransform.position) < 5f)
+            if(!canAttack)
             {
+                canAttack = true;
+                continue;
+            }
+            if (Vector3.Distance(transform.position, playerTransform.position) < 5f && canAttack)
+            {
+                canAttack = false;
                 Attack();
             }
         }
@@ -65,12 +75,14 @@ public class GenericEnemy : MonoBehaviour
     {
         if (other.CompareTag("Lance"))
         {
+            attackCollider.enabled = false;
+            StopAllCoroutines();
+            enemyRigidbody.AddForce((transform.position - playerTransform.position).normalized * deathForce, ForceMode.Impulse);
             var hitVFXObject = Instantiate(hitVFX, transform.position + new Vector3(0f,2f,0f), Quaternion.identity);
             hitVFXObject.transform.localScale = new Vector3(Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f));
             var explosionVFXObject = Instantiate(explosionVFX, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
             explosionVFXObject.transform.localScale = new Vector3(Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f));
             ScreenShakeManager.Instance.ShakeScreen();
-            StopAllCoroutines();
             Destroy(gameObject, 0.5f);
         }
     }
