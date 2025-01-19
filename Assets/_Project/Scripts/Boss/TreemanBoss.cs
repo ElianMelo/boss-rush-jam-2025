@@ -12,6 +12,14 @@ public class TreemanBoss : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         StartCoroutine(RandomAttack());
+        BossManager.Instance.OnBossTakeDamage.AddListener(TakeDamage);
+        BossManager.Instance.OnBossDeath.AddListener(Death);
+    }
+
+    private void OnDestroy()
+    {
+        BossManager.Instance.OnBossTakeDamage.RemoveListener(TakeDamage);
+        BossManager.Instance.OnBossDeath.RemoveListener(Death);
     }
 
     private IEnumerator RandomAttack()
@@ -28,5 +36,15 @@ public class TreemanBoss : MonoBehaviour
         }
         Instantiate(projectile, attackStartPosition);
         StartCoroutine(RandomAttack());
+    }
+
+    private void TakeDamage()
+    {
+        animator.SetTrigger("Death");
+    }
+
+    private void Death()
+    {
+        animator.SetTrigger("Death");
     }
 }

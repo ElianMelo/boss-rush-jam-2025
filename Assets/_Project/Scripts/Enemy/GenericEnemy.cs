@@ -73,9 +73,13 @@ public class GenericEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Player"))
+        {
+            DisableAttackCollider();
+        }
         if (other.CompareTag("Lance"))
         {
-            attackCollider.enabled = false;
+            DisableAttackCollider();
             StopAllCoroutines();
             enemyRigidbody.AddForce((transform.position - playerTransform.position).normalized * deathForce, ForceMode.Impulse);
             var hitVFXObject = Instantiate(hitVFX, transform.position + new Vector3(0f,2f,0f), Quaternion.identity);

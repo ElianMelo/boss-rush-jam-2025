@@ -30,13 +30,11 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("TakeDamage?");
         health -= damage;
         if(health <= 0)
         {
-            Scene scene = SceneManager.GetActiveScene(); 
-            SceneManager.LoadScene(scene.name);
             OnPlayerDeath?.Invoke();
+            StartCoroutine(DelayedDeath());
         }
         else
         {
@@ -44,6 +42,12 @@ public class PlayerManager : MonoBehaviour
         }
         StartCoroutine(SmoothChangeHealth());
         // healthSlider.value = health / maxHealth;
+    }
+    private IEnumerator DelayedDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     private IEnumerator SmoothChangeHealth()

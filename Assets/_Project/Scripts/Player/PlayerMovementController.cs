@@ -500,7 +500,6 @@ public class PlayerMovementController : MonoBehaviour
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
         playerAnimator.SetFloat(VerticalVelocityAnim, Mathf.Lerp(0, 1, Mathf.Abs(playerRb.velocity.y) / 20));
-        // Debug.Log(playerRb.velocity.y);
     }
 
     public void CallDashAnimation()
@@ -515,7 +514,6 @@ public class PlayerMovementController : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("Take Damage!");
         playerAnimator.SetTrigger(TakeDamageAnim);
     }
 

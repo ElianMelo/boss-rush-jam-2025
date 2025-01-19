@@ -33,15 +33,21 @@ public class BossManager : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
             OnBossDeath?.Invoke();
+            StartCoroutine(DelayedDeath());
         } else
         {
             OnBossTakeDamage?.Invoke();
         }
         StartCoroutine(SmoothChangeHealth());
         // healthSlider.value = health / maxHealth;
+    }
+
+    private IEnumerator DelayedDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     private IEnumerator SmoothChangeHealth()
