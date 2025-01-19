@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Treeman4
     second: {fileID: 2100000, guid: 9c83dfdb81eba3a43931aa1f0c2e57e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Treeman5
+    second: {fileID: 2100000, guid: 9c83dfdb81eba3a43931aa1f0c2e57e2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
