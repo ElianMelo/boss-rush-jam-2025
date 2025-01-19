@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class BossManager : MonoBehaviour
     public Slider healthSlider;
 
     public static BossManager Instance;
+
+    public UnityEvent OnBossTakeDamage;
+    public UnityEvent OnBossDeath;
 
     private float maxHealth = 100;
     private float health;
@@ -31,6 +35,10 @@ public class BossManager : MonoBehaviour
         {
             Scene scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);
+            OnBossDeath?.Invoke();
+        } else
+        {
+            OnBossTakeDamage?.Invoke();
         }
         StartCoroutine(SmoothChangeHealth());
         // healthSlider.value = health / maxHealth;

@@ -99,6 +99,9 @@ public class PlayerMovementController : MonoBehaviour
     private readonly static string DashingAnim = "Dashing";
     private readonly static string DivingAnim = "Diving";
 
+    private readonly static string TakeDamageAnim = "TakeDamage";
+    private readonly static string DeathAnim = "Death";
+
     private void Start()
     {
         calculatedTimeRotateBack = timeRotateBack;
@@ -110,6 +113,15 @@ public class PlayerMovementController : MonoBehaviour
         playerVFXController = GetComponent<PlayerVFXController>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
+
+        PlayerManager.Instance.OnPlayerTakeDamage.AddListener(TakeDamage);
+        PlayerManager.Instance.OnPlayerDeath.AddListener(Death);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerManager.Instance.OnPlayerTakeDamage.RemoveListener(TakeDamage);
+        PlayerManager.Instance.OnPlayerDeath.RemoveListener(Death);
     }
 
     private void Update()
@@ -499,6 +511,17 @@ public class PlayerMovementController : MonoBehaviour
     public void CallDiveAnimation()
     {
         playerAnimator.SetTrigger(DiveAnim);
+    }
+
+    public void TakeDamage()
+    {
+        Debug.Log("Take Damage!");
+        playerAnimator.SetTrigger(TakeDamageAnim);
+    }
+
+    public void Death()
+    {
+        playerAnimator.SetTrigger(DeathAnim);
     }
 
 }

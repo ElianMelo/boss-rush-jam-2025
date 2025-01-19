@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class PlayerManager : MonoBehaviour
     public Slider healthSlider;
 
     public static PlayerManager Instance;
+
+    public UnityEvent OnPlayerTakeDamage;
+    public UnityEvent OnPlayerDeath;
 
     private float maxHealth = 100;
     private float health;
@@ -26,11 +30,17 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log("TakeDamage?");
         health -= damage;
         if(health <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); 
             SceneManager.LoadScene(scene.name);
+            OnPlayerDeath?.Invoke();
+        }
+        else
+        {
+            OnPlayerTakeDamage?.Invoke();
         }
         StartCoroutine(SmoothChangeHealth());
         // healthSlider.value = health / maxHealth;
