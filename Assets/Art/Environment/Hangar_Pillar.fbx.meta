@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: d2a88ab1f9c32bc46a45499fc00560fc
+guid: 2aeb731a5f2fee94b8758124dbb2904f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HangarPillar
+    second: {fileID: 2100000, guid: 54313f6abc619744f90538e6667e02c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 9bd7afb4bb341404da753c3f60198845, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

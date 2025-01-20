@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b234bf4d5b234d4ea10510a2468af13
+guid: d2a88ab1f9c32bc46a45499fc00560fc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bikerman2
-    second: {fileID: 2100000, guid: a1a2ac15f2b99354d99d1522c645f49b, type: 2}
+      name: Maya_Lambert1
+    second: {fileID: 2100000, guid: f41cec7803c6945429664a2128b5673a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Commander3
-    second: {fileID: 2100000, guid: a1a2ac15f2b99354d99d1522c645f49b, type: 2}
+      name: Maya_Phong1
+    second: {fileID: 2100000, guid: 1c136d3a4ec7cba4d9610eba5dc2c7d5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: 76e7677686bcd4849bc95fd2de07cf82, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: f41cec7803c6945429664a2128b5673a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

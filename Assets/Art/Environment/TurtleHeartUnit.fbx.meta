@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 2aeb731a5f2fee94b8758124dbb2904f
+guid: 76f2ef5e5bb211c46a1f7873b59224fe
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TurtleHeartShaded
+    second: {fileID: 2100000, guid: e5603c03599c4ab4ba1b3f2702d2d8df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 59e673722de256c409e0b8e1a8a50ed1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
