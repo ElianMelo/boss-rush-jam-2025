@@ -9,6 +9,10 @@ TagManager:
   - DiveGroundTrigger
   - Lance
   - EnemyAttack
+  - Enemy
+  - mid
+  - top
+  - bot
   layers:
   - Default
   - TransparentFX
@@ -20,10 +24,10 @@ TagManager:
   - DiveGround
   - DiveGroundTrigger
   - Player
-  - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Enemy
+  - ObstacleBroken
+  - Bikerman
   - 
   - 
   - 

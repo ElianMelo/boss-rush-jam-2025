@@ -12,16 +12,23 @@ public class enemySpawner : MonoBehaviour
     public float spawnInterval = 2f;
     public Transform parentObject;
 
+    [Header("Spawn Limit Settings")]
+    public int maxEnemies = 7; // Maximum number of enemies allowed
+    private int currentEnemyCount = 0;
+
     private float timeSinceLastSpawn;
 
     private void Update()
     {
-        timeSinceLastSpawn += Time.deltaTime;
-
-        if (timeSinceLastSpawn >= spawnInterval)
+        if (currentEnemyCount < maxEnemies)
         {
-            SpawnPrefab();
-            timeSinceLastSpawn = 0f;
+            timeSinceLastSpawn += Time.deltaTime;
+
+            if (timeSinceLastSpawn >= spawnInterval)
+            {
+                SpawnPrefab();
+                timeSinceLastSpawn = 0f;
+            }
         }
     }
 
@@ -39,6 +46,8 @@ public class enemySpawner : MonoBehaviour
             // Rotate the prefab randomly on the Y-axis
             float randomYRotation = Random.Range(0, 4) * 90f;
             spawnedPrefab.transform.Rotate(0, randomYRotation, 0);
+
+            currentEnemyCount++;
         }
         else
         {
