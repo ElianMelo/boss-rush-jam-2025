@@ -116,10 +116,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.24
-  m_Height: 2.42
+  m_Radius: 0.28
+  m_Height: 3.8
   m_Direction: 1
-  m_Center: {x: 0.00000016857375, y: -0.12, z: 0.00000024253404}
+  m_Center: {x: 0.00000016857375, y: 0.39, z: 0.00000024253404}
 --- !u!114 &9078241149294820041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,6 +2000,8 @@ MonoBehaviour:
   DrillingVfx: {fileID: 4865413849046100097}
   SlashVfx: {fileID: 7357032535793119285, guid: 08f7c0c838e2e19489d8d29dff71c9dc,
     type: 3}
+  ShockVfx: {fileID: 2194463090483721826, guid: 2801a36ec863dc147bad711a0c5594d5,
+    type: 3}
   SlashVFXRotation: {x: 0, y: 180, z: 230}
 --- !u!54 &5117228824525706546
 Rigidbody:
@@ -2009,7 +2011,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6095386998311681489}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.8
   m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
-    public Slider healthSlider;
+    public Image healthSlider;
 
     public static BossManager Instance;
+
+    public UnityEvent OnBossTakeDamage;
+    public UnityEvent OnBossDeath;
 
     private float maxHealth = 100;
     private float health;
@@ -26,8 +31,23 @@ public class BossManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health <= 0)
+        {
+            OnBossDeath?.Invoke();
+            StartCoroutine(DelayedDeath());
+        } else
+        {
+            OnBossTakeDamage?.Invoke();
+        }
         StartCoroutine(SmoothChangeHealth());
         // healthSlider.value = health / maxHealth;
+    }
+
+    private IEnumerator DelayedDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 
     private IEnumerator SmoothChangeHealth()
@@ -37,7 +57,7 @@ public class BossManager : MonoBehaviour
         float target = health / maxHealth;
         while (currentTimer < timer)
         {
-            healthSlider.value = Mathf.Lerp(healthSlider.value, target, currentTimer / timer);
+            healthSlider.fillAmount = Mathf.Lerp(healthSlider.fillAmount, target, currentTimer / timer);
             currentTimer += Time.deltaTime;
             yield return null;
         }

@@ -95,8 +95,12 @@ public class PlayerMovementController : MonoBehaviour
     private readonly static string RunningAnim = "Running";
     private readonly static string DrillingAnim = "Drilling";
     private readonly static string FallingAnim = "Falling";
+    private readonly static string VerticalVelocityAnim = "VerticalVelocity";
     private readonly static string DashingAnim = "Dashing";
     private readonly static string DivingAnim = "Diving";
+
+    private readonly static string TakeDamageAnim = "TakeDamage";
+    private readonly static string DeathAnim = "Death";
 
     private void Start()
     {
@@ -109,6 +113,15 @@ public class PlayerMovementController : MonoBehaviour
         playerVFXController = GetComponent<PlayerVFXController>();
         playerRb.freezeRotation = true;
         jumps = maxJumps;
+
+        PlayerManager.Instance.OnPlayerTakeDamage.AddListener(TakeDamage);
+        PlayerManager.Instance.OnPlayerDeath.AddListener(Death);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerManager.Instance.OnPlayerTakeDamage.RemoveListener(TakeDamage);
+        PlayerManager.Instance.OnPlayerDeath.RemoveListener(Death);
     }
 
     private void Update()
@@ -486,6 +499,7 @@ public class PlayerMovementController : MonoBehaviour
         playerAnimator.SetBool(DivingAnim, state == MovementState.diving);
         playerAnimator.SetBool(DrillingAnim, state == MovementState.drilling);
         playerAnimator.SetBool(FallingAnim, state == MovementState.airing);
+        playerAnimator.SetFloat(VerticalVelocityAnim, Mathf.Lerp(0, 1, Mathf.Abs(playerRb.velocity.y) / 20));
     }
 
     public void CallDashAnimation()
@@ -496,6 +510,20 @@ public class PlayerMovementController : MonoBehaviour
     public void CallDiveAnimation()
     {
         playerAnimator.SetTrigger(DiveAnim);
+    }
+
+    public void TakeDamage()
+    {
+        ScreenShakeManager.Instance.ShakeScreen();
+        playerVFXController.TriggerShockVFX(transform);
+        playerAnimator.SetTrigger(TakeDamageAnim);
+    }
+
+    public void Death()
+    {
+        ScreenShakeManager.Instance.ShakeScreen();
+        playerVFXController.TriggerShockVFX(transform);
+        playerAnimator.SetTrigger(DeathAnim);
     }
 
 }
