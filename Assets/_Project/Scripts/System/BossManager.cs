@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
-    public Slider healthSlider;
+    public Image healthSlider;
 
     public static BossManager Instance;
 
@@ -57,7 +57,7 @@ public class BossManager : MonoBehaviour
         float target = health / maxHealth;
         while (currentTimer < timer)
         {
-            healthSlider.value = Mathf.Lerp(healthSlider.value, target, currentTimer / timer);
+            healthSlider.fillAmount = Mathf.Lerp(healthSlider.fillAmount, target, currentTimer / timer);
             currentTimer += Time.deltaTime;
             yield return null;
         }
