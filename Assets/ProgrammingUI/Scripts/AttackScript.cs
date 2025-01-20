@@ -21,7 +21,8 @@ public class AttackScript : MonoBehaviour
         {
             InstantiateParticleEffect(other.transform.position);
             obstacleScript.HandleObstacle(other);
-            gameControl.TakeDamage(10);
+            BossManager.Instance.TakeDamage(25f); 
+            //gameControl.TakeDamage(10);
         }
     }
 
