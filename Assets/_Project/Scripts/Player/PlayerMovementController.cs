@@ -514,11 +514,15 @@ public class PlayerMovementController : MonoBehaviour
 
     public void TakeDamage()
     {
+        ScreenShakeManager.Instance.ShakeScreen();
+        playerVFXController.TriggerShockVFX(transform);
         playerAnimator.SetTrigger(TakeDamageAnim);
     }
 
     public void Death()
     {
+        ScreenShakeManager.Instance.ShakeScreen();
+        playerVFXController.TriggerShockVFX(transform);
         playerAnimator.SetTrigger(DeathAnim);
     }
 

@@ -9,6 +9,7 @@ public class PlayerVFXController : MonoBehaviour
     [SerializeField] private ParticleSystem RightBooster;
     [SerializeField] private ParticleSystem DrillingVfx;
     [SerializeField] private GameObject SlashVfx;
+    [SerializeField] private GameObject ShockVfx;
     [SerializeField] private Vector3 SlashVFXRotation;
 
     public void EnableBooster(bool keepBoosterActive = false)
@@ -37,6 +38,13 @@ public class PlayerVFXController : MonoBehaviour
     public void DisableDrilling()
     {
         DrillingVfx.Stop();
+    }
+
+    public void TriggerShockVFX(Transform parent)
+    {
+        GameObject vfx = Instantiate(ShockVfx, parent);
+        vfx.transform.SetParent(parent);
+        Destroy(vfx, 1f);
     }
 
     public void TriggerSlashVFXDelayed(Vector3 position, Quaternion rotation, bool isRight, float delay)
