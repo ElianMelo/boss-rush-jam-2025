@@ -13,19 +13,21 @@ public class enemyControl : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField]
     public float movementSpeed = 0f;
-    public float rotationSpeed = 200f;
+    public float rotationSpeed = 0f;
 
     [Header("Slope Settings")]
     [SerializeField]
     public Transform slopeDetector;
     public float rayDistance = 5f;
     public float minSlopeAngle = 1f;
+    public LayerMask groundLayer;
 
     [Header("Player Detector Settings")]
     [SerializeField]
     public GameObject player;
     public bool playerNear;
     public float detectionRadius = 15f;
+    public float followSpeed = 10f;
 
     [Header("Obstacle Avoidance Settings")]
     [SerializeField]
@@ -44,9 +46,6 @@ public class enemyControl : MonoBehaviour
 
         if (player != null)
         {
-            Ray slopeRay = new Ray(slopeDetector.position, transform.forward);
-            Debug.DrawRay(slopeRay.origin, slopeRay.direction * 4f, Color.yellow);
-
             Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
@@ -66,93 +65,62 @@ public class enemyControl : MonoBehaviour
 
     private void FollowPlayer()
     {
-        moveDirection = (player.transform.position - transform.position).normalized;
-        float followSpeed = movementSpeed * 1.1f;
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+        Vector3 newForward = Vector3.Lerp(transform.forward, directionToPlayer, Time.deltaTime * followSpeed).normalized;
 
+        moveDirection = newForward;
+
+        // Handle movement on slopes
         if (OnSlope())
         {
             Vector3 slopeDirection = GetSlopeDirection();
 
-            // Smoothly adjust velocity to align with the slope and move toward the player
-            m_Rigidbody.velocity = Vector3.Lerp(m_Rigidbody.velocity, slopeDirection * followSpeed, Time.fixedDeltaTime * 5f);
+            // Velocity to align with the slope and move towards the player
+            m_Rigidbody.velocity = Vector3.Lerp(m_Rigidbody.velocity, slopeDirection * movementSpeed, Time.fixedDeltaTime);
 
-            // Dynamic rotation to face the player, adjusted by slope
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, hit.normal);
-            float dynamicRotationSpeed = rotationSpeed * (m_Rigidbody.velocity.magnitude / followSpeed);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, dynamicRotationSpeed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            // Smooth velocity adjustment toward the player when not on a slope
-            m_Rigidbody.velocity = Vector3.Lerp(m_Rigidbody.velocity, moveDirection * followSpeed, Time.fixedDeltaTime * 5f);
-
-            // Rotate to face the player
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
-        }
-
-        // Clamp velocity
-        Vector3 flatVel = new Vector3(m_Rigidbody.velocity.x, 0, m_Rigidbody.velocity.z);
-
-        if (flatVel.magnitude > followSpeed)
-        {
-            Vector3 clampedVel = flatVel.normalized * followSpeed;
-            m_Rigidbody.velocity = new Vector3(clampedVel.x, m_Rigidbody.velocity.y, clampedVel.z);
+            // Rotate the enemy to align with the slope's normal
+            transform.rotation = Quaternion.LookRotation(moveDirection, hit.normal);
+            Quaternion targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
 
     private void NormalMovement()
     {
-        moveDirection = (transform.forward * 0.5f).normalized;
+        moveDirection = (transform.forward).normalized;
 
-        Ray obstacleRay = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(obstacleRay.origin, obstacleRay.direction * obstacleRayLength, Color.red);
-
-        if (Physics.Raycast(obstacleRay, out RaycastHit obstacleHit, obstacleRayLength, obstacleLayer))
-        {
-            Vector3 avoidanceDirection = Vector3.Cross(Vector3.up, obstacleHit.normal).normalized;
-            moveDirection += avoidanceDirection * obstacleAvoidanceStrength;
-            moveDirection.Normalize();
-        }
+        ObstacleDetector();
 
         if (OnSlope())
         {
             Vector3 slopeDirection = GetSlopeDirection();
 
-            // Smoothly adjust velocity to align with the slope
-            m_Rigidbody.velocity = Vector3.Lerp(m_Rigidbody.velocity, slopeDirection * movementSpeed, Time.fixedDeltaTime * 5f);
+            // Velocity to align with the slope
+            m_Rigidbody.velocity = Vector3.Lerp(m_Rigidbody.velocity, slopeDirection * movementSpeed, Time.fixedDeltaTime);
 
-            // Dynamic rotation speed based on velocity
+            // Calculate the target rotation based on the slope's normal
             Quaternion targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            float dynamicRotationSpeed = rotationSpeed * (m_Rigidbody.velocity.magnitude / movementSpeed);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, dynamicRotationSpeed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            // Smooth velocity adjustment when not on a slope
-            m_Rigidbody.velocity = Vector3.Lerp(m_Rigidbody.velocity, moveDirection * movementSpeed, Time.fixedDeltaTime * 5f);
-
-            // Rotate to follow the adjusted move direction
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
-        }
-
-        // Clamp velocity
-        Vector3 flatVel = new Vector3(m_Rigidbody.velocity.x, 0, m_Rigidbody.velocity.z);
-        if (flatVel.magnitude > movementSpeed)
-        {
-            Vector3 clampedVel = flatVel.normalized * movementSpeed;
-            m_Rigidbody.velocity = new Vector3(clampedVel.x, m_Rigidbody.velocity.y, clampedVel.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
 
+    private void ObstacleDetector()
+    {
+        Ray obstacleRay = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(obstacleRay.origin, obstacleRay.direction * obstacleRayLength, Color.red);
+
+        if (Physics.Raycast(obstacleRay, out RaycastHit obstacleHit, obstacleRayLength, obstacleLayer))
+        {
+            
+        }
+    }
 
     private bool OnSlope()
     {
-        Ray slopeRay = new Ray(slopeDetector.position, -transform.up);
-        Debug.DrawRay(slopeRay.origin, slopeRay.direction * 4f, Color.yellow);
+        Ray slopeRay = new Ray(slopeDetector.position, transform.forward);
+        Debug.DrawRay(slopeRay.origin, slopeRay.direction * rayDistance, Color.yellow);
 
-        if (Physics.Raycast(slopeRay, out hit, rayDistance))
+        if (Physics.Raycast(slopeRay, out hit, rayDistance, groundLayer))
         {
             Vector3 normalSuperficie = hit.normal;
             float angle = Vector3.Angle(transform.up, normalSuperficie);
