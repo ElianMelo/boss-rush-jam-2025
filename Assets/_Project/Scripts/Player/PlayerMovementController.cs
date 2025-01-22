@@ -293,7 +293,7 @@ public class PlayerMovementController : MonoBehaviour
         // on slope
         if (OnSlope())
         {
-            playerRb.AddForce(GetSlopMoveDirection() * currentMoveSpeed * 20f, ForceMode.Force);
+            playerRb.AddForce(GetSlopMoveDirection() * currentMoveSpeed * 1f, ForceMode.Force);
         }
 
         // on ground
