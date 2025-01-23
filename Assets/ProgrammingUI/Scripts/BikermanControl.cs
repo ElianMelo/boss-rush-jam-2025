@@ -9,6 +9,7 @@ public class BikermanControl : MonoBehaviour
     private Rigidbody m_Rigidbody;
     private Vector3 moveDirection;
     private RaycastHit hit;
+    private Animator animator;
 
     [Header("Movement Settings")]
     [SerializeField]
@@ -28,9 +29,12 @@ public class BikermanControl : MonoBehaviour
     public LayerMask obstacleLayer;      // Layer mask for obstacles
     public float obstacleAvoidanceStrength = 2f; // Strength of direction change when avoiding obstacles
 
+    private string targetColliderTag = "BossTriggerZone";
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -42,7 +46,7 @@ public class BikermanControl : MonoBehaviour
     {
         moveDirection = (transform.forward).normalized;
 
-        //ObstacleDetector();
+        ObstacleDetector();
 
         if (OnSlope())
         {
@@ -59,15 +63,7 @@ public class BikermanControl : MonoBehaviour
 
     private void ObstacleDetector()
     {
-        Ray obstacleRay = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(obstacleRay.origin, obstacleRay.direction * obstacleRayLength, Color.red);
-
-        if (Physics.Raycast(obstacleRay, out RaycastHit obstacleHit, obstacleRayLength, obstacleLayer))
-        {
-            Vector3 avoidanceDirection = Vector3.Cross(obstacleHit.normal, Vector3.up).normalized;
-            moveDirection = Vector3.Lerp(moveDirection, avoidanceDirection, Time.deltaTime * obstacleAvoidanceStrength);
-            Debug.Log(moveDirection);
-        }
+        
     }
 
     private bool OnSlope()
@@ -88,5 +84,16 @@ public class BikermanControl : MonoBehaviour
     public Vector3 GetSlopeDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, hit.normal).normalized;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(targetColliderTag))
+        {
+            if (animator != null)
+            {
+                animator.SetTrigger("AttackA");
+            }
+        }
     }
 }

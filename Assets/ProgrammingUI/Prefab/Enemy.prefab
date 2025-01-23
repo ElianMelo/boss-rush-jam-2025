@@ -211,73 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5ccad3866f48d4598c9c6f282a5709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6434337784272982736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6196828862785375197}
-  - component: {fileID: 4548024159007450945}
-  - component: {fileID: 7108517066170159665}
-  m_Layer: 11
-  m_Name: playerFinder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &6196828862785375197
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6434337784272982736}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5658851478651070489}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4548024159007450945
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6434337784272982736}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3.89
-  m_Center: {x: 0, y: 0, z: 0.76}
---- !u!114 &7108517066170159665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6434337784272982736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc67d1bd1b48034faf46424c8d3a9f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyControlScript: {fileID: 8238436988605760089}
 --- !u!1 &8435272650254235613
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +247,6 @@ Transform:
   m_Children:
   - {fileID: 8267925288035622653}
   - {fileID: 7385883390186829067}
-  - {fileID: 6196828862785375197}
   - {fileID: 8751705625977964192}
   - {fileID: 5776971411312230432}
   m_Father: {fileID: 0}
@@ -381,8 +313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa6a08db58eff24cb29d7bb6c316b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
-  rotationSpeed: 2
+  movementSpeed: 25
+  rotationSpeed: 20
   slopeDetector: {fileID: 8267925288035622653}
   rayDistance: 8
   minSlopeAngle: 1

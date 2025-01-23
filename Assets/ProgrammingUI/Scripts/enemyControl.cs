@@ -106,13 +106,7 @@ public class enemyControl : MonoBehaviour
 
     private void ObstacleDetector()
     {
-        Ray obstacleRay = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(obstacleRay.origin, obstacleRay.direction * obstacleRayLength, Color.red);
-
-        if (Physics.Raycast(obstacleRay, out RaycastHit obstacleHit, obstacleRayLength, obstacleLayer))
-        {
-            
-        }
+        
     }
 
     private bool OnSlope()
