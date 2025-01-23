@@ -5,23 +5,32 @@ using UnityEngine;
 public class AttackScript : MonoBehaviour
 {
     public ObstacleControl obstacleScript;
-    public GameControl gameControl;
     public GameObject particleEffectPrefab;
+    int obstacleBrokenLayer;
+    int obstacleLayer;
 
     private void OnTriggerEnter(Collider other)
     {
+        obstacleBrokenLayer = LayerMask.NameToLayer("ObstacleBroken");
+        obstacleLayer = LayerMask.NameToLayer("Obstacle");
+
         if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
             InstantiateParticleEffect(other.transform.position);
         }
 
-        int obstacleLayer = LayerMask.NameToLayer("ObstacleBroken");
-        if (other.gameObject.layer == obstacleLayer)
+        if (other.gameObject.layer == obstacleBrokenLayer)
         {
             InstantiateParticleEffect(other.transform.position);
             obstacleScript.HandleObstacle(other);
             BossManager.Instance.TakeDamage(25f); 
+            //gameControl.TakeDamage(10);
+        }
+        if (other.gameObject.layer == obstacleLayer)
+        {
+            InstantiateParticleEffect(other.transform.position);
+            obstacleScript.HandleObstacle(other);
             //gameControl.TakeDamage(10);
         }
     }

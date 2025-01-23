@@ -9,9 +9,6 @@ public class enemyAttackScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerManager.Instance.TakeDamage(10f);
-            // Debug.Log("Acertou");
-            other.gameObject.tag = "Invunerable";
-            other.gameObject.layer = LayerMask.NameToLayer("Invunerable");
         }
     }
 }

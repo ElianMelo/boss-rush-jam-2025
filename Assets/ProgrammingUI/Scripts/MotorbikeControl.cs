@@ -27,7 +27,6 @@ public class MotorbikeControl : MonoBehaviour
     public float minSlopeAngle = 1f;
     public float rayDistance = 5f;
     
-    public GameObject speedEffect;
 
     [Header("Nitro Settings")]
     [SerializeField]
@@ -36,6 +35,7 @@ public class MotorbikeControl : MonoBehaviour
     public float boostDuration = 5f;
     public float rechargeRate = 1f;
     public Collider attackCollider;
+    public GameObject speedEffect;
 
 
     void Start()
@@ -50,7 +50,7 @@ public class MotorbikeControl : MonoBehaviour
         float inputHorizontal = Input.GetAxis("Horizontal");
         moveDirection = (transform.forward + transform.right * inputHorizontal * 0.5f).normalized;
 
-        if (Input.GetKey(KeyCode.W) && boostTimeRemaining > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && boostTimeRemaining > 0)
         {
             isBoostActive = true;
 
@@ -68,7 +68,7 @@ public class MotorbikeControl : MonoBehaviour
                 attackCollider.enabled = false;
             }
 
-            if (boostTimeRemaining < boostDuration && !Input.GetKey(KeyCode.W))
+            if (boostTimeRemaining < boostDuration && !Input.GetKey(KeyCode.LeftShift))
             {
                 boostTimeRemaining += rechargeRate * Time.deltaTime;
                 boostTimeRemaining = Mathf.Min(boostTimeRemaining, boostDuration);
