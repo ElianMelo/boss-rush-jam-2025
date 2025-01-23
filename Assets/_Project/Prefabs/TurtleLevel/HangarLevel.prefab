@@ -4101,11 +4101,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Container_Rect
       objectReference: {fileID: 0}
-    - target: {fileID: 2666288816058710936, guid: 2cf865f467e9e074591c1e4ab8aa5558,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 3335864547280347426, guid: 2cf865f467e9e074591c1e4ab8aa5558,
         type: 3}
       propertyPath: m_LocalPosition.x
