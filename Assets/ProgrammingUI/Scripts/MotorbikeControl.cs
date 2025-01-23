@@ -36,6 +36,8 @@ public class MotorbikeControl : MonoBehaviour
     public float rechargeRate = 1f;
     public Collider attackCollider;
     public GameObject speedEffect;
+    public Animator animator;
+    public ParticleSystem spinEffect;
 
 
     void Start()
@@ -52,7 +54,13 @@ public class MotorbikeControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && boostTimeRemaining > 0)
         {
+            if(!isBoostActive)
+            {
+                spinEffect.Play();
+            }
+
             isBoostActive = true;
+            animator.SetBool("isDashing", true);
 
             // Increase movementSpeed, but clamp to maxSpeed
             movementSpeed = Mathf.Min(movementSpeed + speedIncrease * Time.fixedDeltaTime, maxSpeed);
@@ -70,11 +78,13 @@ public class MotorbikeControl : MonoBehaviour
 
             if (boostTimeRemaining < boostDuration && !Input.GetKey(KeyCode.LeftShift))
             {
+                animator.SetBool("isDashing", false);
                 boostTimeRemaining += rechargeRate * Time.deltaTime;
                 boostTimeRemaining = Mathf.Min(boostTimeRemaining, boostDuration);
             }
 
             movementSpeed = Mathf.MoveTowards(movementSpeed, originalSpeed, speedIncrease * Time.fixedDeltaTime);
+            spinEffect.Stop();
             EmissionRate(-40f);
         }
 
