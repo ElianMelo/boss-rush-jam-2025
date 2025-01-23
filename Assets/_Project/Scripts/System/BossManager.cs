@@ -46,8 +46,7 @@ public class BossManager : MonoBehaviour
     private IEnumerator DelayedDeath()
     {
         yield return new WaitForSeconds(2f);
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        LevelManager.Instance.GoNextLevel();
     }
 
     private IEnumerator SmoothChangeHealth()

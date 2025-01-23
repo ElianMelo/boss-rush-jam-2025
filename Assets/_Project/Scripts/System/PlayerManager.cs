@@ -46,8 +46,7 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator DelayedDeath()
     {
         yield return new WaitForSeconds(2f);
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        LevelManager.Instance.ResetCurrentLevel();
     }
 
     private IEnumerator SmoothChangeHealth()
