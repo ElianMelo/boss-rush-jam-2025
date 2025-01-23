@@ -5909,7 +5909,7 @@ PrefabInstance:
     - target: {fileID: 5044047834248790449, guid: 2bb40fbbc8884724e9c518d3b96972d9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.040000916
+      value: -7.3
       objectReference: {fileID: 0}
     - target: {fileID: 5044047834248790449, guid: 2bb40fbbc8884724e9c518d3b96972d9,
         type: 3}
@@ -5919,7 +5919,7 @@ PrefabInstance:
     - target: {fileID: 5044047834248790449, guid: 2bb40fbbc8884724e9c518d3b96972d9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.100006
+      value: 25.2
       objectReference: {fileID: 0}
     - target: {fileID: 5044047834248790449, guid: 2bb40fbbc8884724e9c518d3b96972d9,
         type: 3}
@@ -5960,11 +5960,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Container_Cube
-      objectReference: {fileID: 0}
-    - target: {fileID: 5569789916470713099, guid: 2bb40fbbc8884724e9c518d3b96972d9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

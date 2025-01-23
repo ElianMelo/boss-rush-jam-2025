@@ -5,16 +5,22 @@ using UnityEngine;
 public class TurtlemanBoss : MonoBehaviour
 {
     private const string UprightPose = "UprightPose";
+    private const string DownedPose = "DownedPose";
 
-    // Start is called before the first frame update
-    void Start()
+    private Animator animator;
+
+    private void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayUprightPose()
     {
-        
+        animator.SetTrigger(UprightPose);
+    }
+
+    public void PlayDownedPose()
+    {
+        animator.SetTrigger(DownedPose);
     }
 }

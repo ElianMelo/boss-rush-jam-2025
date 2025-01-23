@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TurtleWeekSpot : MonoBehaviour
 {
@@ -10,16 +11,26 @@ public class TurtleWeekSpot : MonoBehaviour
     public List<GameObject> toActivate;
     public List<GameObject> toDeactivate;
 
+    public List<UnityEvent> unityEvents;
+
     public Transform turtleTransform;
     public Transform playerTransform;
 
     public void SetupScene()
     {
+        playerTransform.position = playerPosition;
+
         turtleTransform.position = turtlePosition;
         turtleTransform.rotation = Quaternion.Euler(turtleRotation);
+
         foreach (var item in toActivate)
         {
             item.SetActive(true);
+        }
+        foreach (var item in unityEvents)
+        {
+            item?.Invoke();
+            BossManager.Instance.TakeDamage(25f);
         }
         foreach (var item in toDeactivate)
         {
