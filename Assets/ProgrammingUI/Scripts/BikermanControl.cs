@@ -25,9 +25,9 @@ public class BikermanControl : MonoBehaviour
 
     [Header("Obstacle Avoidance Settings")]
     [SerializeField]
-    public float obstacleRayLength = 3f; // Length of the ray to detect obstacles
-    public LayerMask obstacleLayer;      // Layer mask for obstacles
-    public float obstacleAvoidanceStrength = 2f; // Strength of direction change when avoiding obstacles
+    public float obstacleRayLength = 3f; 
+    public LayerMask obstacleLayer;      
+    public float obstacleAvoidanceStrength = 2f;
 
     private string targetColliderTag = "BossTriggerZone";
 
