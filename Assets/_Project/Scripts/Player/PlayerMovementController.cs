@@ -293,7 +293,7 @@ public class PlayerMovementController : MonoBehaviour
         // on slope
         if (OnSlope())
         {
-            playerRb.AddForce(GetSlopMoveDirection() * currentMoveSpeed * 1f, ForceMode.Force);
+            playerRb.AddForce(GetSlopMoveDirection() * currentMoveSpeed * 10f, ForceMode.Force);
         }
 
         // on ground
@@ -433,9 +433,12 @@ public class PlayerMovementController : MonoBehaviour
         // limiting speed on slop
         if (OnSlope())
         {
-            if (playerRb.velocity.magnitude > moveSpeed)
+            Vector3 flatVel = new Vector3(playerRb.velocity.x, playerRb.velocity.y, playerRb.velocity.z);
+
+            if (flatVel.magnitude > moveSpeed)
             {
-                playerRb.velocity = playerRb.velocity.normalized * moveSpeed;
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                playerRb.velocity = new Vector3(limitedVel.x, limitedVel.y, limitedVel.z);
             }
         }
         // limiting speed on ground or in air

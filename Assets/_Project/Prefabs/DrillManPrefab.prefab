@@ -399,7 +399,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b47a672d84f82814bbfc4476826c628b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b47a672d84f82814bbfc4476826c628b,
         type: 3}
@@ -1926,7 +1926,7 @@ MonoBehaviour:
   whatIsDiveGround:
     serializedVersion: 2
     m_Bits: 256
-  maxSlopeAngle: 0
+  maxSlopeAngle: 50
   drillOrientation: {fileID: 9050588710579571564}
   orientation: {fileID: 0}
   cameraOrientation: {fileID: 0}
