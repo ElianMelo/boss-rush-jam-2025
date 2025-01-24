@@ -60,6 +60,7 @@ public class DriveGroundTrigger : MonoBehaviour
         {
             lastCheckPlayerCollider = other;
             currentTimer = 0f;
+            StopAllCoroutines();
             StartCoroutine(SafeCheck());
         }
     }

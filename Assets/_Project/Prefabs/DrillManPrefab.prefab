@@ -1902,8 +1902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee6a09fb794ca34fadb26d727d683b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1.7
-  rotationFactor: 0.8
+  rotationSpeed: 2
+  rotationFactor: 1
   timeRotateBack: 0.5
   diveExitForce: 20
   smoothFollowMoveDirectionFactor: 0.01

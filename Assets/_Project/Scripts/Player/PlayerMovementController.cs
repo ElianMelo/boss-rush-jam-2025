@@ -327,10 +327,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("DiveGround") || other.CompareTag("DiveGroundTrigger"))
-        {
-            playerAttackController.ForcedSafeStopDrilling();
-        }
+        //if (other.CompareTag("DiveGround") || other.CompareTag("DiveGroundTrigger"))
+        //{
+        //    playerAttackController.ForcedSafeStopDrilling();
+        //}
     }
 
     public void StartDrilling(Transform other)
