@@ -16,6 +16,7 @@ public class PlayerAttackController : MonoBehaviour
     private Animator playerAnimator;
 
     private float currentAttackDelay;
+    private bool isLeftAttack = true;
     private DriveGroundTrigger lastDriveGroundTrigger;
 
     private readonly static string AttackLeftAnim = "AttackLeft";
@@ -55,18 +56,16 @@ public class PlayerAttackController : MonoBehaviour
             currentAttackDelay = attackDelay;
             playerVFXController.EnableBooster();
             playerVFXController.DisableBoosterDelayed(0.2f);
-            playerAnimator.SetTrigger(AttackLeftAnim);
+            if(isLeftAttack)
+            {
+                playerAnimator.SetTrigger(AttackLeftAnim);
+            } else
+            {
+                playerAnimator.SetTrigger(AttackRightAnim);
+            }
+            isLeftAttack = !isLeftAttack;
             SoundManager.Instance.PlayAttackSound();
-            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, false, 0.1f);
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            currentAttackDelay = attackDelay;
-            playerVFXController.EnableBooster();
-            playerVFXController.DisableBoosterDelayed(0.2f);
-            playerAnimator.SetTrigger(AttackRightAnim);
-            SoundManager.Instance.PlayAttackSound();
-            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, true, 0.1f);
+            playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, isLeftAttack, 0.1f);
         }
     }
 
