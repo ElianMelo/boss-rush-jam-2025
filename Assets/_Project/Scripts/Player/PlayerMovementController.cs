@@ -34,6 +34,7 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Jumping")]
     public float jumpForce;
     public float airMultiplier;
+    private bool jumping;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -471,6 +472,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Jump()
     {
+        playerRb.drag = 0f;
+        jumping = true;
+        StartCoroutine(Jumping());
         playerAnimator.SetTrigger(JumpAnim);
         SoundManager.Instance.PlayJumpSound();
         playerVFXController.EnableBooster();
@@ -479,12 +483,18 @@ public class PlayerMovementController : MonoBehaviour
         playerRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 
+    private IEnumerator Jumping()
+    {
+        yield return new WaitForSeconds(0.3f);
+        jumping = false;
+    }
+
     private bool OnSlope()
     {
         if (Physics.Raycast(slopeDetectorFront.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
+            return angle < maxSlopeAngle && angle != 0 && !jumping;
         }
         return false;
     }
