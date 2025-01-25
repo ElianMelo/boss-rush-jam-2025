@@ -226,6 +226,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrillParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 7052925432226863620, guid: e5a78b2c9a5e2fa4995a0cb731c0c43c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
