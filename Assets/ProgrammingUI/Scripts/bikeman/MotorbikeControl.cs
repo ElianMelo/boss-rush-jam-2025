@@ -30,11 +30,10 @@ public class MotorbikeControl : MonoBehaviour
 
     [Header("Nitro Settings")]
     [SerializeField]
-    private bool isBoostActive = false;
+    public bool isBoostActive = false;
     private float boostTimeRemaining = 0f;
     public float boostDuration = 5f;
     public float rechargeRate = 1f;
-    public Collider attackCollider;
     public GameObject speedEffect;
     public Animator animator;
     public ParticleSystem spinEffect;
@@ -44,7 +43,6 @@ public class MotorbikeControl : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         boostTimeRemaining = boostDuration;
-        attackCollider.enabled = false;
     }
 
     void FixedUpdate()
@@ -66,14 +64,12 @@ public class MotorbikeControl : MonoBehaviour
             movementSpeed = Mathf.Min(movementSpeed + speedIncrease * Time.fixedDeltaTime, maxSpeed);
             boostTimeRemaining -= Time.deltaTime;
             EmissionRate(40f);
-            attackCollider.enabled = true;
         }
         else
         {
             if (isBoostActive)
             {
                 isBoostActive = false;
-                attackCollider.enabled = false;
             }
 
             if (boostTimeRemaining < boostDuration && !Input.GetKey(KeyCode.LeftShift))
