@@ -347,6 +347,7 @@ public class PlayerMovementController : MonoBehaviour
                 playerDivingController.ForcedResetDive();
             }
             SoundManager.Instance.StartDrillingSound();
+            PostProcessingManager.Instance.ActivateVignette();
             playerVFXController.EnableDrilling();
             playerVFXController.EnableBooster(true);
             playerRb.useGravity = false;
@@ -366,6 +367,7 @@ public class PlayerMovementController : MonoBehaviour
         playerVFXController.DisableDrilling();
         playerVFXController.DisableBooster();
         SoundManager.Instance.StopDrillingSound();
+        PostProcessingManager.Instance.DeactivateVignette();
         jumps = 1;
         playerRb.useGravity = true;
         Vector3 exitDirection = drillOrientation.eulerAngles;
