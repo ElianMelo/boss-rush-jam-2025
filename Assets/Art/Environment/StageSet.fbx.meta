@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26bdc6bdb175145458c4bb4b003d8f25
+guid: 84cae40dfa8291e41ab4b97c8d86cf14
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Tent1
-    second: {fileID: 2100000, guid: 68adbbac5026cca48b47f5fc6f021c3a, type: 2}
+      name: CurtainsStage
+    second: {fileID: 2100000, guid: af430dc343b60674b8f6deac3bc1dfc2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: TextFloor
-    second: {fileID: 2100000, guid: 465806aa525bd1948b90abe9d9298fd6, type: 2}
+      name: lambert1
+    second: {fileID: 2100000, guid: af430dc343b60674b8f6deac3bc1dfc2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
