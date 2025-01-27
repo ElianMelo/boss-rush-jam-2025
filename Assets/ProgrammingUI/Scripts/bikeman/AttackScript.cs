@@ -4,10 +4,31 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
+    public MotorbikeControl motorbikeControl;
     public ObstacleControl obstacleScript;
     public GameObject particleEffectPrefab;
     int obstacleBrokenLayer;
     int obstacleLayer;
+
+    public Collider lanceCollider;
+
+    void Start()
+    {
+        lanceCollider = GetComponent<Collider>();
+    }
+
+
+    public void Update()
+    {
+        if (motorbikeControl.isBoostActive)
+        {
+            lanceCollider.enabled = true;
+        }
+        else
+        {
+            lanceCollider.enabled = false;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

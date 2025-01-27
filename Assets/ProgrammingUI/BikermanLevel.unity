@@ -234,6 +234,18 @@ Transform:
   - {fileID: 167522934}
   m_Father: {fileID: 57650158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &43951587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5710925700446745698, guid: 9a85603e0198a8f488f3588c2a1882ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1774474798191888819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d35368824cb9ba74ea926cf67e6259e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &53859592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 58538535871618443, guid: f41752157ca0d7c4abd91e2403177e3a,
@@ -2074,9 +2086,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a7d7d090266f4498c7c93293abee86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  motorbikeControl: {fileID: 43951587}
   obstacleScript: {fileID: 1789163765}
   particleEffectPrefab: {fileID: 3839229453116677093, guid: 1cc508c9fdd2fc54a8b088768a8ada96,
     type: 3}
+  lanceCollider: {fileID: 0}
 --- !u!1 &718323577
 GameObject:
   m_ObjectHideFlags: 0
@@ -15643,8 +15657,14 @@ PrefabInstance:
       propertyPath: obstacleScript
       value: 
       objectReference: {fileID: 1789163765}
+    - target: {fileID: 8106536565733164215, guid: 9a85603e0198a8f488f3588c2a1882ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8106536565733164215, guid: 9a85603e0198a8f488f3588c2a1882ab, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5109731373353359616, guid: 9a85603e0198a8f488f3588c2a1882ab,

@@ -53,6 +53,14 @@ public class CenterCursorInteraction : MonoBehaviour
     void Update()
     {
         CheckForInteractable();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!InterfaceSystem.Instance.OpenedMenu && !InterfaceSystem.Instance.OpenedSettings)
+                InterfaceSystem.Instance.OpenMenu();
+            else
+                InterfaceSystem.Instance.CloseMenu();
+        }
     }
 
     private void CheckForInteractable()
