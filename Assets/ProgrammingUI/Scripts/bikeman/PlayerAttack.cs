@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Animator animator;
+    public Collider attackCollider;
 
     void Update()
     {
@@ -15,19 +16,20 @@ public class PlayerAttack : MonoBehaviour
             //playerVFXController.DisableBoosterDelayed(0.2f);
             //playerAnimator.SetTrigger(AttackLeftAnim);
             //playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, false, 0.1f);
-            animator.SetTrigger("attackLeft");
+            animator.SetTrigger("isAttacking");
+            SoundManager.Instance.PlayAttackSound();
+        }
+    }
 
-            SoundManager.Instance.PlayAttackSound();
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            //currentAttackDelay = attackDelay;
-            //playerVFXController.EnableBooster();
-            //playerVFXController.DisableBoosterDelayed(0.2f);
-            //playerAnimator.SetTrigger(AttackRightAnim);
-            //playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, true, 0.1f);
-            SoundManager.Instance.PlayAttackSound();
-            animator.SetTrigger("attackRight");
-        }
+    void EnableColliderForAttack()
+    {
+        attackCollider.enabled = true;
+        Debug.Log("ligou");
+    }
+
+    void DisableColliderForAttack()
+    {
+        attackCollider.enabled = false;
+        Debug.Log("Desligou");
     }
 }

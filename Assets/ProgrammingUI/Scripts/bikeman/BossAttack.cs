@@ -21,23 +21,6 @@ public class BossAttack : MonoBehaviour
         
     }
 
-    //void ShootAtTarget()
-    //{
-    //    Vector3 targetPosition = player.transform.position + player.transform.forward * 50f;
-    //    Debug.Log(targetPosition);
-
-    //    Vector3 directionToTarget = (targetPosition - shootPoint.position).normalized;
-    //    GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-
-    //    Rigidbody rb = projectile.GetComponent<Rigidbody>();
-    //    if (rb != null)
-    //    {
-    //        rb.velocity = directionToTarget * projectileSpeed;
-    //    }
-
-    //    Destroy(projectile, 5f);
-    //}
-
     void AimTarget()
     {
         dangerArea = Instantiate(dangerAreaPrefab, playerAim.position, playerAim.rotation);
@@ -55,6 +38,6 @@ public class BossAttack : MonoBehaviour
             rb.velocity = directionToTarget * projectileSpeed;
         }
 
-        Destroy(projectile, 5f);
+        Destroy(projectile, 3.5f);
     }
 }
