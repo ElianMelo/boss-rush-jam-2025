@@ -17,4 +17,9 @@ public class TutorialEvent : MonoBehaviour
             }
         }
     }
+
+    public void GoNextLevel()
+    {
+        LevelManager.Instance.GoNextLevel();
+    }
 }

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93a3851cd39a574c95bc4ed6b4dbfe2, type: 3}
+  m_Name: 01Headquarters1
+  m_EditorClassIdentifier: 
+  leftPortrait: {fileID: 0}
+  rightPortrait: {fileID: 0}
+  dialogs:
+  - text: Agent Spinnet, you have been charged with a mission of great risk, both
+      to yourself and to others should it fail.
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: 8e29f318fffbcd4478c2aeb7ccb063e7, type: 3}
+  - text: Of course, sir. What is the mission?
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: 654f94d0a59b8f1498f977e2828843be, type: 3}
+  - text: "There are three renegade usturian cyborgs hiding on Earth. Your task is
+      to bring them to justice, Agent. But they are dangerous people with a history
+      of violent attacks and murder. It won\u2019t be surprising if they refuse to
+      come peacefully."
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: d8873b6fa1320c846896c00114675e5b, type: 3}
+  - text: Understood, sir.
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: 4dc8955625c09044eb70099f53e30e46, type: 3}
+  - text: "Our dossiers on them are not up to date. We don\u2019t know if they have
+      newer enhancements or their current status, and we only have their general
+      locations. Thanks to their technology, our recon drones failed to pick up anything
+      useful. You will be going in blind."
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: e96286746251f22438f7a8104a121c83, type: 3}
+  - text: When am I meant to start, sir?
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: 1a17646dd6260cf4bb37244cb8eee703, type: 3}
+  - text: Right away, Agent Spinnet.
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 8300000, guid: e91b36765c0f270478bd19888603de21, type: 3}

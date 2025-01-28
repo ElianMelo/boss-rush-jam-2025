@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     public enum Level
     {
+        Menu,
+        Tutorial,
         Headquarters1,
         Treeman,
         Headquarters2, 
@@ -16,10 +19,12 @@ public class LevelManager : MonoBehaviour
         Headquarters4,
     }
 
-    public Level CurrentLevel = Level.Headquarters1;
+    public Level CurrentLevel = Level.Menu;
 
     public static LevelManager Instance;
 
+    public const string MenuScene = "Menu";
+    public const string TutorialScene = "TutorialLevel";
     public const string HeadquartersScene = "Headquarters";
     public const string TreemanScene = "TreeLevel";
     public const string BikermanScene = "BikermanLevel";
@@ -33,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
     public void GoFirstLevel()
     {
-        SceneManager.LoadScene(HeadquartersScene);
+        SceneManager.LoadScene(MenuScene);
     }
 
     public void GoNextLevel()
@@ -41,6 +46,14 @@ public class LevelManager : MonoBehaviour
         string SceneName = HeadquartersScene;
         switch (CurrentLevel)
         {
+            case Level.Menu:
+                CurrentLevel = Level.Tutorial;
+                SceneName = TutorialScene;
+                break;
+            case Level.Tutorial:
+                CurrentLevel = Level.Headquarters1;
+                SceneName = HeadquartersScene;
+                break;
             case Level.Headquarters1:
                 CurrentLevel = Level.Treeman;
                 SceneName = TreemanScene;
@@ -66,8 +79,8 @@ public class LevelManager : MonoBehaviour
                 SceneName = HeadquartersScene;
                 break;
             case Level.Headquarters4:
-                CurrentLevel = Level.Headquarters1;
-                SceneName = HeadquartersScene;
+                CurrentLevel = Level.Menu;
+                SceneName = MenuScene;
                 break;
             default:
                 break;

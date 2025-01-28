@@ -19,16 +19,20 @@ public class DialogManager : MonoBehaviour
     private bool isWriting = false;
     private IEnumerator typeWriterEffectCoroutine;
     private InterfaceSystem interfaceSystem;
+    private AudioSource audioSource;
 
     private void Start()
     {
         interfaceSystem = GetComponentInParent<InterfaceSystem>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void InitDialog(DialogData dialogData)
     {
+        if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Paused) return;
+        HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Talking);
         this.dialogData = dialogData;
-        Debug.Log(dialogData.dialogs.Count);
+        //Debug.Log(dialogData.dialogs.Count);
         Reset();
     }
 
@@ -49,6 +53,7 @@ public class DialogManager : MonoBehaviour
             Reset();
 
             //SoundEffectManager.Instance.StopDialogSfx();
+            HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
             this.gameObject.SetActive(false);
             return;
         }
@@ -83,11 +88,17 @@ public class DialogManager : MonoBehaviour
             Reset();
 
             //SoundEffectManager.Instance.StopDialogSfx();
+            HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
             this.gameObject.SetActive(false);
             return;
         }
 
         currentDialog = dialogData.dialogs[currentDialogIndex];
+        if(currentDialog.clip)
+        {
+            audioSource.clip = currentDialog.clip;
+            audioSource.Play();
+        }
         typeWriterEffectCoroutine = TypeWriterEffect();
         StartCoroutine(typeWriterEffectCoroutine);
 
