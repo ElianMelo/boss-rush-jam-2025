@@ -22,26 +22,26 @@ MonoBehaviour:
       here, with Ustur society none the wiser."
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: e602270b33256b1409975705f81b37ed, type: 3}
   - text: "There\u2019s one thing I do not stand\u2014and that is being taken for
       a fool. I believe it\u2019s time Earth was more proactive in intergalactic
       politics. Wouldn\u2019t you agree, Lisa?"
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c39b5f45ff754d14a80db47b97969f99, type: 3}
   - text: You plan on exposing their wrong-doings, sir?
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: db20d91f13bd8d346b2393ef1344cfba, type: 3}
   - text: "Ah, yes. I\u2019m sure their opposition would be very interested in those
       fi les of yours. Perhaps enough to take legal action against the ones covering
       for those organizations. But I doubt they will go down without a fi ght. Would
       you like to join this new taskforce, Agent Spinnet?"
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 7a3166a9b353b8b42a35d27e5f1425d7, type: 3}
   - text: "I would like nothing more, sir. I won\u2019t let their suffering be in
       vain."
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d60ef1ff758621d458744a697df996e0, type: 3}

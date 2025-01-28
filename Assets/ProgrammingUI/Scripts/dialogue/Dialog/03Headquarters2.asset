@@ -22,24 +22,24 @@ MonoBehaviour:
   - text: Yes, sir. He refused to come peacefully and attacked instead.
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 68c03c2dccd688948856ef4c59df6518, type: 3}
   - text: And what did you make of him, Agent?
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1c6e6969c0d333c489260af31cb7e53d, type: 3}
   - text: "Ironwood\u2019s enhancements were completely different from what was on
-      his fi le, sir and he said some strange things. I\u2019m unsure what they could
+      his file, sir and he said some strange things. I\u2019m unsure what they could
       mean for our mission, and I have no evidence of wrong-doing on the usturian\u2019s
       part. But there\u2019s something off about all this."
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 7418fc9471b698440beb27a5fd78c8b3, type: 3}
   - text: Keep your eyes open, then. Perhaps our next target will shed light on your
       suspicions.
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 94f216d94148cf44f896aeb74701a266, type: 3}
   - text: Yes, sir.
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: a5300641534e44140b9e8d45b6fe1596, type: 3}

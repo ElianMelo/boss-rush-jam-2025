@@ -20,23 +20,23 @@ MonoBehaviour:
       me.
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 1c58b7b86fb8ecc4d8fd5645ad275986, type: 3}
   - text: "Both Mirkbane and Ironwood made references to being imprisoned before.
       If we haven\u2019t been told the full picture\u2026"
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: dfb928ef75190b44d882944f545403b0, type: 3}
   - text: Then we are just pawns on their board.
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 7b512d6f85f6dbe44ba1014612101619, type: 3}
   - text: How are we going to proceed, sir?
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: f116f06634c00d943acbe7dde5b8c384, type: 3}
   - text: "Ustur is Earth\u2019s main ally and commercial partner. We cannot jeopardize
       our relations with them. Keep the mission, Agent Spinnet, but get to the bottom
       of this. I\u2019m counting on you."
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 65a627d7df3e0b6408579420088f0cc2, type: 3}

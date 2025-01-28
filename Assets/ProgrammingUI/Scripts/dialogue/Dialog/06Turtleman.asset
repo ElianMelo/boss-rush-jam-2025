@@ -18,23 +18,23 @@ MonoBehaviour:
   - text: "You will not stop me. Not one can\u2014not anymore!"
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ddf8d3074fbc945439a844af98e0b0b2, type: 3}
   - text: Stop you from what? What are you trying to achieve?
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 516eed1c0a5cf4440869bff1bc6f2f05, type: 3}
   - text: They took and took and took from us until we had nothing left to give.
       I will turn myself into the monster they tried to make me, and butcher them
       like the pigs they are!
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: cc9ab4a0c5ece2e41b5bb2ece23d3971, type: 3}
   - text: "You don\u2019t have to do this. Please, Tortoise, come with me."
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 63034b89aaa5e7e47988c9b6eb49e0e9, type: 3}
   - text: "There\u2019s nothing left of me to save. There\u2019s only one path left
       for me, and you will not stand in my way."
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: c5e7a0c473fec2b4583b29e0643927b3, type: 3}

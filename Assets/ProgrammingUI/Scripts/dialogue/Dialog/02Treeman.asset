@@ -15,7 +15,7 @@ MonoBehaviour:
   leftPortrait: {fileID: 0}
   rightPortrait: {fileID: 0}
   dialogs:
-  - text: Ah, it seems I fi nally have a guest.
+  - text: Ah, it seems I finally have a guest.
     isFirstPortrait: 0
     isBothPortrait: 0
     clip: {fileID: 0}
@@ -23,7 +23,7 @@ MonoBehaviour:
       private and public properties, and obstruction of justice\u2014do not resist."
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 57759ed6c6d8001458ea18d22b14b090, type: 3}
   - text: You dare? You dare take my freedom away, after everything you people have
       done?!
     isFirstPortrait: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
       base here?!"
     isFirstPortrait: 1
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 8a82256b556ffde4287dea4b202c3b7e, type: 3}
   - text: "Oh, but I knew they would send someone. Spoiled children never let go
       of their toys, do they? And I choose to settle here because I missed it, you
       see. The green, the trees, the birdsong. I took them for granted before, and
