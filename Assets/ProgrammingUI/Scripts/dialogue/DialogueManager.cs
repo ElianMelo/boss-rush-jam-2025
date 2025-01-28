@@ -19,10 +19,12 @@ public class DialogManager : MonoBehaviour
     private bool isWriting = false;
     private IEnumerator typeWriterEffectCoroutine;
     private InterfaceSystem interfaceSystem;
+    private AudioSource audioSource;
 
     private void Start()
     {
         interfaceSystem = GetComponentInParent<InterfaceSystem>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void InitDialog(DialogData dialogData)
@@ -92,6 +94,11 @@ public class DialogManager : MonoBehaviour
         }
 
         currentDialog = dialogData.dialogs[currentDialogIndex];
+        if(currentDialog.clip)
+        {
+            audioSource.clip = currentDialog.clip;
+            audioSource.Play();
+        }
         typeWriterEffectCoroutine = TypeWriterEffect();
         StartCoroutine(typeWriterEffectCoroutine);
 

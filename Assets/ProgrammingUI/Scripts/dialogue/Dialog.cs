@@ -9,4 +9,5 @@ public class Dialog
     public string text;
     public bool isFirstPortrait = true;
     public bool isBothPortrait = false;
+    public AudioClip clip;
 }
