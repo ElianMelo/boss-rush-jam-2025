@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Dialog
 {
+    [TextArea]
     public string text;
     public bool isFirstPortrait = true;
     public bool isBothPortrait = false;

@@ -15,9 +15,30 @@ MonoBehaviour:
   leftPortrait: {fileID: 0}
   rightPortrait: {fileID: 0}
   dialogs:
-  - text: Player Dialog
-    isFirstPortrait: 1
-    isBothPortrait: 0
-  - text: Boss Dialog
+  - text: Ah, it seems I fi nally have a guest.
     isFirstPortrait: 0
     isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "Ironwood of Ustur, you are under arrest for mass murder, destruction of
+      private and public properties, and obstruction of justice\u2014do not resist."
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: You dare? You dare take my freedom away, after everything you people have
+      done?!
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "I saw pictures of the destruction you caused, all those deaths. You think
+      people wouldn\u2019t come after you? What else are you planning, setting your
+      base here?!"
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "Oh, but I knew they would send someone. Spoiled children never let go
+      of their toys, do they? And I choose to settle here because I missed it, you
+      see. The green, the trees, the birdsong. I took them for granted before, and
+      that was my mistake. I am not giving it up\u2014never again!"
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}

@@ -15,9 +15,26 @@ MonoBehaviour:
   leftPortrait: {fileID: 0}
   rightPortrait: {fileID: 0}
   dialogs:
-  - text: Player Dialog
-    isFirstPortrait: 1
-    isBothPortrait: 0
-  - text: Boss Dialog
+  - text: "You will not stop me. Not one can\u2014not anymore!"
     isFirstPortrait: 0
     isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Stop you from what? What are you trying to achieve?
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: They took and took and took from us until we had nothing left to give.
+      I will turn myself into the monster they tried to make me, and butcher them
+      like the pigs they are!
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "You don\u2019t have to do this. Please, Tortoise, come with me."
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "There\u2019s nothing left of me to save. There\u2019s only one path left
+      for me, and you will not stand in my way."
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}

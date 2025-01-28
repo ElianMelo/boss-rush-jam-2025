@@ -15,9 +15,31 @@ MonoBehaviour:
   leftPortrait: {fileID: 0}
   rightPortrait: {fileID: 0}
   dialogs:
-  - text: Player Dialog
-    isFirstPortrait: 1
-    isBothPortrait: 0
-  - text: Boss Dialog
+  - text: "Welcome back, Agent Spinnet. Ironwood didn\u2019t comply, I assume?"
     isFirstPortrait: 0
     isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Yes, sir. He refused to come peacefully and attacked instead.
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: And what did you make of him, Agent?
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "Ironwood\u2019s enhancements were completely different from what was on
+      his fi le, sir and he said some strange things. I\u2019m unsure what they could
+      mean for our mission, and I have no evidence of wrong-doing on the usturian\u2019s
+      part. But there\u2019s something off about all this."
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Keep your eyes open, then. Perhaps our next target will shed light on your
+      suspicions.
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Yes, sir.
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
