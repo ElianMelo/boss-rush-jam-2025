@@ -27,8 +27,10 @@ public class DialogManager : MonoBehaviour
 
     public void InitDialog(DialogData dialogData)
     {
+        if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Paused) return;
+        HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Talking);
         this.dialogData = dialogData;
-        Debug.Log(dialogData.dialogs.Count);
+        //Debug.Log(dialogData.dialogs.Count);
         Reset();
     }
 
@@ -49,6 +51,7 @@ public class DialogManager : MonoBehaviour
             Reset();
 
             //SoundEffectManager.Instance.StopDialogSfx();
+            HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
             this.gameObject.SetActive(false);
             return;
         }
@@ -83,6 +86,7 @@ public class DialogManager : MonoBehaviour
             Reset();
 
             //SoundEffectManager.Instance.StopDialogSfx();
+            HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
             this.gameObject.SetActive(false);
             return;
         }

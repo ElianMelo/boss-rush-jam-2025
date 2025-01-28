@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour
 {
     public void OnResumeClick()
     {
+        HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
         InterfaceSystem.Instance.CloseMenu();
     }
 
@@ -16,6 +17,6 @@ public class MenuManager : MonoBehaviour
 
     public void OnLeaveGameClick()
     {
-        Debug.Log("Exiting the game...");
+        //Debug.Log("Exiting the game...");
     }
 }

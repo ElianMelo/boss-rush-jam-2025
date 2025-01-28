@@ -12,13 +12,13 @@ public class CenterCursorInteraction : MonoBehaviour
     [SerializeField] private float maxRayDistance = 8f;
     [SerializeField] private LayerMask interactableLayer;
 
-    public DialogData InitNPC;
-    public DialogData DeathToBossOneNPC;
-    public DialogData WinToBossOneNPC;
-    public DialogData DeathToBossTwoNPC;
-    public DialogData WinToBossTwoNPC;
-    public DialogData DeathToBossThreeNPC;
-    public DialogData WinToBossThreeNPC;
+    public DialogData Headquarters1Data;
+    public DialogData TreemanData;
+    public DialogData Headquarters2Data;
+    public DialogData BikermanData;
+    public DialogData Headquarters3Data;
+    public DialogData TurtlemanData;
+    public DialogData Headquarters4Data;
 
     private void Start()
     {
@@ -27,25 +27,25 @@ public class CenterCursorInteraction : MonoBehaviour
         switch (currentLobbyState)
         {
             case LevelManager.Level.Headquarters1:
-                InterfaceSystem.Instance.SetDialogData(InitNPC);
+                InterfaceSystem.Instance.SetDialogData(Headquarters1Data);
                 break;
             case LevelManager.Level.Treeman:
-                InterfaceSystem.Instance.SetDialogData(DeathToBossOneNPC);
+                InterfaceSystem.Instance.SetDialogData(TreemanData);
                 break;
             case LevelManager.Level.Headquarters2:
-                InterfaceSystem.Instance.SetDialogData(WinToBossOneNPC);
+                InterfaceSystem.Instance.SetDialogData(Headquarters2Data);
                 break;
             case LevelManager.Level.Bikerman:
-                InterfaceSystem.Instance.SetDialogData(DeathToBossTwoNPC);
+                InterfaceSystem.Instance.SetDialogData(BikermanData);
                 break;
             case LevelManager.Level.Headquarters3:
-                InterfaceSystem.Instance.SetDialogData(WinToBossTwoNPC);
+                InterfaceSystem.Instance.SetDialogData(Headquarters3Data);
                 break;
             case LevelManager.Level.Turtleman:
-                InterfaceSystem.Instance.SetDialogData(DeathToBossThreeNPC);
+                InterfaceSystem.Instance.SetDialogData(TurtlemanData);
                 break;
             case LevelManager.Level.Headquarters4:
-                InterfaceSystem.Instance.SetDialogData(WinToBossThreeNPC);
+                InterfaceSystem.Instance.SetDialogData(Headquarters4Data);
                 break;
         }
     }
@@ -56,10 +56,19 @@ public class CenterCursorInteraction : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Talking) return;
+
             if (!InterfaceSystem.Instance.OpenedMenu && !InterfaceSystem.Instance.OpenedSettings)
+            {
+                HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Paused);
                 InterfaceSystem.Instance.OpenMenu();
+            }
             else
+            {
+                HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
                 InterfaceSystem.Instance.CloseMenu();
+            }
+            
         }
     }
 
@@ -74,7 +83,7 @@ public class CenterCursorInteraction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Dialogo iniciado");
+                //Debug.Log("Dialogo iniciado");
                 InterfaceSystem.Instance.InitDialog();
             }
 
