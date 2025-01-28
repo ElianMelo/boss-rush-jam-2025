@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93a3851cd39a574c95bc4ed6b4dbfe2, type: 3}
+  m_Name: 03Headquarters2
+  m_EditorClassIdentifier: 
+  leftPortrait: {fileID: 0}
+  rightPortrait: {fileID: 0}
+  dialogs:
+  - text: "Welcome back, Agent Spinnet. Ironwood didn\u2019t comply, I assume?"
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Yes, sir. He refused to come peacefully and attacked instead.
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: And what did you make of him, Agent?
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "Ironwood\u2019s enhancements were completely different from what was on
+      his fi le, sir and he said some strange things. I\u2019m unsure what they could
+      mean for our mission, and I have no evidence of wrong-doing on the usturian\u2019s
+      part. But there\u2019s something off about all this."
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Keep your eyes open, then. Perhaps our next target will shed light on your
+      suspicions.
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: Yes, sir.
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}

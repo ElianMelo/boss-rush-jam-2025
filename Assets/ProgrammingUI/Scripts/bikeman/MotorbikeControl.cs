@@ -70,11 +70,11 @@ public class MotorbikeControl : MonoBehaviour
             if (isBoostActive)
             {
                 isBoostActive = false;
+                animator.SetBool("isDashing", false);
             }
 
             if (boostTimeRemaining < boostDuration && !Input.GetKey(KeyCode.LeftShift))
             {
-                animator.SetBool("isDashing", false);
                 boostTimeRemaining += rechargeRate * Time.deltaTime;
                 boostTimeRemaining = Mathf.Min(boostTimeRemaining, boostDuration);
             }

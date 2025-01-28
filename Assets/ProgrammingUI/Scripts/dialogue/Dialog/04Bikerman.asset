@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93a3851cd39a574c95bc4ed6b4dbfe2, type: 3}
+  m_Name: 04Bikerman
+  m_EditorClassIdentifier: 
+  leftPortrait: {fileID: 0}
+  rightPortrait: {fileID: 0}
+  dialogs:
+  - text: Welcome, welcome, ladies and gentlemen, to the Globe of Death! Our show
+      is about to start, and we have our very own fi rst volunteer!
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "Mirkbane, I\u2019m here to take you under custody. Please surrender peacefully
+      or\u2014"
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "No, no, no, I\u2019m not going back to that bore. I fi nally get to have
+      some fun and they are already trying to lock me up again? Not today, missy."
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: They? Who are they?
+    isFirstPortrait: 1
+    isBothPortrait: 0
+    clip: {fileID: 0}
+  - text: "Pah! As if you wouldn\u2019t know, doing their bidding like a dog. Now,
+      let us put on a show!"
+    isFirstPortrait: 0
+    isBothPortrait: 0
+    clip: {fileID: 0}

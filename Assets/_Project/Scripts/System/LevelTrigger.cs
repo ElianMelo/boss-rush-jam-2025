@@ -14,6 +14,11 @@ public class LevelTrigger : MonoBehaviour
         }
     }
 
+    public void GoNextLevel()
+    {
+        LevelManager.Instance.GoNextLevel();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         LevelManager.Instance.GoNextLevel();
