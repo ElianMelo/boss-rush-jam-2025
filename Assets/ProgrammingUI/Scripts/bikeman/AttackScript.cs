@@ -43,6 +43,7 @@ public class AttackScript : MonoBehaviour
 
         if (other.gameObject.layer == obstacleBrokenLayer)
         {
+            Debug.Log("bateu");
             InstantiateParticleEffect(other.transform.position);
             obstacleScript.HandleObstacle(other);
             BossManager.Instance.TakeDamage(25f); 
