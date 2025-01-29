@@ -75,7 +75,7 @@ public class PlayerAttackController : MonoBehaviour
         IsDrilling = true;
         if (driveGroundTrigger.GetWeakPoint() && driveGroundTrigger.GetFirstTime())
         {
-            BossManager.Instance.TakeDamage(25f);
+            BossManager.Instance.TakeDamage(driveGroundTrigger.WeakPointDamage);
             ScreenShakeManager.Instance.ShakeScreen();
             driveGroundTrigger.SetFirstTime(false);
         }

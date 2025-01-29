@@ -12,6 +12,7 @@ public class DriveGroundTrigger : MonoBehaviour
     private Collider lastCheckPlayerCollider;
 
     public bool WeakPoint;
+    public float WeakPointDamage = 25f;
 
     private bool isFirstTime = true;
     private bool isWeakPoint = true;

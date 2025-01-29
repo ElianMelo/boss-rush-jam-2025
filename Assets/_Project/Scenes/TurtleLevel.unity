@@ -206,6 +206,39 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1862691}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8226545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8226546}
+  m_Layer: 0
+  m_Name: Phase1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8226546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226545}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1831787084}
+  - {fileID: 1580757606}
+  m_Father: {fileID: 1753939146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &11452174
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,7 +3494,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2089161366}
         m_TargetAssemblyTypeName: TurtlemanBoss, Assembly-CSharp
-        m_MethodName: PlayDownedPose
+        m_MethodName: PlayExpelPose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3799,22 +3832,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 669490374}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 4.2592773
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.6
+      value: 13.9543915
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.1
+      value: -23.831984
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
@@ -3859,7 +3892,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6702,6 +6735,39 @@ CapsuleCollider:
   m_Height: 4.4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &669490373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669490374}
+  m_Layer: 0
+  m_Name: Phase2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &669490374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669490373}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 390914301}
+  - {fileID: 996031066}
+  m_Father: {fileID: 1753939146}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &673029315
 GameObject:
   m_ObjectHideFlags: 0
@@ -11814,6 +11880,160 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 992644102}
   m_CullTransparentMesh: 1
+--- !u!1001 &996031065
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 669490374}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.57
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.92
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -92.64
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      propertyPath: m_Name
+      value: Terminal2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 996031069}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f405d10229387840b532123310ab366,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 996031068}
+  m_SourcePrefab: {fileID: 100100000, guid: 3f405d10229387840b532123310ab366, type: 3}
+--- !u!4 &996031066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+    type: 3}
+  m_PrefabInstance: {fileID: 996031065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &996031067 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3f405d10229387840b532123310ab366,
+    type: 3}
+  m_PrefabInstance: {fileID: 996031065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &996031068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996031067}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.62197995, y: 1.9622186, z: 0.72980446}
+  m_Center: {x: 0, y: 0.9811093, z: 0.13303271}
+--- !u!114 &996031069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996031067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045858304b9c9a34e9d19823c84071b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startEvents: []
+  deathEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2089161366}
+        m_TargetAssemblyTypeName: TurtlemanBoss, Assembly-CSharp
+        m_MethodName: PlayUprightPose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  deathVFX: {fileID: 8412369248575248101, guid: 84ee749bb8633d04f8853e95d50c225d,
+    type: 3}
 --- !u!1 &999845056
 GameObject:
   m_ObjectHideFlags: 0
@@ -17593,22 +17813,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 8226546}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 4.2592773
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 38.15
+      value: 37.50439
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.42
+      value: -44.351982
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76f2ef5e5bb211c46a1f7873b59224fe,
         type: 3}
@@ -19587,7 +19807,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2089161366}
         m_TargetAssemblyTypeName: TurtlemanBoss, Assembly-CSharp
-        m_MethodName: PlayUprightPose
+        m_MethodName: PlayExpelPose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19745,6 +19965,39 @@ Transform:
   m_Children:
   - {fileID: 845745385}
   m_Father: {fileID: 29554505}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1753939145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753939146}
+  m_Layer: 0
+  m_Name: Phases
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753939146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753939145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.2592773, y: 0.64560896, z: 34.931984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8226546}
+  - {fileID: 669490374}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1760483353
 PrefabInstance:
@@ -20570,7 +20823,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 8226546}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
@@ -20590,17 +20843,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 4.2592773
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.64560896
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.45
+      value: 2.5180168
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
@@ -20610,7 +20863,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
         type: 3}
@@ -20640,7 +20893,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3f405d10229387840b532123310ab366,
         type: 3}
       propertyPath: m_Name
-      value: Terminal
+      value: Terminal1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20694,21 +20947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045858304b9c9a34e9d19823c84071b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2089161366}
-        m_TargetAssemblyTypeName: TurtlemanBoss, Assembly-CSharp
-        m_MethodName: PlayDefensePose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  startEvents: []
   deathEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -20724,6 +20963,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  deathVFX: {fileID: 8412369248575248101, guid: 84ee749bb8633d04f8853e95d50c225d,
+    type: 3}
+--- !u!4 &1831787084 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3f405d10229387840b532123310ab366,
+    type: 3}
+  m_PrefabInstance: {fileID: 1831787078}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1835178354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25159,14 +25406,12 @@ SceneRoots:
   - {fileID: 1144821942}
   - {fileID: 348031746}
   - {fileID: 690652997}
-  - {fileID: 1580757603}
-  - {fileID: 390914299}
   - {fileID: 1354335065}
   - {fileID: 1506280624}
   - {fileID: 841125619}
   - {fileID: 197387419}
   - {fileID: 1731134902}
-  - {fileID: 1831787078}
   - {fileID: 117022556}
   - {fileID: 677842737}
   - {fileID: 355176262}
+  - {fileID: 1753939146}

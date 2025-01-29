@@ -30,7 +30,6 @@ public class TurtleWeekSpot : MonoBehaviour
         foreach (var item in unityEvents)
         {
             item?.Invoke();
-            BossManager.Instance.TakeDamage(25f);
         }
         foreach (var item in toDeactivate)
         {
