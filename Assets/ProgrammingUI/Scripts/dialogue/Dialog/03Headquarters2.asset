@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93a3851cd39a574c95bc4ed6b4dbfe2, type: 3}
   m_Name: 03Headquarters2
   m_EditorClassIdentifier: 
-  leftPortrait: {fileID: 0}
-  rightPortrait: {fileID: 0}
+  leftPortrait: {fileID: 21300000, guid: d7968aa68ee1f144390ab967047fbdcb, type: 3}
+  rightPortrait: {fileID: 21300000, guid: 4bea4d8ed7e1b454cb7e23c941036ed5, type: 3}
   dialogs:
   - text: "Welcome back, Agent Spinnet. Ironwood didn\u2019t comply, I assume?"
     isFirstPortrait: 0
