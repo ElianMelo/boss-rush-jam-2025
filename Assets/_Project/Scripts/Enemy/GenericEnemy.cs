@@ -30,7 +30,11 @@ public class GenericEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isFollowingPlayer)
+        if (HeadquartersMananger.Instance != null)
+        {
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+        }
+        if (isFollowingPlayer)
             navMeshAgent.SetDestination(playerTransform.position);
     }
 
@@ -39,7 +43,11 @@ public class GenericEnemy : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(1f);
-            if(Vector3.Distance(transform.position, playerTransform.position) < 20f)
+            if (HeadquartersMananger.Instance != null)
+            {
+                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) yield return null;
+            }
+            if (Vector3.Distance(transform.position, playerTransform.position) < 20f)
             {
                 isFollowingPlayer = true;
             }

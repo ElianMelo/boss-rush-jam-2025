@@ -26,15 +26,22 @@ public class TreemanBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(5f, 10f));
 
-        var coin = Random.Range(0, 2);
-        if(coin == 0)
+        if (HeadquartersMananger.Instance != null)
         {
-            animator.SetTrigger("CastA");
-        } else
-        {
-            animator.SetTrigger("CastB");
+            if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Walking)
+            {
+                var coin = Random.Range(0, 2);
+                if (coin == 0)
+                {
+                    animator.SetTrigger("CastA");
+                }
+                else
+                {
+                    animator.SetTrigger("CastB");
+                }
+                Instantiate(projectile, attackStartPosition);
+            }
         }
-        Instantiate(projectile, attackStartPosition);
         StartCoroutine(RandomAttack());
     }
 

@@ -129,6 +129,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (grounded) jumps = maxJumps;
+        if(HeadquartersMananger.Instance != null)
+        {
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+        }
+        
 
         GetInputsActions();
         SpeedControl();
@@ -156,6 +161,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (HeadquartersMananger.Instance != null)
+        {
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+        }
         if (dashing) return;
         if (diving) return;
         Move();
