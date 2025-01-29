@@ -18,7 +18,7 @@ MonoBehaviour:
   - text: Ah, it seems I finally have a guest.
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 77c8595af7012504aa3daebc17a73be3, type: 3}
   - text: "Ironwood of Ustur, you are under arrest for mass murder, destruction of
       private and public properties, and obstruction of justice\u2014do not resist."
     isFirstPortrait: 1
@@ -28,17 +28,15 @@ MonoBehaviour:
       done?!
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 3ec3757bd17625f48b649dd834b905e5, type: 3}
   - text: "I saw pictures of the destruction you caused, all those deaths. You think
       people wouldn\u2019t come after you? What else are you planning, setting your
       base here?!"
     isFirstPortrait: 1
     isBothPortrait: 0
     clip: {fileID: 8300000, guid: 8a82256b556ffde4287dea4b202c3b7e, type: 3}
-  - text: "Oh, but I knew they would send someone. Spoiled children never let go
-      of their toys, do they? And I choose to settle here because I missed it, you
-      see. The green, the trees, the birdsong. I took them for granted before, and
+  - text: "The green, the trees, the birdsong. I took them for granted before, and
       that was my mistake. I am not giving it up\u2014never again!"
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 50eb4863cf17fb1419cd6c825b9a70fe, type: 3}
