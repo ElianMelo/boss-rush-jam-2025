@@ -12,20 +12,13 @@ public class DialogManager : MonoBehaviour
     public TextMeshProUGUI skipUI;
     public TextMeshProUGUI closeUI;
     public DialogData dialogData;
+    public AudioSource audioSource;
     public float letterDelay;
 
     private int currentDialogIndex;
     private Dialog currentDialog;
     private bool isWriting = false;
     private IEnumerator typeWriterEffectCoroutine;
-    private InterfaceSystem interfaceSystem;
-    private AudioSource audioSource;
-
-    private void Start()
-    {
-        interfaceSystem = GetComponentInParent<InterfaceSystem>();
-        audioSource = GetComponent<AudioSource>();
-    }
 
     public void InitDialog(DialogData dialogData)
     {
@@ -94,7 +87,7 @@ public class DialogManager : MonoBehaviour
         }
 
         currentDialog = dialogData.dialogs[currentDialogIndex];
-        if(currentDialog.clip)
+        if(currentDialog.clip != null)
         {
             audioSource.clip = currentDialog.clip;
             audioSource.Play();
@@ -132,7 +125,6 @@ public class DialogManager : MonoBehaviour
         char[] chars = currentDialog.text.ToCharArray();
         textUI.text = "";
         isWriting = true;
-        //SoundEffectManager.Instance.PerformDialogSfx();
 
         foreach (var ch in chars)
         {
@@ -141,7 +133,6 @@ public class DialogManager : MonoBehaviour
         }
 
         isWriting = false;
-        //SoundEffectManager.Instance.StopDialogSfx()
         yield return null;
     }
 }

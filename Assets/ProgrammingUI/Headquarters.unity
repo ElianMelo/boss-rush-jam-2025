@@ -4328,7 +4328,8 @@ MonoBehaviour:
   textUI: {fileID: 1554811072}
   skipUI: {fileID: 935756417}
   closeUI: {fileID: 353878534}
-  dialogData: {fileID: 0}
+  dialogData: {fileID: 11400000, guid: de37d5d2bae51fd4fb5ac877d3c3a638, type: 2}
+  audioSource: {fileID: 1113078601}
   letterDelay: 0.02
 --- !u!224 &1113078597
 RectTransform:
