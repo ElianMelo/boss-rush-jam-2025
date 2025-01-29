@@ -6,6 +6,9 @@ public class TurtlemanBoss : MonoBehaviour
 {
     private const string UprightPose = "UprightPose";
     private const string DownedPose = "DownedPose";
+    private const string Death = "Death";
+    private const string Expel = "Expel";
+    private const string Defense = "Defense";
 
     private Animator animator;
 
@@ -22,5 +25,18 @@ public class TurtlemanBoss : MonoBehaviour
     public void PlayDownedPose()
     {
         animator.SetTrigger(DownedPose);
+    }
+
+    public void PlayDeathPose()
+    {
+        animator.SetTrigger(Death);
+    }
+    public void PlayExpelPose()
+    {
+        animator.SetTrigger(Expel);
+    }
+    public void PlayDefensePose()
+    {
+        animator.SetTrigger(Defense);
     }
 }
