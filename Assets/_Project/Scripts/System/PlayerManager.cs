@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviour
     public UnityEvent OnPlayerTakeDamage;
     public UnityEvent OnPlayerDeath;
 
+    public UnityEvent OnPlayerAttack;
+    public UnityEvent OnPlayerJump;
+
     private float maxHealth = 100;
     private float health;
 
@@ -26,6 +29,16 @@ public class PlayerManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         health = maxHealth;
+    }
+
+    public void PlayerAttackEvent()
+    {
+        OnPlayerAttack?.Invoke();
+    }
+
+    public void PlayerJumpEvent()
+    {
+        OnPlayerJump?.Invoke();
     }
 
     public void TakeDamage(float damage)
@@ -45,7 +58,7 @@ public class PlayerManager : MonoBehaviour
     }
     private IEnumerator DelayedDeath()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         LevelManager.Instance.ResetCurrentLevel();
     }
 

@@ -220,6 +220,12 @@ MonoBehaviour:
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerJump:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &272173071461369591
 MonoBehaviour:
   m_ObjectHideFlags: 0

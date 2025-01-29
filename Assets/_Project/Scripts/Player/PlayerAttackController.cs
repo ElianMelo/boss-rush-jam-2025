@@ -64,6 +64,7 @@ public class PlayerAttackController : MonoBehaviour
                 playerAnimator.SetTrigger(AttackRightAnim);
             }
             isLeftAttack = !isLeftAttack;
+            PlayerManager.Instance.PlayerAttackEvent();
             SoundManager.Instance.PlayAttackSound();
             playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, isLeftAttack, 0.1f);
         }

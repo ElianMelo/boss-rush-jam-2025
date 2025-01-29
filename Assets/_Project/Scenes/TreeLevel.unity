@@ -23301,6 +23301,22 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 511279668}
+    - target: {fileID: 5113240579556824623, guid: 47f599bf94b80ed41913077e2a886cff,
+        type: 3}
+      propertyPath: OnPlayerTakeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113240579556824623, guid: 47f599bf94b80ed41913077e2a886cff,
+        type: 3}
+      propertyPath: OnPlayerTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 336bc6407cb0e3044a296bff1169e4d2,
+        type: 3}
+    - target: {fileID: 5113240579556824623, guid: 47f599bf94b80ed41913077e2a886cff,
+        type: 3}
+      propertyPath: OnPlayerTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5866561144007022768, guid: 47f599bf94b80ed41913077e2a886cff,
         type: 3}
       propertyPath: m_Name

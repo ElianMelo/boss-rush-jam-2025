@@ -488,6 +488,7 @@ public class PlayerMovementController : MonoBehaviour
         StartCoroutine(Jumping());
         playerAnimator.SetTrigger(JumpAnim);
         SoundManager.Instance.PlayJumpSound();
+        PlayerManager.Instance.PlayerJumpEvent();
         playerVFXController.EnableBooster();
         playerVFXController.DisableBoosterDelayed(0.1f);
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
