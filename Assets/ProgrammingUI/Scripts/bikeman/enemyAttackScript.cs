@@ -5,9 +5,11 @@ using UnityEngine;
 public class enemyAttackScript : MonoBehaviour
 {
     private PlayerAttack playerAttack;
+    private enemyControl curEnemyControl;
 
     void Start()
     {
+        curEnemyControl = GetComponentInParent<enemyControl>();
         playerAttack = FindObjectOfType<PlayerAttack>();
     }
 
@@ -15,6 +17,7 @@ public class enemyAttackScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            curEnemyControl.DealDamage();
             Debug.Log("Player tomou 10 de dano (inimigos)");
             PlayerManager.Instance.TakeDamage(10f);
             playerAttack.receiveDamage();

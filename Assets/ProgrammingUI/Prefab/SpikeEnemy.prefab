@@ -249,8 +249,9 @@ GameObject:
   - component: {fileID: 8238436988605760089}
   - component: {fileID: 789854532062635746}
   - component: {fileID: 379297256070474128}
+  - component: {fileID: 4418633229245078924}
   m_Layer: 11
-  m_Name: Enemy
+  m_Name: SpikeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,6 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa6a08db58eff24cb29d7bb6c316b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  genericEventListener: {fileID: 4418633229245078924}
   movementSpeed: 25
   rotationSpeed: 20
   slopeDetector: {fileID: 8267925288035622653}
@@ -402,3 +404,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5411271, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0.2783457, z: 0.40847892}
+--- !u!114 &4418633229245078924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435272650254235613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7a24875ce249949b57eee757c3bd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEnemyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEnemyAttack:
+    m_PersistentCalls:
+      m_Calls: []

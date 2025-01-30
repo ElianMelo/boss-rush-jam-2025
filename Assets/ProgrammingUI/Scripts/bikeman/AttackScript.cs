@@ -19,7 +19,9 @@ public class AttackScript : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            enemyControl enemy = other.GetComponent<enemyControl>();
+            enemy.Death();
+            Destroy(other.gameObject, 0.5f);
         }
         if (other.gameObject.layer == obstacleBrokenLayer)
         {

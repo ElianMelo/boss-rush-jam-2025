@@ -10,6 +10,8 @@ public class enemyControl : MonoBehaviour
     private Vector3 moveDirection;
     private RaycastHit hit;
 
+    public GenericEnemyEventListener genericEventListener;
+
     [Header("Movement Settings")]
     [SerializeField]
     public float movementSpeed = 0f;
@@ -38,6 +40,16 @@ public class enemyControl : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public void Death()
+    {
+        if (genericEventListener != null) genericEventListener.OnEnemyDeath?.Invoke();
+    }
+
+    public void DealDamage()
+    {
+        if (genericEventListener != null) genericEventListener.OnEnemyAttack?.Invoke();
     }
 
     private void Update()
