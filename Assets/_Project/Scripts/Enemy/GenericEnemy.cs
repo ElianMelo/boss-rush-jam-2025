@@ -8,6 +8,7 @@ public class GenericEnemy : MonoBehaviour
 {
     public GameObject explosionVFX;
     public GameObject hitVFX;
+    public GenericEnemyEventListener genericEventListener;
     public Collider attackCollider;
     public float deathForce;
 
@@ -62,7 +63,6 @@ public class GenericEnemy : MonoBehaviour
             }
             if (Vector3.Distance(transform.position, playerTransform.position) < 5f && canAttack)
             {
-                canAttack = false;
                 Attack();
             }
         }
@@ -70,6 +70,8 @@ public class GenericEnemy : MonoBehaviour
 
     private void Attack()
     {
+        if (genericEventListener != null) genericEventListener.OnEnemyAttack?.Invoke();
+        canAttack = false;
         animator.SetTrigger("Attack");
     }
 
@@ -93,6 +95,7 @@ public class GenericEnemy : MonoBehaviour
         {
             DisableAttackCollider();
             StopAllCoroutines();
+            if(genericEventListener != null) genericEventListener.OnEnemyDeath?.Invoke();
             enemyRigidbody.AddForce((transform.position - playerTransform.position).normalized * deathForce, ForceMode.Impulse);
             var hitVFXObject = Instantiate(hitVFX, transform.position + new Vector3(0f,2f,0f), Quaternion.identity);
             hitVFXObject.transform.localScale = new Vector3(Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f));

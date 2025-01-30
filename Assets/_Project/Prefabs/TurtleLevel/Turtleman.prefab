@@ -4485,6 +4485,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8488904577695981428}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 49124b05c73a8dc4293eb7342088e337,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6175487958323324738}
   m_SourcePrefab: {fileID: 100100000, guid: 49124b05c73a8dc4293eb7342088e337, type: 3}
 --- !u!4 &361257565158160554 stripped
 Transform:
@@ -4621,6 +4625,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca82da97d719b44584781d715725bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6175487958323324738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635377273028123744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67576a39454e81f43a937d0f1a3deb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnBossTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &6651299068084492706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 908276781140129939, guid: 49124b05c73a8dc4293eb7342088e337,

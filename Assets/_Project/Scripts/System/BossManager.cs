@@ -13,6 +13,7 @@ public class BossManager : MonoBehaviour
 
     public UnityEvent OnBossTakeDamage;
     public UnityEvent OnBossDeath;
+    public UnityEvent OnBossAttack;
 
     private float maxHealth = 100;
     private float health;
@@ -26,6 +27,11 @@ public class BossManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         health = maxHealth;
+    }
+
+    public void Attack()
+    {
+        OnBossAttack?.Invoke();
     }
 
     public void TakeDamage(float damage)
