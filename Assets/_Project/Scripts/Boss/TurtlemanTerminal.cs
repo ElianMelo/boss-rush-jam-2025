@@ -5,20 +5,15 @@ using UnityEngine.Events;
 
 public class TurtlemanTerminal : MonoBehaviour
 {
-    public List<UnityEvent> startEvents;
     public List<UnityEvent> deathEvents;
+    public List<UnityEvent> delayedDeathvents;
 
     public GameObject deathVFX;
-
-    private void Start()
-    {
-        StartCoroutine(DelayedCall());
-    }
 
     private IEnumerator DelayedCall()
     {
         yield return new WaitForSeconds(2f);
-        foreach (var item in startEvents)
+        foreach (var item in delayedDeathvents)
         {
             item?.Invoke();
         }
@@ -29,12 +24,13 @@ public class TurtlemanTerminal : MonoBehaviour
         if (other.CompareTag("Lance"))
         {
             var deathVFXInstance = Instantiate(deathVFX, transform.position, Quaternion.identity);
-            Destroy(deathVFXInstance, 1.5f);
-            Destroy(gameObject, 0.5f);
             foreach (var item in deathEvents)
             {
                 item?.Invoke();
             }
+            Destroy(deathVFXInstance, 1.5f);
+            Destroy(gameObject, 2.5f);
+            StartCoroutine(DelayedCall());
         }
     }
 }

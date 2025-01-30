@@ -83,7 +83,7 @@ public class DriveGroundTrigger : MonoBehaviour
             StopAllCoroutines();
             if (turtleWeekSpot != null)
             {
-                turtleWeekSpot.SetupScene();
+                turtleWeekSpot.ExpelPlayer();
             }
         }
     }

@@ -9,6 +9,7 @@ public class TurtlemanBoss : MonoBehaviour
     private const string Death = "Death";
     private const string Expel = "Expel";
     private const string Defense = "Defense";
+    private const string CurvedPose = "CurvedPose";
 
     private Animator animator;
 
@@ -38,5 +39,9 @@ public class TurtlemanBoss : MonoBehaviour
     public void PlayDefensePose()
     {
         animator.SetTrigger(Defense);
+    }
+    public void PlayCurvedPose()
+    {
+        animator.SetTrigger(CurvedPose);
     }
 }
