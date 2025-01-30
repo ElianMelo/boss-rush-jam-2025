@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,11 +11,14 @@ public class InterfaceSystem : MonoBehaviour
     public DialogManager dialogManager;
     public MenuManager menuManager;
     public settingsManager settingsManager;
+    public GameObject help;
+    public TMP_Text helpText;
 
     private DialogData dialogData;
 
     public bool OpenedMenu = false;
     public bool OpenedSettings = false;
+    public bool OpenedHelp = false;
 
     private void Awake()
     {
@@ -48,6 +52,16 @@ public class InterfaceSystem : MonoBehaviour
         UnityEngine.Cursor.visible = false;
     }
 
+    public void OpenHelpMenu()
+    {
+        CloseMenu();
+        help.SetActive(true);
+        SetHelpText();
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+        OpenedHelp = true;
+    }
+
     public void OpenSettingsMenu() 
     {
         CloseMenu();
@@ -61,7 +75,46 @@ public class InterfaceSystem : MonoBehaviour
     public void BackToMenu()
     {
         settingsManager.gameObject.SetActive(false);
+        help.SetActive(false);
         OpenMenu();
         OpenedSettings = false;
+        OpenedHelp = false;
+    }
+
+    public void SetHelpText()
+    {
+        helpText.text = GetCurrentHelpText();
+    }
+
+    private string GetCurrentHelpText()
+    {
+        var currentLobbyState = LevelManager.Instance.CurrentLevel;
+
+        switch (currentLobbyState)
+        {
+            case LevelManager.Level.Treeman:
+                return
+                    "- Destroy red roots to damage the boss\n"
+                    + "- Use attack to destroy boss projectile\n"
+                    + "- You can drill the ground\n";
+            case LevelManager.Level.Bikerman:
+                return
+                    "- Destroy the eletric device to damage the boss\n"
+                    + "- Use attack and dash button to attack\n"
+                    + "- Destroy the spike bikes\n";
+            case LevelManager.Level.Turtleman:
+                return
+                    "- Destroy the terminal to open the turtle\n"
+                    + "- Hit turtle heart to damage the boss\n"
+                    + "- Use the environment to reach terminal and the boss\n";
+        }
+        return 
+            "- Talk with the commander\n"
+            +"- Go to the teleporter\n"
+            + "- Follow tutorial instruction\n"
+            + "- Read player inputs\n"
+            + "- Explore the map\n"
+            + "- Every boss has his own tutorial\n"
+            + "- Don't give up\n";
     }
 }

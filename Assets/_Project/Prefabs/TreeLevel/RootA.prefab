@@ -102,6 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 124994258485645844, guid: 44735af94e64b2043b8c7289f346d936,
         type: 3}
+      propertyPath: WeakPointDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 124994258485645844, guid: 44735af94e64b2043b8c7289f346d936,
+        type: 3}
       propertyPath: driveGroundSolid
       value: 
       objectReference: {fileID: 4722091216112889081}

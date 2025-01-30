@@ -15,6 +15,11 @@ public class MenuManager : MonoBehaviour
         InterfaceSystem.Instance.OpenSettingsMenu();
     }
 
+    public void OnHelpClick()
+    {
+        InterfaceSystem.Instance.OpenHelpMenu();
+    }
+
     public void OnLeaveGameClick()
     {
         //Debug.Log("Exiting the game...");
