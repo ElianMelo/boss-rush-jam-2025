@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6708615576422704997}
   - component: {fileID: 6815340198763841699}
+  - component: {fileID: 1410564857626138364}
   m_Layer: 0
   m_Name: ExplosionDamage
   m_TagString: Untagged
@@ -53,3 +54,17 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5.23
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1410564857626138364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127865673104698022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ec1afedd5f10d42aedb415924d0e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 847916590652646616, guid: b3245b4446a37aa4aa0ee26016bd80a7,
+    type: 3}

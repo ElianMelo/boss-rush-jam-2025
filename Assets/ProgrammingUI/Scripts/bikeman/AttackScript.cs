@@ -9,63 +9,32 @@ public class AttackScript : MonoBehaviour
     public GameObject particleEffectPrefab;
     int obstacleBrokenLayer;
     int obstacleLayer;
-
-    public Collider lanceCollider;
-
-    void Start()
-    {
-        lanceCollider = GetComponent<Collider>();
-    }
-
-
-    public void Update()
-    {
-        if (motorbikeControl.isBoostActive)
-        {
-            lanceCollider.enabled = true;
-        }
-        else
-        {
-            lanceCollider.enabled = false;
-        }
-    }
+    int BossLayer;
 
     private void OnTriggerEnter(Collider other)
     {
         obstacleBrokenLayer = LayerMask.NameToLayer("ObstacleBroken");
         obstacleLayer = LayerMask.NameToLayer("Obstacle");
+        BossLayer = LayerMask.NameToLayer("Bikerman");
 
         if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
-            InstantiateParticleEffect(other.transform.position);
         }
-
         if (other.gameObject.layer == obstacleBrokenLayer)
         {
-            Debug.Log("bateu");
-            InstantiateParticleEffect(other.transform.position);
             obstacleScript.HandleObstacle(other);
-            BossManager.Instance.TakeDamage(25f); 
-            //gameControl.TakeDamage(10);
+            BossManager.Instance.TakeDamage(25f);
+            Debug.Log("Boss tomou 25 de dano");
         }
         if (other.gameObject.layer == obstacleLayer)
         {
-            InstantiateParticleEffect(other.transform.position);
-            obstacleScript.HandleObstacle(other);
-            //gameControl.TakeDamage(10);
+            obstacleScript.HandleObstacle(other);     
         }
-    }
-
-    private void InstantiateParticleEffect(Vector3 position)
-    {
-        if (particleEffectPrefab != null)
+        if (other.gameObject.layer == BossLayer)
         {
-            Instantiate(particleEffectPrefab, position, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("Particle effect prefab is not assigned.");
+            BossManager.Instance.TakeDamage(5f);
+            Debug.Log("Boss tomou 10 de dano");
         }
     }
 }
