@@ -47,7 +47,10 @@ public class DialogTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        InterfaceSystem.Instance.InitDialog();
-        Destroy(gameObject);
+        if(other.CompareTag("Player"))
+        {
+            InterfaceSystem.Instance.InitDialog();
+            Destroy(gameObject);
+        }
     }
 }

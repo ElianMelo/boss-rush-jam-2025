@@ -127,18 +127,17 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
+        CheckAnimation();
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (grounded) jumps = maxJumps;
         if(HeadquartersMananger.Instance != null)
         {
             if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
         }
-        
 
         GetInputsActions();
         SpeedControl();
         StateHandler();
-        CheckAnimation();
 
         playerRb.velocity = new Vector3(
             Mathf.Clamp(playerRb.velocity.x, playerRb.velocity.x, 20f),

@@ -32,7 +32,11 @@ public class GenericEnemy : MonoBehaviour
     {
         if (HeadquartersMananger.Instance != null)
         {
-            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking)
+            {
+                navMeshAgent.SetDestination(transform.position);
+                return;
+            }
         }
         if (isFollowingPlayer)
             navMeshAgent.SetDestination(playerTransform.position);
@@ -45,7 +49,7 @@ public class GenericEnemy : MonoBehaviour
             yield return new WaitForSeconds(1f);
             if (HeadquartersMananger.Instance != null)
             {
-                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) yield return null;
+                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) continue;
             }
             if (Vector3.Distance(transform.position, playerTransform.position) < 20f)
             {

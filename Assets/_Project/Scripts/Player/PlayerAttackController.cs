@@ -35,6 +35,10 @@ public class PlayerAttackController : MonoBehaviour
     private void Update()
     {
         currentAttackDelay -= Time.deltaTime;
+        if (HeadquartersMananger.Instance != null)
+        {
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+        }
         CheckAttackButton();
     }
 

@@ -33,6 +33,10 @@ public class PlayerDivingController : MonoBehaviour
 
     private void Update()
     {
+        if (HeadquartersMananger.Instance != null)
+        {
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+        }
         if (Input.GetKeyDown(diveKey))
             Dive();
         if (diveCdTimer > 0)

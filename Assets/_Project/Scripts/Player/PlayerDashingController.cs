@@ -34,6 +34,10 @@ public class PlayerDashingController : MonoBehaviour
 
     private void Update()
     {
+        if (HeadquartersMananger.Instance != null)
+        {
+            if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+        }
         if (Input.GetKeyDown(dashKey))
             Dash();
         if (dashCdTimer > 0)
