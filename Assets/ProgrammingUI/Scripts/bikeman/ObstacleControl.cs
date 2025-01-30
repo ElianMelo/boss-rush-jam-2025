@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.VisualScripting.Metadata;
 
@@ -52,12 +53,14 @@ public class ObstacleControl : MonoBehaviour
             // Move the child back to its original position
             if (child.childCount >= 3)
             {
-                StartCoroutine(SmoothMove(child.GetChild(2), -moveDistance, 1));
+                //StartCoroutine(SmoothMove(child.GetChild(2), -moveDistance, 1));
+                child.GetChild(2).GetComponent<ObstacleMove>().MoveObstacle(-moveDistance, 1);
                 Destroy(newObstacle, 2f);
             }
             else
             {
-                StartCoroutine(SmoothMove(child.GetChild(0), -moveDistance, 1));
+                //StartCoroutine(SmoothMove(child.GetChild(0), -moveDistance, 1));
+                child.GetChild(0).GetComponent<ObstacleMove>().MoveObstacle(-moveDistance, 1);
             }
         }
         selectedChildren.Clear();
@@ -80,11 +83,12 @@ public class ObstacleControl : MonoBehaviour
 
             if (children.childCount >= 3)
             {
-                StartCoroutine(SmoothMove(children.GetChild(2), moveDistance, 3));
+                children.GetChild(2).GetComponent<ObstacleMove>().MoveObstacle(moveDistance, 3);
             }
             else
             {
-                StartCoroutine(SmoothMove(children.GetChild(0), moveDistance, 3));
+                //StartCoroutine(SmoothMove(children.GetChild(0), moveDistance, 3));
+                children.GetChild(0).GetComponent<ObstacleMove>().MoveObstacle(moveDistance, 3);
             }
         }
     }
@@ -138,38 +142,6 @@ public class ObstacleControl : MonoBehaviour
         }
     }
 
-    private IEnumerator SmoothMove(Transform obj, float distance, float duration)
-    {
-        Vector3 start = obj.localPosition;
-        Vector3 end = start + obj.localRotation * (Vector3.up * distance);
-
-        float elapsed = 0f;
-        float shakeAmount = 0.3f; // Initial shake strength
-        float shakeDecay = 0.05f;
-
-        while (elapsed < duration)
-        {
-            obj.localPosition = Vector3.Lerp(start, end, elapsed / duration);
-
-            // Add a shake effect to the object
-            Vector3 shake = new Vector3(
-                Random.Range(-shakeAmount, shakeAmount),
-                Random.Range(-shakeAmount, shakeAmount),
-                Random.Range(-shakeAmount, shakeAmount)
-            );
-
-            // Apply the shake effect
-            obj.localPosition += shake;
-
-            shakeAmount = Mathf.Max(shakeAmount - shakeDecay * Time.deltaTime, 0.02f);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        obj.localPosition = end;
-    }
-
     private IEnumerator DeactivateSecondChild(Transform danger, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -180,8 +152,13 @@ public class ObstacleControl : MonoBehaviour
     {
         if (selectedChildren.Contains(obj.transform.parent.transform))
         {
-            StartCoroutine(SmoothMove(obj.transform, -moveDistance, 1));
+            //StartCoroutine(SmoothMove(obj.transform, -moveDistance, 1));
+            obj.gameObject.GetComponent<ObstacleMove>().MoveObstacle(-moveDistance, 1);
+
             selectedChildren.Remove(obj.transform.parent.transform);
+
+            if(obj.transform.parent.childCount >= 3)
+                Destroy(newObstacle, 1f);
         }
         else
         {

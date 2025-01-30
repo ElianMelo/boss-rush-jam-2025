@@ -37,16 +37,13 @@ public class enemySpawner : MonoBehaviour
     {
         if (prefabToSpawn != null && spawnPosition != null)
         {
-            GameObject spawnedPrefab = Instantiate(prefabToSpawn, spawnPosition.position, spawnPosition.rotation);
+            float randomYRotation = Random.Range(0, 4) * 90f;
+            GameObject spawnedPrefab = Instantiate(prefabToSpawn, spawnPosition.position, Quaternion.Euler(0, randomYRotation, 0));
 
             if (parentObject != null)
             {
                 spawnedPrefab.transform.SetParent(parentObject);
             }
-
-            // Rotate the prefab randomly on the Y-axis
-            float randomYRotation = Random.Range(0, 4) * 90f;
-            spawnedPrefab.transform.Rotate(0, randomYRotation, 0);
         }
         else
         {

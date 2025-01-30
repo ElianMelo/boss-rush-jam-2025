@@ -34,9 +34,7 @@ public class MotorbikeControl : MonoBehaviour
     private float boostTimeRemaining = 0f;
     public float boostDuration = 5f;
     public float rechargeRate = 1f;
-    public GameObject speedEffect;
     public Animator animator;
-    public ParticleSystem spinEffect;
 
 
     void Start()
@@ -49,40 +47,6 @@ public class MotorbikeControl : MonoBehaviour
     {
         float inputHorizontal = Input.GetAxis("Horizontal");
         moveDirection = (transform.forward + transform.right * inputHorizontal * 0.5f).normalized;
-
-        if (Input.GetKey(KeyCode.LeftShift) && boostTimeRemaining > 0)
-        {
-            if(!isBoostActive)
-            {
-                spinEffect.Play();
-            }
-
-            isBoostActive = true;
-            animator.SetBool("isDashing", true);
-
-            // Increase movementSpeed, but clamp to maxSpeed
-            movementSpeed = Mathf.Min(movementSpeed + speedIncrease * Time.fixedDeltaTime, maxSpeed);
-            boostTimeRemaining -= Time.deltaTime;
-            EmissionRate(40f);
-        }
-        else
-        {
-            if (isBoostActive)
-            {
-                isBoostActive = false;
-                animator.SetBool("isDashing", false);
-            }
-
-            if (boostTimeRemaining < boostDuration && !Input.GetKey(KeyCode.LeftShift))
-            {
-                boostTimeRemaining += rechargeRate * Time.deltaTime;
-                boostTimeRemaining = Mathf.Min(boostTimeRemaining, boostDuration);
-            }
-
-            movementSpeed = Mathf.MoveTowards(movementSpeed, originalSpeed, speedIncrease * Time.fixedDeltaTime);
-            spinEffect.Stop();
-            EmissionRate(-40f);
-        }
 
         if (OnSlope())
         {
@@ -132,15 +96,13 @@ public class MotorbikeControl : MonoBehaviour
         return Vector3.ProjectOnPlane(moveDirection, hit.normal).normalized;
     }
 
-    void EmissionRate(float amount)
+    public void IncreaseMovementSpeed()
     {
-        ParticleSystem.EmissionModule emission = speedEffect.GetComponent<ParticleSystem>().emission;
-        float currentRate = emission.rateOverTime.constant;
-        float targetRate = 100f;
+        movementSpeed = maxSpeed;
+    }
 
-        currentRate = Mathf.Min(currentRate + amount, targetRate);
-        var rate = emission.rateOverTime;
-        rate.constant = currentRate;
-        emission.rateOverTime = rate;
+    public void DecreaseMovementSpeed()
+    {
+        movementSpeed = originalSpeed;
     }
 }
