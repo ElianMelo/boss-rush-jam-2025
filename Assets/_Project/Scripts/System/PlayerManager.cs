@@ -17,6 +17,9 @@ public class PlayerManager : MonoBehaviour
     public UnityEvent OnPlayerAttack;
     public UnityEvent OnPlayerJump;
 
+    public UnityEvent OnStartDrilling;
+    public UnityEvent OnStopDrilling;
+
     private float maxHealth = 100;
     private float health;
 
@@ -29,6 +32,16 @@ public class PlayerManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         health = maxHealth;
+    }
+
+    public void StartDrilling()
+    {
+        OnStartDrilling?.Invoke();
+    }
+
+    public void StopDrilling()
+    {
+        OnStopDrilling?.Invoke();
     }
 
     public void PlayerAttackEvent()

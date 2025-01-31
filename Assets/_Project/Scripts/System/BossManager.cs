@@ -51,7 +51,7 @@ public class BossManager : MonoBehaviour
 
     private IEnumerator DelayedDeath()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         LevelManager.Instance.GoNextLevel();
     }
 

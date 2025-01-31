@@ -354,6 +354,7 @@ public class PlayerMovementController : MonoBehaviour
             {
                 playerDivingController.ForcedResetDive();
             }
+            PlayerManager.Instance.StartDrilling();
             SoundManager.Instance.StartDrillingSound();
             PostProcessingManager.Instance.ActivateVignette();
             playerVFXController.EnableDrilling();
@@ -374,6 +375,7 @@ public class PlayerMovementController : MonoBehaviour
         if (state != MovementState.drilling) return;
         playerVFXController.DisableDrilling();
         playerVFXController.DisableBooster();
+        PlayerManager.Instance.StopDrilling();
         SoundManager.Instance.StopDrillingSound();
         PostProcessingManager.Instance.DeactivateVignette();
         jumps = 1;

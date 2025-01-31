@@ -9,6 +9,8 @@ public class PlayerEventListener : MonoBehaviour
     public UnityEvent OnPlayerDeath;
     public UnityEvent OnPlayerAttack;
     public UnityEvent OnPlayerJump;
+    public UnityEvent OnStartDrilling;
+    public UnityEvent OnStopDrilling;
 
     void Start()
     {
@@ -16,6 +18,8 @@ public class PlayerEventListener : MonoBehaviour
         PlayerManager.Instance.OnPlayerDeath.AddListener(PlayerDeathEvent);
         PlayerManager.Instance.OnPlayerAttack.AddListener(PlayerAttackEvent);
         PlayerManager.Instance.OnPlayerJump.AddListener(PlayerJumpEvent);
+        PlayerManager.Instance.OnStartDrilling.AddListener(PlayerStartDrilling);
+        PlayerManager.Instance.OnStopDrilling.AddListener(PlayerStopDrilling);
     }
 
     private void OnDestroy()
@@ -24,6 +28,8 @@ public class PlayerEventListener : MonoBehaviour
         PlayerManager.Instance.OnPlayerDeath.RemoveListener(PlayerDeathEvent);
         PlayerManager.Instance.OnPlayerAttack.RemoveListener(PlayerAttackEvent);
         PlayerManager.Instance.OnPlayerJump.RemoveListener(PlayerJumpEvent);
+        PlayerManager.Instance.OnStartDrilling.RemoveListener(PlayerStartDrilling);
+        PlayerManager.Instance.OnStopDrilling.RemoveListener(PlayerStopDrilling);
     }
 
     private void PlayerTakeDamageEvent()
@@ -44,5 +50,15 @@ public class PlayerEventListener : MonoBehaviour
     private void PlayerJumpEvent()
     {
         OnPlayerJump?.Invoke();
+    }
+
+    private void PlayerStartDrilling()
+    {
+        OnStartDrilling?.Invoke();
+    }
+
+    private void PlayerStopDrilling()
+    {
+        OnStopDrilling?.Invoke();
     }
 }

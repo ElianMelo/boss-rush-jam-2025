@@ -17,6 +17,10 @@ public class enemyAttackScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (HeadquartersMananger.Instance != null)
+            {
+                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+            }
             curEnemyControl.DealDamage();
             Debug.Log("Player tomou 10 de dano (inimigos)");
             PlayerManager.Instance.TakeDamage(10f);

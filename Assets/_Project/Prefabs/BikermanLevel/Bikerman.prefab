@@ -1697,6 +1697,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7274424828188612889}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2fdcc68f7c3b1574187bf1b7dcd7eb75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4757632619291757810}
   m_SourcePrefab: {fileID: 100100000, guid: 2fdcc68f7c3b1574187bf1b7dcd7eb75, type: 3}
 --- !u!4 &4820253733923969212 stripped
 Transform:
@@ -1824,6 +1828,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.56, z: 0}
+--- !u!114 &4757632619291757810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6147340390857736999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67576a39454e81f43a937d0f1a3deb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnBossTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &6774659789928323485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2fdcc68f7c3b1574187bf1b7dcd7eb75,

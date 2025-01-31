@@ -46,6 +46,10 @@ public class PlayerAttackController : MonoBehaviour
     {
         if(other.CompareTag("EnemyAttack"))
         {
+            if (HeadquartersMananger.Instance != null)
+            {
+                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+            }
             PlayerManager.Instance.TakeDamage(10f);
         }
     }

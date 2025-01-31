@@ -15,6 +15,10 @@ public class BossHitbox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (HeadquartersMananger.Instance != null)
+            {
+                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+            }
             Debug.Log("Player tomou 10 de dano (boss hitbox e tiro)");
             PlayerManager.Instance.TakeDamage(10f);
             playerAttack.receiveDamage();
