@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6c39f2eb270f8f545885c46603722c1a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.754255
+      value: -5.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c39f2eb270f8f545885c46603722c1a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.172802
+      value: 18.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c39f2eb270f8f545885c46603722c1a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7953196
+      value: 65.59532
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c39f2eb270f8f545885c46603722c1a,
         type: 3}
@@ -110,6 +110,11 @@ PrefabInstance:
       propertyPath: driveGroundSolid
       value: 
       objectReference: {fileID: 4722091216112889081}
+    - target: {fileID: 124994258485645844, guid: 44735af94e64b2043b8c7289f346d936,
+        type: 3}
+      propertyPath: weakSpotEventListener
+      value: 
+      objectReference: {fileID: 8217418388050636684}
     - target: {fileID: 750746658737513838, guid: 44735af94e64b2043b8c7289f346d936,
         type: 3}
       propertyPath: m_Enabled
@@ -224,6 +229,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5703294634274578533}
+    - targetCorrespondingSourceObject: {fileID: 3261387219546452406, guid: 44735af94e64b2043b8c7289f346d936,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8217418388050636684}
   m_SourcePrefab: {fileID: 100100000, guid: 44735af94e64b2043b8c7289f346d936, type: 3}
 --- !u!1 &207276877517660442 stripped
 GameObject:
@@ -289,6 +298,24 @@ CapsuleCollider:
   m_Height: 1.17
   m_Direction: 1
   m_Center: {x: 0, y: 0.01, z: 0}
+--- !u!114 &8217418388050636684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507767945236460055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931ab448c4c61ee48a5fbb8636a0f393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnWeakSpotEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWeakSpotExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5271912572551811215
 PrefabInstance:
   m_ObjectHideFlags: 0

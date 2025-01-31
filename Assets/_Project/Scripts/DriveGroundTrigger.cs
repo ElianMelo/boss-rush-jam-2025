@@ -10,6 +10,7 @@ public class DriveGroundTrigger : MonoBehaviour
     
     private PlayerAttackController attackController;
     private Collider lastCheckPlayerCollider;
+    public WeakSpotEventListener weakSpotEventListener;
 
     public bool WeakPoint;
     public float WeakPointDamage = 25f;
@@ -59,6 +60,10 @@ public class DriveGroundTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.CompareTag("Lance"))
         {
+            if(weakSpotEventListener != null && WeakPoint)
+            {
+                weakSpotEventListener.OnWeakSpotEnter?.Invoke();
+            }
             lastCheckPlayerCollider = other;
             currentTimer = 0f;
             StopAllCoroutines();
@@ -75,8 +80,13 @@ public class DriveGroundTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // todo: get attack controller no matter what
         if ((other.CompareTag("Player")) && attackController != null)
         {
+            if (weakSpotEventListener != null && WeakPoint)
+            {
+                weakSpotEventListener.OnWeakSpotExit?.Invoke();
+            }
             if (!attackController.IsDrilling) return;
             InstantiateVFX(other);
             attackController.StopDrilling(this);

@@ -3555,32 +3555,7 @@ PrefabInstance:
     - target: {fileID: 160316994589770230, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
       propertyPath: m_Name
-      value: RootA (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_DirtyAABB
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: -2.830473
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.x
-      value: 1.4399867
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.y
-      value: 2.8304753
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.z
-      value: 1.4399867
+      value: RootAWeakSpot
       objectReference: {fileID: 0}
     - target: {fileID: 680711881770081100, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
@@ -6230,32 +6205,7 @@ PrefabInstance:
     - target: {fileID: 160316994589770230, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
       propertyPath: m_Name
-      value: RootA (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_DirtyAABB
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: -2.830473
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.x
-      value: 1.4399867
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.y
-      value: 2.8304753
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.z
-      value: 1.4399867
+      value: RootAWeakSpot
       objectReference: {fileID: 0}
     - target: {fileID: 680711881770081100, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
@@ -6305,11 +6255,6 @@ PrefabInstance:
     - target: {fileID: 680711881770081100, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1817610390995263523, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10708,32 +10653,7 @@ PrefabInstance:
     - target: {fileID: 160316994589770230, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
       propertyPath: m_Name
-      value: RootA (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_DirtyAABB
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: -2.830473
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.x
-      value: 1.4399867
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.y
-      value: 2.8304753
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.z
-      value: 1.4399867
+      value: RootAWeakSpot
       objectReference: {fileID: 0}
     - target: {fileID: 680711881770081100, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
@@ -10783,11 +10703,6 @@ PrefabInstance:
     - target: {fileID: 680711881770081100, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1817610390995263523, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -16772,32 +16687,7 @@ PrefabInstance:
     - target: {fileID: 160316994589770230, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
       propertyPath: m_Name
-      value: RootA
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_DirtyAABB
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: -2.830473
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.x
-      value: 1.4399867
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.y
-      value: 2.8304753
-      objectReference: {fileID: 0}
-    - target: {fileID: 226421645561383069, guid: ffb31aa34b4f811409d8594e213dd5ea,
-        type: 3}
-      propertyPath: m_AABB.m_Extent.z
-      value: 1.4399867
+      value: RootAWeakSpot
       objectReference: {fileID: 0}
     - target: {fileID: 680711881770081100, guid: ffb31aa34b4f811409d8594e213dd5ea,
         type: 3}
