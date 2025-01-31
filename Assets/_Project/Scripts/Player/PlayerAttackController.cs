@@ -118,7 +118,9 @@ public class PlayerAttackController : MonoBehaviour
 
     private IEnumerator SafeDisableCollider()
     {
-        yield return new WaitForSeconds(0.3f);
+        var m_CurrentClipInfo = playerAnimator.GetCurrentAnimatorClipInfo(0);
+        var m_CurrentClipLength = m_CurrentClipInfo[0].clip.length;
+        yield return new WaitForSeconds(m_CurrentClipLength);
         DisableLanceCollider();
     }
 }
