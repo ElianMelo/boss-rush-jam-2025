@@ -489,6 +489,7 @@ MonoBehaviour:
   boostDuration: 3
   rechargeRate: 1
   animator: {fileID: 1347953839443424505}
+  playerBikeVFXController: {fileID: 7132456235540223990}
 --- !u!54 &5026882443675840377
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2526,6 +2527,7 @@ GameObject:
   - component: {fileID: 1347953839443424505}
   - component: {fileID: 6885066824956867537}
   - component: {fileID: 3492378133762768889}
+  - component: {fileID: 7132456235540223990}
   m_Layer: 0
   m_Name: Drillman
   m_TagString: Untagged
@@ -2615,6 +2617,29 @@ MonoBehaviour:
   OnPlayerJump:
     m_PersistentCalls:
       m_Calls: []
+  OnStartDrilling:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStopDrilling:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7132456235540223990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799828339540200514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0a5a0948079e440a1451c00b386d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlashVfx: {fileID: 7357032535793119285, guid: 08f7c0c838e2e19489d8d29dff71c9dc,
+    type: 3}
+  ShockVfx: {fileID: 2194463090483721826, guid: 2801a36ec863dc147bad711a0c5594d5,
+    type: 3}
+  SlashVFXRotation: {x: 0, y: 180, z: 230}
 --- !u!1 &7819207576660690807
 GameObject:
   m_ObjectHideFlags: 0

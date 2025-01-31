@@ -35,12 +35,14 @@ public class MotorbikeControl : MonoBehaviour
     public float boostDuration = 5f;
     public float rechargeRate = 1f;
     public Animator animator;
+    public PlayerBikeVFXController playerBikeVFXController;
 
 
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         boostTimeRemaining = boostDuration;
+        PlayerManager.Instance.OnPlayerTakeDamage.AddListener(TakeDamage);
     }
 
     void FixedUpdate()
@@ -104,5 +106,11 @@ public class MotorbikeControl : MonoBehaviour
     public void DecreaseMovementSpeed()
     {
         movementSpeed = originalSpeed;
+    }
+
+    public void TakeDamage()
+    {
+        ScreenShakeManager.Instance.ShakeScreen();
+        playerBikeVFXController.TriggerShockVFX(transform);
     }
 }

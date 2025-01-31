@@ -27,6 +27,7 @@ public class AttackScript : MonoBehaviour
         {
             obstacleScript.HandleObstacle(other);
             BossManager.Instance.TakeDamage(25f);
+            ScreenShakeManager.Instance.ShakeScreen();
             Debug.Log("Boss tomou 25 de dano");
         }
         if (other.gameObject.layer == obstacleLayer)
@@ -36,6 +37,7 @@ public class AttackScript : MonoBehaviour
         if (other.gameObject.layer == BossLayer)
         {
             BossManager.Instance.TakeDamage(5f);
+            ScreenShakeManager.Instance.ShakeScreen();
             Debug.Log("Boss tomou 10 de dano");
         }
     }

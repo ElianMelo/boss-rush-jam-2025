@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public bool isAttacking = false;
     public bool isDrilling = false;
 
+    private PlayerBikeVFXController playerBikeVFXController;
     private int defaultLayer;
     private int invulnerableLayer;
 
@@ -19,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     {
         defaultLayer = transform.parent.gameObject.layer;
         invulnerableLayer = LayerMask.NameToLayer("Invulnerable");
+        playerBikeVFXController = GetComponent<PlayerBikeVFXController>();
     }
 
     void Update()
@@ -30,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
             //playerVFXController.DisableBoosterDelayed(0.2f);
             //playerAnimator.SetTrigger(AttackLeftAnim);
             //playerVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, false, 0.1f);
+            playerBikeVFXController.TriggerSlashVFXDelayed(transform.position, transform.rotation, true, 0.1f);
             isAttacking = true;
             animator.SetTrigger("isAttacking");
             SoundManager.Instance.PlayAttackSound();
@@ -41,6 +44,7 @@ public class PlayerAttack : MonoBehaviour
             speedEffect.Play();
             animator.SetTrigger("isDrilling");
             motorbikeControl.IncreaseMovementSpeed();
+            SoundManager.Instance.PlayDashSound();
 
             transform.parent.gameObject.layer = invulnerableLayer;
         }

@@ -1331,6 +1331,7 @@ GameObject:
   - component: {fileID: 182665577}
   - component: {fileID: 182665575}
   - component: {fileID: 182665578}
+  - component: {fileID: 182665579}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1416,6 +1417,29 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+--- !u!114 &182665579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182665573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &196298244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,6 +3312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1056503027}
   - component: {fileID: 1056503028}
+  - component: {fileID: 1056503029}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -3419,6 +3444,29 @@ MonoBehaviour:
   - {fileID: 1127689106}
   - {fileID: 87268134}
   - {fileID: 24224571}
+--- !u!114 &1056503029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056503025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1083893672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5006,6 +5054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172730546354207264, guid: b6dae851c4c946540b830771f1573326,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
