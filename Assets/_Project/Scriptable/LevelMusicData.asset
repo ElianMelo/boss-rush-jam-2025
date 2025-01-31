@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b98e9891afdf84ea21ebbaae60e143, type: 3}
+  m_Name: LevelMusicData
+  m_EditorClassIdentifier: 
+  MenuMusic: {fileID: 8300000, guid: d1a17df826d4085428452c8ef6535621, type: 3}
+  TutorialMusic: {fileID: 8300000, guid: 84e90876970cf3942af3799b28e48828, type: 3}
+  HeadquartersMusic: {fileID: 8300000, guid: 8fa2bc47638717c4b862485d4aa46c83, type: 3}
+  TreemanMusic: {fileID: 8300000, guid: 636e9376c259e7e4ca5278a6e231bcb5, type: 3}
+  BikermanMusic: {fileID: 8300000, guid: aba525f115692e94fb0ecfd5f6d91305, type: 3}
+  TurtlemanMusic: {fileID: 8300000, guid: cf5ad2b067690394ca021ec9cb8a8d44, type: 3}
+  EndingMusic: {fileID: 8300000, guid: 5e28ad501c030124bbc8c866ac7f2961, type: 3}
