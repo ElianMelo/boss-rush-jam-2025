@@ -58,7 +58,7 @@ public class DialogManager : MonoBehaviour
                 if (isWriting)
                 {
                     StopCoroutine(typeWriterEffectCoroutine);
-                    skipUI.text = "SPACE - Next";
+                    skipUI.text = "Space - Next";
                     textUI.text = "";
                     textUI.text = currentDialog.text;
                     //SoundEffectManager.Instance.StopDialogSfx();
