@@ -2239,18 +2239,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2251104012108536263, guid: b6dae851c4c946540b830771f1573326,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 29.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251104012108536263, guid: b6dae851c4c946540b830771f1573326,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 32.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251104012108536263, guid: b6dae851c4c946540b830771f1573326,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.65
+      value: -0.55
       objectReference: {fileID: 0}
     - target: {fileID: 2251104012108536263, guid: b6dae851c4c946540b830771f1573326,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.61
+      value: 5.76
       objectReference: {fileID: 0}
     - target: {fileID: 2251104012108536263, guid: b6dae851c4c946540b830771f1573326,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.91
+      value: 56.93
       objectReference: {fileID: 0}
     - target: {fileID: 2251104012108536263, guid: b6dae851c4c946540b830771f1573326,
         type: 3}
@@ -2376,6 +2386,7 @@ MonoBehaviour:
   driveGroundSolid: {fileID: 1580757607}
   vfxDiggedVFX: {fileID: 591719866423806950, guid: bbd3d07ee1ada55408df4c1642f25be9,
     type: 3}
+  weakSpotEventListener: {fileID: 0}
   WeakPoint: 1
   WeakPointDamage: 33.4
 --- !u!23 &363493446
@@ -9719,6 +9730,7 @@ MonoBehaviour:
   driveGroundSolid: {fileID: 171896786}
   vfxDiggedVFX: {fileID: 591719866423806950, guid: bbd3d07ee1ada55408df4c1642f25be9,
     type: 3}
+  weakSpotEventListener: {fileID: 0}
   WeakPoint: 1
   WeakPointDamage: 33.4
 --- !u!23 &1532016200
@@ -11572,6 +11584,7 @@ MonoBehaviour:
   driveGroundSolid: {fileID: 390914302}
   vfxDiggedVFX: {fileID: 591719866423806950, guid: bbd3d07ee1ada55408df4c1642f25be9,
     type: 3}
+  weakSpotEventListener: {fileID: 0}
   WeakPoint: 1
   WeakPointDamage: 33.4
 --- !u!23 &1742360658
