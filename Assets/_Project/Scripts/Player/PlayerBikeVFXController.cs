@@ -11,9 +11,9 @@ public class PlayerBikeVFXController : MonoBehaviour
 
     public void TriggerShockVFX(Transform parent)
     {
-        GameObject vfx = Instantiate(ShockVfx, parent);
-        vfx.transform.SetParent(parent);
-        Destroy(vfx, 1f);
+        Vector3 offset = parent.up * 2.0f;
+        GameObject vfx = Instantiate(ShockVfx, parent.position + offset, parent.rotation, parent);
+        Destroy(vfx, 0.5f);
     }
 
     public void TriggerSlashVFXDelayed(Vector3 position, Quaternion rotation, bool isRight, float delay)
@@ -24,11 +24,11 @@ public class PlayerBikeVFXController : MonoBehaviour
     private IEnumerator TriggerSlashVfxCoroutine(Vector3 position, Quaternion rotation, bool isRight, float delay)
     {
         yield return new WaitForSeconds(delay);
-        position += new Vector3(0f, 0.6f, 0f);
+        position += new Vector3(0f, 2f, 0f);
         Vector3 currentSlashVFXRotation = SlashVFXRotation;
         if (isRight)
         {
-            currentSlashVFXRotation.z = 230;
+            currentSlashVFXRotation.z = 0;
         } else
         {
             currentSlashVFXRotation.z = 190;
