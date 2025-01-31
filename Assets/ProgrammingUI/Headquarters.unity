@@ -1130,8 +1130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorImage: {fileID: 1462726057}
-  defaultCursor: {fileID: 21300000, guid: 5ca26816ac3ca7f48929a5a4b17a1297, type: 3}
-  interactCursor: {fileID: 21300000, guid: 21e031935d9137a42a88f4f99e4d78c5, type: 3}
+  defaultCursor: {fileID: 21300000, guid: 4c86e3367bbde9e48b4745ba614e4a76, type: 3}
+  interactCursor: {fileID: 21300000, guid: cd92537779dbf0b4d87aee4fbccfaa4e, type: 3}
   maxRayDistance: 10
   interactableLayer:
     serializedVersion: 2

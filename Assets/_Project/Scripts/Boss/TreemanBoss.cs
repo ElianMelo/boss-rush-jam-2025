@@ -47,7 +47,7 @@ public class TreemanBoss : MonoBehaviour
 
     private void TakeDamage()
     {
-        animator.SetTrigger("Death");
+        animator.SetTrigger("Hurt");
     }
 
     private void Death()
