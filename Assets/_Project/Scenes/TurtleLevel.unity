@@ -5067,35 +5067,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4923240041382843423, guid: 8d03a6e90abc1f841b5737f464f8e716,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1114765180}
-    - target: {fileID: 4923240041382843423, guid: 8d03a6e90abc1f841b5737f464f8e716,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923240041382843423, guid: 8d03a6e90abc1f841b5737f464f8e716,
-        type: 3}
-      propertyPath: m_VertexColorAlwaysGammaSpace
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4923240041382843423, guid: 8d03a6e90abc1f841b5737f464f8e716,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 6409709246812585552, guid: 8d03a6e90abc1f841b5737f464f8e716,
         type: 3}
       propertyPath: m_Name
       value: HealthInterface
-      objectReference: {fileID: 0}
-    - target: {fileID: 6409709246812585552, guid: 8d03a6e90abc1f841b5737f464f8e716,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7172484121086906214, guid: 8d03a6e90abc1f841b5737f464f8e716,
         type: 3}
