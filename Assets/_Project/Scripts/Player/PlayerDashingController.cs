@@ -49,6 +49,7 @@ public class PlayerDashingController : MonoBehaviour
         if (dashCdTimer > 0) return;
         else dashCdTimer = dashCd;
         if (pm.state == PlayerMovementController.MovementState.drilling) return;
+        HealthInterfaceManager.Instance.DashCooldown(dashCd);
         pm.dashing = true;
         rb.useGravity = false;
         SoundManager.Instance.PlayDashSound();

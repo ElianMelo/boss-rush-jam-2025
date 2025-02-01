@@ -60,7 +60,7 @@ public class PlayerMovementController : MonoBehaviour
     private Animator playerAnimator;
     private Rigidbody playerRb;
 
-    private int maxJumps = 1;
+    private int maxJumps = 2;
     private int jumps;
 
     private Vector3 smoothDampvelocity = Vector3.zero;
@@ -129,7 +129,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         CheckAnimation();
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        if (grounded) jumps = maxJumps;
+        if (grounded && !jumping)
+        {
+            jumps = maxJumps;
+            HealthInterfaceManager.Instance.SetAmountOfJumps(jumps);
+        }
         if(HeadquartersMananger.Instance != null)
         {
             if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
@@ -193,9 +197,9 @@ public class PlayerMovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
         {
             jumps -= 1;
+            HealthInterfaceManager.Instance.SetAmountOfJumps(jumps);
             Jump();
         }
-
         
     }
 
@@ -379,6 +383,7 @@ public class PlayerMovementController : MonoBehaviour
         SoundManager.Instance.StopDrillingSound();
         PostProcessingManager.Instance.DeactivateVignette();
         jumps = 1;
+        HealthInterfaceManager.Instance.SetAmountOfJumps(jumps);
         playerRb.useGravity = true;
         Vector3 exitDirection = drillOrientation.eulerAngles;
         calculatedTimeRotateBack = timeRotateBack;
