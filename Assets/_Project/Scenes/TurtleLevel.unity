@@ -14610,31 +14610,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtleHeartUnitPart1
       objectReference: {fileID: 0}
-    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
-        type: 3}
-      propertyPath: expelDirection
-      value: 
-      objectReference: {fileID: 1270328087}
-    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
-        type: 3}
-      propertyPath: playerRigidbody
-      value: 
-      objectReference: {fileID: 926649299}
-    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
-        type: 3}
-      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2089161366}
-    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
-        type: 3}
-      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 669490373}
-    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
-        type: 3}
-      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 8226545}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
