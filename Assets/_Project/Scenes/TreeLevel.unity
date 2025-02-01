@@ -11166,6 +11166,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 7172730546354207264, guid: b6dae851c4c946540b830771f1573326,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

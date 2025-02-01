@@ -1120,6 +1120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionVFX: {fileID: 3839229453116677093, guid: ba86edae2cc983d4d976623911062207,
     type: 3}
+  screwVFX: {fileID: 1583582107984916771, guid: 58382aed49b8ad34c8e2fadc4dea7d7d,
+    type: 3}
   hitVFX: {fileID: 8628709162044451466, guid: d9a90337af3262d49ae55104ea7e54e4, type: 3}
   genericEventListener: {fileID: 1595535258883607335}
   attackCollider: {fileID: 8945992781419936363}

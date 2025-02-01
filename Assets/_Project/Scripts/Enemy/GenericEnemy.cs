@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class GenericEnemy : MonoBehaviour
 {
     public GameObject explosionVFX;
+    public GameObject screwVFX;
     public GameObject hitVFX;
     public GenericEnemyEventListener genericEventListener;
     public Collider attackCollider;
@@ -101,6 +102,8 @@ public class GenericEnemy : MonoBehaviour
             hitVFXObject.transform.localScale = new Vector3(Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f));
             var explosionVFXObject = Instantiate(explosionVFX, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
             explosionVFXObject.transform.localScale = new Vector3(Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f));
+            var screwVFXObject = Instantiate(screwVFX, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
+            screwVFXObject.transform.localScale = new Vector3(Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f), Random.Range(0.8f, 1.2f));
             ScreenShakeManager.Instance.ShakeScreen();
             Destroy(gameObject, 0.5f);
         }
