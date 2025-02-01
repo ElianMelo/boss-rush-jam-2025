@@ -151,8 +151,16 @@ public class ObstacleControl : MonoBehaviour
     {
         if (selectedChildren.Contains(obj.transform.parent.transform))
         {
+            Collider obstacleCollider = obj.gameObject.GetComponent<Collider>();
+
+            if (obstacleCollider != null)
+            {
+                obstacleCollider.enabled = false;
+                StartCoroutine(ReenableCollider(obstacleCollider, 1f));
+            }
+
             //StartCoroutine(SmoothMove(obj.transform, -moveDistance, 1));
-            obj.gameObject.GetComponent<ObstacleMove>().MoveObstacle(-moveDistance, 1);
+            obj.gameObject.GetComponent<ObstacleMove>().MoveObstacle(-moveDistance, 0.2f);
 
             selectedChildren.Remove(obj.transform.parent.transform);
 
@@ -163,5 +171,12 @@ public class ObstacleControl : MonoBehaviour
         {
             Debug.Log("Object is not in the movedChildren list.");
         }
+    }
+
+    private IEnumerator ReenableCollider(Collider obstacleCollider, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (obstacleCollider != null)
+            obstacleCollider.enabled = true;
     }
 }
