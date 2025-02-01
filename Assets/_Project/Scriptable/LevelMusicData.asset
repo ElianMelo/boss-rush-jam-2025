@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelMusicData
   m_EditorClassIdentifier: 
   MenuMusic: {fileID: 8300000, guid: d1a17df826d4085428452c8ef6535621, type: 3}
-  TutorialMusic: {fileID: 8300000, guid: 84e90876970cf3942af3799b28e48828, type: 3}
+  TutorialMusic: {fileID: 8300000, guid: ae0f876543d6a8d47b2bcb21df864133, type: 3}
   HeadquartersMusic: {fileID: 8300000, guid: e2216d4047dda38438dc4fbd3ac5b71f, type: 3}
   TreemanMusic: {fileID: 8300000, guid: 636e9376c259e7e4ca5278a6e231bcb5, type: 3}
   BikermanMusic: {fileID: 8300000, guid: 2d5b7c5672444c94790e9cc1e4d1e6d8, type: 3}
