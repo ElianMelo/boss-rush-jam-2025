@@ -73,6 +73,7 @@ public class PlayerMovementController : MonoBehaviour
     private PlayerVFXController playerVFXController;
 
     private IEnumerator rotateCoroutine;
+    private IEnumerator SmoothlyLerpMoveSpeedCoroutine;
 
     public bool IsGrounded => grounded;
 
@@ -249,12 +250,13 @@ public class PlayerMovementController : MonoBehaviour
         {
             if (keepMomentum)
             {
-                StopAllCoroutines();
-                StartCoroutine(SmoothlyLerpMoveSpeed());
+                if (SmoothlyLerpMoveSpeedCoroutine != null) StopCoroutine(SmoothlyLerpMoveSpeedCoroutine);
+                SmoothlyLerpMoveSpeedCoroutine = SmoothlyLerpMoveSpeed();
+                StartCoroutine(SmoothlyLerpMoveSpeedCoroutine);
             }
             else
             {
-                StopAllCoroutines();
+                if (SmoothlyLerpMoveSpeedCoroutine != null) StopCoroutine(SmoothlyLerpMoveSpeedCoroutine);
                 moveSpeed = desiredMoveSpeed;
             }
         }
