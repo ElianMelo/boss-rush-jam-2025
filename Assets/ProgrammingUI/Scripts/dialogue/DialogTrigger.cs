@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DialogTrigger : MonoBehaviour
 {
     public DialogData TreemanData;
     public DialogData BikermanData;
-    public DialogData TurtlemanData;   
+    public DialogData TurtlemanData;
+    private Collider dialogCollider;
 
     private void Start()
     {
+        dialogCollider = GetComponent<Collider>();
         var currentLobbyState = LevelManager.Instance.CurrentLevel;
 
         switch (currentLobbyState)
@@ -50,7 +53,7 @@ public class DialogTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             InterfaceSystem.Instance.InitDialog();
-            Destroy(gameObject);
+            dialogCollider.enabled = false;
         }
     }
 }
