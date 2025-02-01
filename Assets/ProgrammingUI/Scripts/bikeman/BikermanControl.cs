@@ -33,6 +33,7 @@ public class BikermanControl : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         StartCoroutine(callProvocationsLines());
+        StartCoroutine(ChangeDirectionRoutine());
     }
 
     private void Update()
@@ -44,6 +45,16 @@ public class BikermanControl : MonoBehaviour
             movementSpeed = 80;
         }
 
+    }
+
+    private IEnumerator ChangeDirectionRoutine()
+    {
+        while (true)
+        {
+            transform.Rotate(0, rotationSpeed * 16, 0);
+
+            yield return new WaitForSeconds(Random.Range(15, 20)); // Change direction every 3-7 seconds
+        }
     }
 
     private IEnumerator callProvocationsLines()

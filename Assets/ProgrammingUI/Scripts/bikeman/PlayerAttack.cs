@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerAttack : MonoBehaviour
     public bool isDrilling = false;
     private float currentAttackDelay;
     public float attackDelay;
+    public float dashCd;
+    float currentDashCooldown;
 
     private PlayerBikeVFXController playerBikeVFXController;
     private int defaultLayer;
@@ -20,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        currentDashCooldown = dashCd;
         currentAttackDelay = 0;
         defaultLayer = transform.parent.gameObject.layer;
         invulnerableLayer = LayerMask.NameToLayer("Invulnerable");
@@ -29,11 +33,14 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         currentAttackDelay -= Time.deltaTime;
+        currentDashCooldown -= Time.deltaTime;
 
         CheckAttackButton();
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) && !isAttacking)
+        if (Input.GetKeyUp(KeyCode.LeftShift) && !isAttacking  && currentDashCooldown <= 0)
         {
+            currentDashCooldown = dashCd;
+            HealthInterfaceManager.Instance.DashCooldown(dashCd);
             isDrilling = true;
             spinEffect.Play();
             speedEffect.Play();

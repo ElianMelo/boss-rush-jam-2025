@@ -115,9 +115,14 @@ MonoBehaviour:
   attackSounds:
   - {fileID: 8300000, guid: 15962db983fd08b47a1c9f91316ea512, type: 3}
   - {fileID: 8300000, guid: 137c23e7fd890844cae24e58e71f2d41, type: 3}
+  treemanProvocations: []
+  bikermanProvocations: []
+  turtlemanProvocations: []
   dashSound: {fileID: 8300000, guid: 425a39033b38214459861d009dd7d1a2, type: 3}
   jumpSound: {fileID: 8300000, guid: 3784a1f714337ea41b1570f6c45913b5, type: 3}
-  pillarSound: {fileID: 8300000, guid: e6b782e6f00953c4c936111defd7dd74, type: 3}
+  eletricPillarSound: {fileID: 8300000, guid: e6b782e6f00953c4c936111defd7dd74, type: 3}
+  pillarSound: {fileID: 8300000, guid: 4e0ed1c6962672d4db8703636ac2efc5, type: 3}
+  shootingSound: {fileID: 8300000, guid: da2a910c13d681d4db1c5b7cce12d2c5, type: 3}
 --- !u!114 &5896655953175192049
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -152,8 +152,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2255349000161219702}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23, z: -0.15156364}
+  m_LocalRotation: {x: 0.105916955, y: 0, z: 0, w: 0.99437505}
+  m_LocalPosition: {x: 0, y: 0.479, z: -0.15156364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3696,19 +3696,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927b3d345c95e724e92a4de0e9187eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 35
+  movementSpeed: 50
   rotationSpeed: 4
+  attackScript: {fileID: 0}
   slopeDetector: {fileID: 8897379590316497256}
   rayDistance: 15.95
   minSlopeAngle: 1.46
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  obstacleRayLength: 20
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 5120
-  obstacleAvoidanceStrength: 2
 --- !u!114 &1437891832675509090
 MonoBehaviour:
   m_ObjectHideFlags: 0
