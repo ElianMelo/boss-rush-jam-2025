@@ -15,6 +15,7 @@ public class BikermanControl : MonoBehaviour
     [SerializeField]
     public float movementSpeed = 0f;
     public float rotationSpeed = 0f;
+    public AttackScript attackScript;
 
     [Header("Slope Settings")]
     [SerializeField]
@@ -22,12 +23,6 @@ public class BikermanControl : MonoBehaviour
     public float rayDistance = 5f;
     public float minSlopeAngle = 1f;
     public LayerMask groundLayer;
-
-    [Header("Obstacle Avoidance Settings")]
-    [SerializeField]
-    public float obstacleRayLength = 3f; 
-    public LayerMask obstacleLayer;      
-    public float obstacleAvoidanceStrength = 2f;
 
     private string targetColliderTag = "BossTriggerZone";
 
@@ -40,13 +35,16 @@ public class BikermanControl : MonoBehaviour
     private void Update()
     {
         NormalMovement();
+
+        if (attackScript.bossHits > 3)
+        {
+            movementSpeed = 80;
+        }
     }
 
     private void NormalMovement()
     {
         moveDirection = (transform.forward).normalized;
-
-        ObstacleDetector();
 
         if (OnSlope())
         {
@@ -59,11 +57,6 @@ public class BikermanControl : MonoBehaviour
             Quaternion targetRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
-    }
-
-    private void ObstacleDetector()
-    {
-        
     }
 
     private bool OnSlope()

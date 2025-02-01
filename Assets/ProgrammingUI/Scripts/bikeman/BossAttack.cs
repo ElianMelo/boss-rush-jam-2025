@@ -31,6 +31,7 @@ public class BossAttack : MonoBehaviour
     {
         Vector3 directionToTarget = (dangerArea.transform.position - shootPoint.position).normalized;
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        SoundManager.Instance.PlayBossShooting();
 
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)

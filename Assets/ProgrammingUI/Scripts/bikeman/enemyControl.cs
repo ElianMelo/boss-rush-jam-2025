@@ -31,11 +31,8 @@ public class enemyControl : MonoBehaviour
     public float detectionRadius = 15f;
     public float followSpeed = 10f;
 
-    [Header("Obstacle Avoidance Settings")]
-    [SerializeField]
-    public float obstacleRayLength = 3f; // Length of the ray to detect obstacles
-    public LayerMask obstacleLayer;      // Layer mask for obstacles
-    public float obstacleAvoidanceStrength = 2f; // Strength of direction change when avoiding obstacles
+    public Collider hitCollider;
+
 
     void Start()
     {
@@ -45,6 +42,11 @@ public class enemyControl : MonoBehaviour
     public void Death()
     {
         if (genericEventListener != null) genericEventListener.OnEnemyDeath?.Invoke();
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        hitCollider.enabled = false;
+
+
     }
 
     public void DealDamage()

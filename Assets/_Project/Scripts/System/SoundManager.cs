@@ -10,6 +10,9 @@ public class SoundManager : MonoBehaviour
     public List<AudioClip> attackSounds = new List<AudioClip>();
     public AudioClip dashSound;
     public AudioClip jumpSound;
+    public AudioClip eletricPillarSound;
+    public AudioClip pillarSound;
+    public AudioClip shootingSound;
 
     public static SoundManager Instance;
 
@@ -21,6 +24,21 @@ public class SoundManager : MonoBehaviour
     public void PlayDashSound()
     {
         PlaySoundClip(dashSound);
+    }
+
+    public void PlayBrokenPillar()
+    {
+        PlaySoundClip(eletricPillarSound);
+    }
+
+    public void PlayPillarSound()
+    {
+        PlaySoundClip(pillarSound);
+    }
+
+    public void PlayBossShooting()
+    {
+        PlaySoundClip(shootingSound);
     }
 
     public void PlayAttackSound()
