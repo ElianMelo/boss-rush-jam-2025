@@ -15,6 +15,8 @@ public class AttackScript : MonoBehaviour
     int obstacleLayer;
     int BossLayer;
 
+    public int bossHits = 0;
+
     private void OnTriggerEnter(Collider other)
     {
         obstacleBrokenLayer = LayerMask.NameToLayer("ObstacleBroken");
@@ -26,7 +28,7 @@ public class AttackScript : MonoBehaviour
             HitEffects(other.transform);
             enemyControl enemy = other.GetComponent<enemyControl>();
             enemy.Death();
-            Destroy(other.gameObject, 0.2f);
+            Destroy(other.gameObject, 0.6f);
         }
         if (other.gameObject.layer == obstacleBrokenLayer)
         {
@@ -34,18 +36,23 @@ public class AttackScript : MonoBehaviour
             obstacleScript.HandleObstacle(other);
             BossManager.Instance.TakeDamage(25f);
             ScreenShakeManager.Instance.ShakeScreen();
+            SoundManager.Instance.PlayBrokenPillar();
             Debug.Log("Boss tomou 25 de dano");
+
+            bossHits += 1;
         }
         if (other.gameObject.layer == obstacleLayer)
         {
             HitEffects(other.transform);
             obstacleScript.HandleObstacle(other);
+            SoundManager.Instance.PlayPillarSound();
         }
         if (other.gameObject.layer == BossLayer)
         {
             BossManager.Instance.TakeDamage(5f);
             ScreenShakeManager.Instance.ShakeScreen();
             Debug.Log("Boss tomou 10 de dano");
+            bossHits += 1;
         }
     }
 

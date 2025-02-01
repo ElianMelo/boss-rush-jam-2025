@@ -24,7 +24,7 @@ public class PlayerBikeVFXController : MonoBehaviour
     private IEnumerator TriggerSlashVfxCoroutine(Vector3 position, Quaternion rotation, bool isRight, float delay)
     {
         yield return new WaitForSeconds(delay);
-        position += new Vector3(0f, 2f, 0f);
+        //position += new Vector3(0f, 2f, 0f);
         Vector3 currentSlashVFXRotation = SlashVFXRotation;
         if (isRight)
         {
@@ -34,7 +34,7 @@ public class PlayerBikeVFXController : MonoBehaviour
             currentSlashVFXRotation.z = 190;
         }
         GameObject vfx = Instantiate(SlashVfx, position, rotation * Quaternion.Euler(currentSlashVFXRotation));
-        vfx.transform.localScale = new Vector3(3f,3f,3f);
+        vfx.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         Destroy(vfx, 1f);
     }
 

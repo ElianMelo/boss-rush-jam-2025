@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isDrilling)
         {
             Vector3 offset = transform.up * 5.0f;
-            playerBikeVFXController.TriggerSlashVFXDelayed(transform.position + offset, transform.rotation, true, 0.3f);
+            playerBikeVFXController.TriggerSlashVFXDelayed(transform.position + offset, transform.rotation, true, 0.2f);
             isAttacking = true;
             animator.SetTrigger("isAttacking");
             SoundManager.Instance.PlayAttackSound();

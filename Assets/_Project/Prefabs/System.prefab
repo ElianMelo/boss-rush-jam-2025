@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 137c23e7fd890844cae24e58e71f2d41, type: 3}
   dashSound: {fileID: 8300000, guid: 425a39033b38214459861d009dd7d1a2, type: 3}
   jumpSound: {fileID: 8300000, guid: 3784a1f714337ea41b1570f6c45913b5, type: 3}
+  pillarSound: {fileID: 8300000, guid: e6b782e6f00953c4c936111defd7dd74, type: 3}
 --- !u!114 &5896655953175192049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnBossDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossAttack:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3783268960434738723
@@ -224,6 +228,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnPlayerJump:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartDrilling:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStopDrilling:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &272173071461369591

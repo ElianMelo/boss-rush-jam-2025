@@ -373,7 +373,7 @@ MonoBehaviour:
         TargetAudioSource: {fileID: 6771218687098810461}
         Mode: 0
         RandomSfx:
-        - {fileID: 8300000, guid: 088355c5dea89c2418e228e2b6542888, type: 3}
+        - {fileID: 8300000, guid: 6479ea408926584418ebe7ece919200e, type: 3}
         MinVolume: 1
         MaxVolume: 1
         MinPitch: 1
@@ -1140,11 +1140,7 @@ MonoBehaviour:
   playerNear: 0
   detectionRadius: 15
   followSpeed: 15
-  obstacleRayLength: 15
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  obstacleAvoidanceStrength: 2
+  hitCollider: {fileID: 3520850723166386456}
 --- !u!54 &789854532062635746
 Rigidbody:
   m_ObjectHideFlags: 0
