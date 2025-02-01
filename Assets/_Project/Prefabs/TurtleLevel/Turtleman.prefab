@@ -1163,9 +1163,9 @@ MonoBehaviour:
         ExtraBoundRenderers: []
         Mode: 0
         PropertyName: _Tint
-        FlickerDuration: 0.2
+        FlickerDuration: 0.4
         FlickerPeriod: 0.04
-        FlickerColor: {r: 85.445015, g: 53.72616, b: 29.422104, a: 1}
+        FlickerColor: {r: 14.259472, g: 13.871844, b: 3.0267754, a: 1}
         MaterialIndexes: 
         UseMaterialPropertyBlocks: 0
         SpriteRendererTextureProperty: _MainTex
