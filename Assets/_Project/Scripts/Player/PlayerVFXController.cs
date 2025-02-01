@@ -8,6 +8,7 @@ public class PlayerVFXController : MonoBehaviour
     [SerializeField] private ParticleSystem LeftBooster;
     [SerializeField] private ParticleSystem RightBooster;
     [SerializeField] private ParticleSystem DrillingVfx;
+    [SerializeField] private ParticleSystem GroundDrillingVfx;
     [SerializeField] private GameObject SlashVfx;
     [SerializeField] private GameObject ShockVfx;
     [SerializeField] private Vector3 SlashVFXRotation;
@@ -35,9 +36,19 @@ public class PlayerVFXController : MonoBehaviour
         DrillingVfx.Play();
     }
 
+    public void EnableGroundDrillingVfx()
+    {
+        GroundDrillingVfx.Play();
+    }
+
     public void DisableDrilling()
     {
         DrillingVfx.Stop();
+    }
+
+    public void DisableGroundDrillingVfx()
+    {
+        GroundDrillingVfx.Stop();
     }
 
     public void TriggerShockVFX(Transform parent)

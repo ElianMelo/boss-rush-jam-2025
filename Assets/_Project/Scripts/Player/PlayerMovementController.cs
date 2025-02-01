@@ -370,6 +370,7 @@ public class PlayerMovementController : MonoBehaviour
             SoundManager.Instance.StartDrillingSound();
             PostProcessingManager.Instance.ActivateVignette();
             playerVFXController.EnableDrilling();
+            playerVFXController.EnableGroundDrillingVfx();
             playerVFXController.EnableBooster(true);
             playerRb.useGravity = false;
             if (rotateCoroutine != null)
@@ -386,6 +387,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (state != MovementState.drilling) return;
         playerVFXController.DisableDrilling();
+        playerVFXController.DisableGroundDrillingVfx();
         playerVFXController.DisableBooster();
         PlayerManager.Instance.StopDrilling();
         SoundManager.Instance.StopDrillingSound();
