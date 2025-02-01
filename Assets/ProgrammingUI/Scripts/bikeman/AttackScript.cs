@@ -7,6 +7,7 @@ public class AttackScript : MonoBehaviour
 {
     public GameObject explosionVFX;
     public GameObject hitVFX;
+    public GameObject screwVFX;
 
     public MotorbikeControl motorbikeControl;
     public ObstacleControl obstacleScript;
@@ -26,6 +27,7 @@ public class AttackScript : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             HitEffects(other.transform);
+            enemyScrews(other.transform);
             enemyControl enemy = other.GetComponent<enemyControl>();
             enemy.Death();
             Destroy(other.gameObject, 0.6f);
@@ -34,10 +36,10 @@ public class AttackScript : MonoBehaviour
         {
             HitEffects(other.transform);
             obstacleScript.HandleObstacle(other);
-            BossManager.Instance.TakeDamage(25f);
+            BossManager.Instance.TakeDamage(20f);
             ScreenShakeManager.Instance.ShakeScreen();
             SoundManager.Instance.PlayBrokenPillar();
-            Debug.Log("Boss tomou 25 de dano");
+            Debug.Log("Boss tomou 20 de dano");
 
             bossHits += 1;
         }
@@ -51,7 +53,7 @@ public class AttackScript : MonoBehaviour
         {
             BossManager.Instance.TakeDamage(5f);
             ScreenShakeManager.Instance.ShakeScreen();
-            Debug.Log("Boss tomou 10 de dano");
+            Debug.Log("Boss tomou 5 de dano");
             bossHits += 1;
         }
     }
@@ -68,6 +70,24 @@ public class AttackScript : MonoBehaviour
             Random.Range(0.8f, 1.2f),
             Random.Range(0.8f, 1.2f)
         );
+        hitVFXObject.transform.localScale = new Vector3(
+            Random.Range(5f, 9f),
+            Random.Range(5f, 9f),
+            Random.Range(5f, 9f)
+        );
+
         ScreenShakeManager.Instance.ShakeScreen();
+    }
+
+    public void enemyScrews(Transform hitposition)
+    {
+        Vector3 offsetPosition = hitposition.up * 2f;
+        var screwVFXObject = Instantiate(screwVFX, hitposition.position + offsetPosition, hitposition.rotation);
+
+        screwVFXObject.transform.localScale = new Vector3(
+            Random.Range(2f, 3f),
+            Random.Range(2f, 3f),
+            Random.Range(2f, 3f)
+        );
     }
 }
