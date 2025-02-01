@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour
     public MotorbikeControl motorbikeControl;
     public bool isAttacking = false;
     public bool isDrilling = false;
+    private float currentAttackDelay;
+    public float attackDelay;
 
     private PlayerBikeVFXController playerBikeVFXController;
     private int defaultLayer;
@@ -18,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+        currentAttackDelay = 0;
         defaultLayer = transform.parent.gameObject.layer;
         invulnerableLayer = LayerMask.NameToLayer("Invulnerable");
         playerBikeVFXController = GetComponent<PlayerBikeVFXController>();
@@ -25,14 +28,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isDrilling)
-        {
-            Vector3 offset = transform.up * 5.0f;
-            playerBikeVFXController.TriggerSlashVFXDelayed(transform.position + offset, transform.rotation, true, 0.2f);
-            isAttacking = true;
-            animator.SetTrigger("isAttacking");
-            SoundManager.Instance.PlayAttackSound();
-        }
+        currentAttackDelay -= Time.deltaTime;
+
+        CheckAttackButton();
+
         if (Input.GetKeyUp(KeyCode.LeftShift) && !isAttacking)
         {
             isDrilling = true;
@@ -41,8 +40,25 @@ public class PlayerAttack : MonoBehaviour
             animator.SetTrigger("isDrilling");
             motorbikeControl.IncreaseMovementSpeed();
             SoundManager.Instance.PlayDashSound();
+            PlayerManager.Instance.StartDrilling();
 
             transform.parent.gameObject.layer = invulnerableLayer;
+        }
+    }
+
+    public void CheckAttackButton()
+    {
+        if (currentAttackDelay > 0) return;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isDrilling)
+        {
+            currentAttackDelay = attackDelay;
+            Vector3 offset = transform.up * 5.0f;
+            playerBikeVFXController.TriggerSlashVFXDelayed(transform.position + offset, transform.rotation, true, 0.2f);
+            isAttacking = true;
+            animator.SetTrigger("isAttacking");
+            SoundManager.Instance.PlayAttackSound();
+            PlayerManager.Instance.PlayerAttackEvent();
         }
     }
 
@@ -64,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
         spinEffect.Stop();
         motorbikeControl.DecreaseMovementSpeed();
         isDrilling = false;
+        PlayerManager.Instance.StopDrilling();
     }
 
     public void receiveDamage()

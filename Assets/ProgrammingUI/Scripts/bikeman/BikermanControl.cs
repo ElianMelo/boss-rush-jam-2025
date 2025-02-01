@@ -26,10 +26,13 @@ public class BikermanControl : MonoBehaviour
 
     private string targetColliderTag = "BossTriggerZone";
 
+    int randomIntervalProvocation;
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        StartCoroutine(callProvocationsLines());
     }
 
     private void Update()
@@ -40,6 +43,16 @@ public class BikermanControl : MonoBehaviour
         {
             movementSpeed = 80;
         }
+
+    }
+
+    private IEnumerator callProvocationsLines()
+    {
+        randomIntervalProvocation = Random.Range(20, 30);
+        SoundManager.Instance.PlayBikermanProvocationSound();
+        yield return new WaitForSeconds(randomIntervalProvocation);
+        
+        StartCoroutine(callProvocationsLines());
     }
 
     private void NormalMovement()
