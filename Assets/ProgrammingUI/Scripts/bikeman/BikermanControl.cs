@@ -33,7 +33,7 @@ public class BikermanControl : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         StartCoroutine(callProvocationsLines());
-        //StartCoroutine(ChangeDirectionRoutine());
+        StartCoroutine(ChangeDirectionRoutine());
     }
 
     private void Update()
@@ -51,10 +51,9 @@ public class BikermanControl : MonoBehaviour
     {
         while (true)
         {
-            float randomAngle = Random.Range(-20f, 20f); // Adjust the range as needed
-            transform.forward = Quaternion.Euler(0, randomAngle, 0) * transform.forward;
+            transform.Rotate(0, rotationSpeed * 16, 0);
 
-            yield return new WaitForSeconds(Random.Range(3, 7)); // Change direction every 3-7 seconds
+            yield return new WaitForSeconds(Random.Range(15, 20)); // Change direction every 3-7 seconds
         }
     }
 
