@@ -23,6 +23,9 @@ public class PlayerManager : MonoBehaviour
     private float maxHealth = 100;
     private float health;
 
+    private IEnumerator SmoothChangeHealthCoroutine;
+    private bool coroutineIsRunning = false;
+
     private void Awake()
     {
         Instance = this;
@@ -56,6 +59,12 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (BossManager.Instance.IsDead) return;
+        if (coroutineIsRunning && SmoothChangeHealthCoroutine != null)
+        {
+            healthSlider.fillAmount = health / maxHealth;
+            StopCoroutine(SmoothChangeHealthCoroutine);
+        }
         health -= damage;
         if(health <= 0)
         {
@@ -66,8 +75,8 @@ public class PlayerManager : MonoBehaviour
         {
             OnPlayerTakeDamage?.Invoke();
         }
-        StartCoroutine(SmoothChangeHealth());
-        // healthSlider.value = health / maxHealth;
+        SmoothChangeHealthCoroutine = SmoothChangeHealth();
+        StartCoroutine(SmoothChangeHealthCoroutine);
     }
     private IEnumerator DelayedDeath()
     {
@@ -78,6 +87,7 @@ public class PlayerManager : MonoBehaviour
     private IEnumerator SmoothChangeHealth()
     {
         float currentTimer = 0;
+        coroutineIsRunning = true;
         float timer = 4f;
         float target = health / maxHealth;
         while (currentTimer < timer)
@@ -86,6 +96,7 @@ public class PlayerManager : MonoBehaviour
             currentTimer += Time.deltaTime;
             yield return null;
         }
+        coroutineIsRunning = false;
         yield return null;
     }
 }
