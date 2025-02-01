@@ -780,6 +780,21 @@ PrefabInstance:
       propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 669490373}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayExpelPose
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12332,6 +12347,16 @@ PrefabInstance:
       objectReference: {fileID: 669490373}
     - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
         type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayExpelPose
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
       propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
@@ -14645,6 +14670,21 @@ PrefabInstance:
       propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 8226545}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayExpelPose
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724622260305871769, guid: 8a39379616a4783428f65de96a058ed4,
+        type: 3}
+      propertyPath: expelPlayerEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
