@@ -47,6 +47,8 @@ public class DialogManager : MonoBehaviour
 
             //SoundEffectManager.Instance.StopDialogSfx();
             HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
+            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+            UnityEngine.Cursor.visible = false;
             this.gameObject.SetActive(false);
             return;
         }
@@ -82,6 +84,8 @@ public class DialogManager : MonoBehaviour
 
             //SoundEffectManager.Instance.StopDialogSfx();
             HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
+            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+            UnityEngine.Cursor.visible = false;
             this.gameObject.SetActive(false);
             return;
         }

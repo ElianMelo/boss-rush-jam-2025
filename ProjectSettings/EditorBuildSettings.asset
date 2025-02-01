@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/TurtleLevel.unity
     guid: 4cbeae1d87da02a4abb498ad6766302a
+  - enabled: 1
+    path: Assets/_Project/Scenes/Credits.unity
+    guid: 08ad7352d2b058f48b6295dbc1bc02fe
   m_configObjects: {}

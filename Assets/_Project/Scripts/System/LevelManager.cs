@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -17,6 +18,7 @@ public class LevelManager : MonoBehaviour
         Headquarters3,
         Turtleman,
         Headquarters4,
+        Credits
     }
 
     public Level CurrentLevel = Level.Menu;
@@ -31,6 +33,7 @@ public class LevelManager : MonoBehaviour
     public const string TreemanScene = "TreeLevel";
     public const string BikermanScene = "BikermanLevel";
     public const string TurtlemanScene = "TurtleLevel";
+    public const string CreditsScene = "Credits";
 
     private void Awake()
     {
@@ -42,6 +45,21 @@ public class LevelManager : MonoBehaviour
     {
         PlayerCurrentClip(levelMusicData.MenuMusic);
         SceneManager.LoadScene(MenuScene);
+    }
+
+    public void GoMenuLevel()
+    {
+        CurrentLevel = Level.Menu;
+        PlayerCurrentClip(levelMusicData.MenuMusic, true);
+        SceneManager.LoadScene(MenuScene);
+    }
+
+    public void GoCreditsLevel()
+    {
+        CurrentLevel = Level.Credits;
+        var SceneName = CreditsScene;
+        PlayerCurrentClip(null);
+        SceneManager.LoadScene(SceneName);
     }
 
     public void GoNextLevel()
@@ -91,9 +109,16 @@ public class LevelManager : MonoBehaviour
                 SceneName = HeadquartersScene;
                 break;
             case Level.Headquarters4:
+                CurrentLevel = Level.Credits;
+                currentClip = null;
+                SceneName = CreditsScene;
+                break;
+            case Level.Credits:
                 CurrentLevel = Level.Menu;
                 currentClip = levelMusicData.MenuMusic;
                 SceneName = MenuScene;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+                UnityEngine.Cursor.visible = true;
                 break;
             default:
                 break;
@@ -102,9 +127,13 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneName);
     }
 
-    private void PlayerCurrentClip(AudioClip clip)
+    private void PlayerCurrentClip(AudioClip clip, bool force = false)
     {
-        if (audioSource.clip == clip) return;
+        if (clip == null) {
+            audioSource.Stop();
+            return;
+        }
+        if (audioSource.clip == clip && !force) return;
         audioSource.clip = clip;
         audioSource.Stop();
         audioSource.Play();

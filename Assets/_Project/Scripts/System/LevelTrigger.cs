@@ -19,8 +19,19 @@ public class LevelTrigger : MonoBehaviour
         LevelManager.Instance.GoNextLevel();
     }
 
+    public void GoCreditsScreen()
+    {
+        LevelManager.Instance.GoCreditsLevel();
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         LevelManager.Instance.GoNextLevel();
     }
+
 }
