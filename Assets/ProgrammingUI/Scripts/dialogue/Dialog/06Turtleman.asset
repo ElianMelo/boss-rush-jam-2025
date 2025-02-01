@@ -18,7 +18,7 @@ MonoBehaviour:
   - text: "You will not stop me. Not one can\u2014not anymore!"
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 8300000, guid: ddf8d3074fbc945439a844af98e0b0b2, type: 3}
+    clip: {fileID: 8300000, guid: b506665794a719f4b9a68ad7137a45a8, type: 3}
   - text: Stop you from what? What are you trying to achieve?
     isFirstPortrait: 1
     isBothPortrait: 0
@@ -37,4 +37,4 @@ MonoBehaviour:
       for me, and you will not stand in my way."
     isFirstPortrait: 0
     isBothPortrait: 0
-    clip: {fileID: 8300000, guid: c5e7a0c473fec2b4583b29e0643927b3, type: 3}
+    clip: {fileID: 8300000, guid: 13878933d04d080478a1633dfc568a19, type: 3}

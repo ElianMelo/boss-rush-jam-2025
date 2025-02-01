@@ -60,9 +60,8 @@ public class BikermanControl : MonoBehaviour
     private IEnumerator callProvocationsLines()
     {
         randomIntervalProvocation = Random.Range(20, 30);
-        SoundManager.Instance.PlayBikermanProvocationSound();
         yield return new WaitForSeconds(randomIntervalProvocation);
-        
+        SoundManager.Instance.PlayBikermanProvocationSound();        
         StartCoroutine(callProvocationsLines());
     }
 

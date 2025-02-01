@@ -16,6 +16,15 @@ public class TurtlemanBoss : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        StartCoroutine(CallProvocationsLines());
+    }
+
+    private IEnumerator CallProvocationsLines()
+    {
+        var randomIntervalProvocation = Random.Range(20, 30);
+        yield return new WaitForSeconds(randomIntervalProvocation);
+        SoundManager.Instance.PlayTurtlemanProvocationSound();
+        StartCoroutine(CallProvocationsLines());
     }
 
     public void PlayUprightPose()
