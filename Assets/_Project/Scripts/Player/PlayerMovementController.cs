@@ -327,8 +327,14 @@ public class PlayerMovementController : MonoBehaviour
 
     private void RotatePlayer()
     {
+        bool invertYAxis = false;
+        if(GameSettings.Instance && GameSettings.Instance.invertYAxis)
+        {
+            invertYAxis = true;
+        }
+        float invertFactor = invertYAxis ? 1f : -1f;
         Quaternion targetRotation = transform.rotation * 
-            Quaternion.Euler(verticalInput * rotationSpeed, 0f, (horizontalInput * rotationSpeed * -1));
+            Quaternion.Euler(verticalInput * rotationSpeed * invertFactor, 0f, (horizontalInput * rotationSpeed * -1f));
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationFactor);
     }
 
