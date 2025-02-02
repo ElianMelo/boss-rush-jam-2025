@@ -74,6 +74,7 @@ public class CenterCursorInteraction : MonoBehaviour
 
     private void CheckForInteractable()
     {
+        if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Talking) return;
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
