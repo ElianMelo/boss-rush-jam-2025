@@ -23,7 +23,7 @@ public class enemyAttackScript : MonoBehaviour
             }
             curEnemyControl.DealDamage();
             Debug.Log("Player tomou 10 de dano (inimigos)");
-            PlayerManager.Instance.TakeDamage(10f);
+            PlayerManager.Instance.TakeDamage(5f);
             playerAttack.receiveDamage();
         }
     }

@@ -68,7 +68,7 @@ public class ObstacleMove : MonoBehaviour
                 if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
             }
             Debug.Log("Player tomou 10 de dano (obstaculo)");
-            PlayerManager.Instance.TakeDamage(10f);
+            PlayerManager.Instance.TakeDamage(5f);
             playerAttack.receiveDamage();
         }
     }
