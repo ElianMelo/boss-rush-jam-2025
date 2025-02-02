@@ -30,6 +30,10 @@ public class BossProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Lance") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DiveGround") || collision.gameObject.CompareTag("DiveGroundTrigger"))
         {
+            if(collision.gameObject.CompareTag("Lance"))
+            {
+                GetComponent<Collider>().enabled = false;
+            }
             OnProjectileHit?.Invoke();
             Destroy(gameObject, 0.5f);
         }

@@ -10,6 +10,8 @@ public class CreditsVideoPlayer : MonoBehaviour
     {
         player = GetComponent<VideoPlayer>();
         player.loopPointReached += OnLoopPointReached;
+        player.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Credits.mp4");
+        player.Play();
     }
 
     private void Update()

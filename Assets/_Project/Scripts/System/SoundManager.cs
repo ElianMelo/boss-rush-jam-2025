@@ -66,6 +66,12 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(SmoothDisableSound(0.2f));
     }
 
+    public void PlayTreemanProvocationSound()
+    {
+        var bossSound = treemanProvocations[Random.Range(0, treemanProvocations.Count)];
+        PlaySoundClip(bossSound, true);
+    }
+
     public void PlayTurtlemanProvocationSound()
     {
         var bossSound = turtlemanProvocations[Random.Range(0, turtlemanProvocations.Count)];

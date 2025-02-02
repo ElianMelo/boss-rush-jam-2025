@@ -115,7 +115,11 @@ MonoBehaviour:
   attackSounds:
   - {fileID: 8300000, guid: 15962db983fd08b47a1c9f91316ea512, type: 3}
   - {fileID: 8300000, guid: 137c23e7fd890844cae24e58e71f2d41, type: 3}
-  treemanProvocations: []
+  treemanProvocations:
+  - {fileID: 8300000, guid: db277f4cf61faef46b93812d60c63581, type: 3}
+  - {fileID: 8300000, guid: eb17d97d6b54aca47ac988536c1b5257, type: 3}
+  - {fileID: 8300000, guid: 69b87cc871424a44296ec38e02153a7e, type: 3}
+  - {fileID: 8300000, guid: da358d0dd3a93834e89429de474f604f, type: 3}
   bikermanProvocations:
   - {fileID: 8300000, guid: 09a6af8e22d60d54a8d96048b1bd43a3, type: 3}
   - {fileID: 8300000, guid: 1c6a2c806c707e84187579504bcd984e, type: 3}
@@ -123,6 +127,7 @@ MonoBehaviour:
   turtlemanProvocations:
   - {fileID: 8300000, guid: 1c892367ca817bd4e990b37cf9b295c0, type: 3}
   - {fileID: 8300000, guid: bb3ff45b6ebe39944bce93d1018b56f9, type: 3}
+  - {fileID: 8300000, guid: b506665794a719f4b9a68ad7137a45a8, type: 3}
   dashSound: {fileID: 8300000, guid: 425a39033b38214459861d009dd7d1a2, type: 3}
   jumpSound: {fileID: 8300000, guid: 3784a1f714337ea41b1570f6c45913b5, type: 3}
   eletricPillarSound: {fileID: 8300000, guid: e6b782e6f00953c4c936111defd7dd74, type: 3}

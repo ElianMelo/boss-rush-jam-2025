@@ -47,7 +47,11 @@ public class InterfaceSystem : MonoBehaviour
     public void CloseMenu()
     {
         menuManager.gameObject.SetActive(false);
+        help.SetActive(false);
+        settingsManager.gameObject.SetActive(false);
         OpenedMenu = false;
+        OpenedSettings = false;
+        OpenedHelp = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
     }

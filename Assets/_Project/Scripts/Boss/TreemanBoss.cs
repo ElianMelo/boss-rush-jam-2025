@@ -14,6 +14,15 @@ public class TreemanBoss : MonoBehaviour
         StartCoroutine(RandomAttack());
         BossManager.Instance.OnBossTakeDamage.AddListener(TakeDamage);
         BossManager.Instance.OnBossDeath.AddListener(Death);
+        StartCoroutine(CallProvocationsLines());
+    }
+
+    private IEnumerator CallProvocationsLines()
+    {
+        var randomIntervalProvocation = Random.Range(20, 30);
+        yield return new WaitForSeconds(randomIntervalProvocation);
+        SoundManager.Instance.PlayTreemanProvocationSound();
+        StartCoroutine(CallProvocationsLines());
     }
 
     private void OnDestroy()
