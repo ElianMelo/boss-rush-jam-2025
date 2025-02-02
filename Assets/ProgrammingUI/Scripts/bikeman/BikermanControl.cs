@@ -84,7 +84,7 @@ public class BikermanControl : MonoBehaviour
 
     private bool OnSlope()
     {
-        Ray slopeRay = new Ray(slopeDetector.position, transform.forward);
+        Ray slopeRay = new Ray(slopeDetector.position, slopeDetector.transform.forward);
         Debug.DrawRay(slopeRay.origin, slopeRay.direction * rayDistance, Color.yellow);
 
         if (Physics.Raycast(slopeRay, out hit, rayDistance, groundLayer))

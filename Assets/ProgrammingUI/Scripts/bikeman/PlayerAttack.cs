@@ -86,7 +86,6 @@ public class PlayerAttack : MonoBehaviour
         spinEffect.Stop();
         motorbikeControl.DecreaseMovementSpeed();
         isDrilling = false;
-        PlayerManager.Instance.StopDrilling();
     }
 
     public void receiveDamage()
