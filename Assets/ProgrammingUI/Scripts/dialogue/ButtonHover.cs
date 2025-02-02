@@ -16,6 +16,11 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         buttonImage = GetComponent<Image>();
     }
 
+    private void OnDisable()
+    {
+        buttonImage.sprite = defaultSprite;
+    }
+
     // Called when the mouse enters the button
     public void OnPointerEnter(PointerEventData eventData)
     {
