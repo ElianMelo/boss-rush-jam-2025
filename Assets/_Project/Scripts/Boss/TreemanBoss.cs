@@ -24,7 +24,7 @@ public class TreemanBoss : MonoBehaviour
 
     private IEnumerator RandomAttack()
     {
-        yield return new WaitForSeconds(Random.Range(5f, 10f));
+        yield return new WaitForSeconds(Random.Range(10f, 20f));
 
         if (HeadquartersMananger.Instance != null)
         {
