@@ -54,6 +54,18 @@ public class PlayerAttackController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyAttack"))
+        {
+            if (HeadquartersMananger.Instance != null)
+            {
+                if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
+            }
+            PlayerManager.Instance.TakeDamage(10f);
+        }
+    }
+
     private void CheckAttackButton()
     {
         if (currentAttackDelay > 0) return;

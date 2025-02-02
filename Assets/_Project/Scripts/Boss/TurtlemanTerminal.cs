@@ -8,11 +8,15 @@ public class TurtlemanTerminal : MonoBehaviour
     public List<UnityEvent> deathEvents;
     public List<UnityEvent> delayedDeathvents;
 
+    public UnityEvent OnHitEvent;
+    public UnityEvent OnDeathEvent;
+
     public GameObject deathVFX;
 
     private IEnumerator DelayedCall()
     {
         yield return new WaitForSeconds(2f);
+        OnDeathEvent?.Invoke();
         foreach (var item in delayedDeathvents)
         {
             item?.Invoke();
@@ -23,6 +27,7 @@ public class TurtlemanTerminal : MonoBehaviour
     {
         if (other.CompareTag("Lance"))
         {
+            OnHitEvent?.Invoke();
             var deathVFXInstance = Instantiate(deathVFX, transform.position, Quaternion.identity);
             foreach (var item in deathEvents)
             {
