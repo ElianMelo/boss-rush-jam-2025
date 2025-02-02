@@ -2668,7 +2668,7 @@ MonoBehaviour:
   GroundDrillingVfx: {fileID: 8597915143449549786}
   SlashVfx: {fileID: 7357032535793119285, guid: 08f7c0c838e2e19489d8d29dff71c9dc,
     type: 3}
-  ShockVfx: {fileID: 2194463090483721826, guid: a202fad0bd91de7439d649d5609482ff,
+  ShockVfx: {fileID: 2194463090483721826, guid: 2801a36ec863dc147bad711a0c5594d5,
     type: 3}
   SlashVFXRotation: {x: 0, y: 180, z: 230}
 --- !u!54 &5117228824525706546
