@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHQMovementController : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class PlayerHQMovementController : MonoBehaviour
     public float jumpForce;
     public float airMultiplier;
     private bool jumping;
+    public UnityEvent onJump;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -340,6 +342,7 @@ public class PlayerHQMovementController : MonoBehaviour
 
     private void Jump()
     {
+        onJump.Invoke();
         playerRb.drag = 0f;
         jumping = true;
         StartCoroutine(Jumping());
