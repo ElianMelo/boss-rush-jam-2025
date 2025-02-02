@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,8 @@ public class HealthInterfaceManager : MonoBehaviour
 
     private void Start()
     {
+        PlayerManager.Instance.OnPlayerTakeDamage.AddListener(PlayerTakeDamage);
+        BossManager.Instance.OnBossTakeDamage.AddListener(BossTakeDamage);
         switch (LevelManager.Instance.CurrentLevel) {
             case LevelManager.Level.Treeman:
                 bossName.text = "Treeman";
@@ -60,6 +63,16 @@ public class HealthInterfaceManager : MonoBehaviour
     public void DashCooldown(float cooldownTimer)
     {
         StartCoroutine(DashRecoverCoroutine(cooldownTimer));
+    }
+
+    private void PlayerTakeDamage()
+    {
+        OnPlayerTakeDamage?.Invoke();
+    }
+
+    private void BossTakeDamage()
+    {
+        OnBossTakeDamage?.Invoke();
     }
 
     private IEnumerator DashRecoverCoroutine(float cooldownTimer)
