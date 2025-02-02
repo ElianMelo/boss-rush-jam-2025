@@ -23,5 +23,6 @@ public class MenuManager : MonoBehaviour
     public void OnLeaveGameClick()
     {
         //Debug.Log("Exiting the game...");
+        Application.Quit();
     }
 }
