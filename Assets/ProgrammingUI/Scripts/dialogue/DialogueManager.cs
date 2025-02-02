@@ -41,13 +41,13 @@ public class DialogManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             Reset();
 
             //SoundEffectManager.Instance.StopDialogSfx();
             HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
-            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             UnityEngine.Cursor.visible = false;
             this.gameObject.SetActive(false);
             return;
@@ -84,7 +84,7 @@ public class DialogManager : MonoBehaviour
 
             //SoundEffectManager.Instance.StopDialogSfx();
             HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Walking);
-            UnityEngine.Cursor.lockState = CursorLockMode.Confined;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             UnityEngine.Cursor.visible = false;
             this.gameObject.SetActive(false);
             return;

@@ -6099,7 +6099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Esc - Close
+  m_text: Tab - Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 095adb1452b1b91428500f623d76d345, type: 2}
   m_sharedMaterial: {fileID: 8468549564742859860, guid: 095adb1452b1b91428500f623d76d345,

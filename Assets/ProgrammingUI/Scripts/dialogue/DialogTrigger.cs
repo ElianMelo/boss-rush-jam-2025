@@ -31,7 +31,7 @@ public class DialogTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Talking) return;
 

@@ -54,11 +54,11 @@ public class CenterCursorInteraction : MonoBehaviour
     {
         CheckForInteractable();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (HeadquartersMananger.Instance.CurrentState == HeadquartersState.Talking) return;
 
-            if (!InterfaceSystem.Instance.OpenedMenu && !InterfaceSystem.Instance.OpenedSettings)
+            if (!InterfaceSystem.Instance.OpenedMenu && !InterfaceSystem.Instance.OpenedSettings && !InterfaceSystem.Instance.OpenedHelp)
             {
                 HeadquartersMananger.Instance.ChangeHeadquartersState(HeadquartersState.Paused);
                 InterfaceSystem.Instance.OpenMenu();
