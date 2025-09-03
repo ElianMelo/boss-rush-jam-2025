@@ -71,7 +71,7 @@ public class PlayerAttackController : MonoBehaviour
         if (currentAttackDelay > 0) return;
         if (playerMovementController.state == PlayerMovementController.MovementState.drilling) return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Fire1"))
         {
             currentAttackDelay = attackDelay;
             playerVFXController.EnableBooster();

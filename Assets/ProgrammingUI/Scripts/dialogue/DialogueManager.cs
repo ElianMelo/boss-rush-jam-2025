@@ -55,7 +55,7 @@ public class DialogManager : MonoBehaviour
 
         if (currentDialog != null)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetButtonDown("Fire2"))
             {
                 if (isWriting)
                 {

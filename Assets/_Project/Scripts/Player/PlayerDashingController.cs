@@ -21,8 +21,8 @@ public class PlayerDashingController : MonoBehaviour
 
     private bool stopVfx = false;
 
-    [Header("Input")]
-    public KeyCode dashKey = KeyCode.LeftShift;
+    //[Header("Input")]
+    //public KeyCode dashKey = ("Fire1");
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class PlayerDashingController : MonoBehaviour
         {
             if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
         }
-        if (Input.GetKeyDown(dashKey))
+        if (Input.GetButtonDown("Fire3"))
             Dash();
         if (dashCdTimer > 0)
             dashCdTimer -= Time.deltaTime;

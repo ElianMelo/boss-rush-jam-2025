@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
         CheckAttackButton();
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) && !isAttacking  && currentDashCooldown <= 0)
+        if (Input.GetButtonDown("Fire3") && !isAttacking  && currentDashCooldown <= 0)
         {
             currentDashCooldown = dashCd;
             HealthInterfaceManager.Instance.DashCooldown(dashCd);
@@ -56,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (currentAttackDelay > 0) return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isDrilling)
+        if (Input.GetButtonDown("Fire1") && !isDrilling)
         {
             currentAttackDelay = attackDelay;
             Vector3 offset = transform.up * 5.0f;

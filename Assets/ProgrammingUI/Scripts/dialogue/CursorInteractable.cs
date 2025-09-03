@@ -82,7 +82,7 @@ public class CenterCursorInteraction : MonoBehaviour
         {
             cursorImage.sprite = interactCursor;
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+            if (Input.GetButtonDown("Fire2") || Input.GetMouseButtonDown(0))
             {
                 //Debug.Log("Dialogo iniciado");
                 InterfaceSystem.Instance.InitDialog();

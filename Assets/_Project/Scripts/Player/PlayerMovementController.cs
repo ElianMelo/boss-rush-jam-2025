@@ -195,7 +195,7 @@ public class PlayerMovementController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         if (state == MovementState.drilling) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumps > 0)
+        if (Input.GetButtonDown("Jump") && jumps > 0)
         {
             jumps -= 1;
             HealthInterfaceManager.Instance.SetAmountOfJumps(jumps);

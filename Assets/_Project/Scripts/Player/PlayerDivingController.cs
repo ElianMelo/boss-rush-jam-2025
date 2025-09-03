@@ -20,8 +20,8 @@ public class PlayerDivingController : MonoBehaviour
 
     private bool stopVfx = false;
 
-    [Header("Input")]
-    public KeyCode diveKey = KeyCode.LeftControl;
+    //[Header("Input")]
+    //public KeyCode diveKey = KeyCode.LeftControl;
 
     private void Start()
     {
@@ -37,7 +37,7 @@ public class PlayerDivingController : MonoBehaviour
         {
             if (HeadquartersMananger.Instance.CurrentState != HeadquartersState.Walking) return;
         }
-        if (Input.GetKeyDown(diveKey))
+        if (Input.GetButtonDown("Fire2"))
             Dive();
         if (diveCdTimer > 0)
             diveCdTimer -= Time.deltaTime;

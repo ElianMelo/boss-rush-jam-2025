@@ -5608,6 +5608,9 @@ MonoBehaviour:
   rotationLerp: 0.5
   speed: 1
   camera: {fileID: 330585545}
+  joystickLookSensitivity: 2
+  mouseLookSensitivity: 1
+  joystickDeadzone: 0.2
 --- !u!1 &841125618
 GameObject:
   m_ObjectHideFlags: 0
@@ -9409,15 +9412,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 308483349247357595, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1238199196228589941, guid: edec7765858f3ef4483f36398aeb64b3,
         type: 3}
       propertyPath: m_Name
       value: HangarLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 1697320012852297228, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 30.420063
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697320012852297228, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 7.3664603
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798757119641994508, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798757119641994508, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.0020263
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798757119641994508, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.50101334
+      objectReference: {fileID: 0}
     - target: {fileID: 3752281654076744014, guid: edec7765858f3ef4483f36398aeb64b3,
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827719600504654235, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491311039449194385, guid: edec7765858f3ef4483f36398aeb64b3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9036820505508821989, guid: edec7765858f3ef4483f36398aeb64b3,
         type: 3}

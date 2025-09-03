@@ -6,7 +6,7 @@ public class TutorialSkipper : MonoBehaviour
 {
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.J))
+        if(Input.GetButtonDown("Cancel"))
         {
             LevelManager.Instance.GoNextLevel();
         }

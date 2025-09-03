@@ -21,8 +21,12 @@ public class MouseRotator : MonoBehaviour
 
     public float speed = 1f;
     public Camera camera;
-    // public Transform playerTransform;
-
+    
+    [Header("Input Settings")]
+    public float joystickLookSensitivity = 2f;
+    public float mouseLookSensitivity = 1f;
+    public float joystickDeadzone = 0.2f;
+    
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,7 +38,10 @@ public class MouseRotator : MonoBehaviour
         {
             Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
         }
-        _look = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")*-1);
+        
+        // Get input from both mouse and joystick
+        GetLookInput();
+        
         #region Player Based Rotation
 
         //Move the player based on the X input on the controller
@@ -67,10 +74,8 @@ public class MouseRotator : MonoBehaviour
             angles.x = 40;
         }
 
-
         transform.localEulerAngles = angles;
         #endregion
-
 
         nextRotation = Quaternion.Lerp(transform.rotation, nextRotation, Time.deltaTime * rotationLerp);
 
@@ -92,11 +97,48 @@ public class MouseRotator : MonoBehaviour
         Vector3 position = (transform.forward * _move.y * moveSpeed) + (transform.right * _move.x * moveSpeed);
         nextPosition = transform.position + position;
 
-
         //Set the player rotation based on the look transform
         // playerTransform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         //reset the y rotation of the look transform
         transform.localEulerAngles = new Vector3(angles.x, 0, 0);
     }
 
+    private void GetLookInput()
+    {
+        // Get mouse input
+        Vector2 mouseLook = new Vector2(
+            Input.GetAxis("Mouse X") * mouseLookSensitivity,
+            Input.GetAxis("Mouse Y") * -1 * mouseLookSensitivity
+        );
+
+        // Get joystick right analog stick input
+        Vector2 joystickLook = new Vector2(
+            Input.GetAxis("RightStickHorizontal"),
+            Input.GetAxis("RightStickVertical")
+        );
+
+        // Apply deadzone to joystick input
+        if (joystickLook.magnitude < joystickDeadzone)
+        {
+            joystickLook = Vector2.zero;
+        }
+        else
+        {
+            joystickLook = joystickLook.normalized * ((joystickLook.magnitude - joystickDeadzone) / (1 - joystickDeadzone));
+            joystickLook *= joystickLookSensitivity;
+        }
+
+        // Combine inputs (mouse takes priority if both are active)
+        if (mouseLook != Vector2.zero)
+        {
+            _look = mouseLook;
+        }
+        else
+        {
+            _look = joystickLook;
+        }
+        
+        // Alternative: Add both inputs together for simultaneous control
+        // _look = mouseLook + joystickLook;
+    }
 }
