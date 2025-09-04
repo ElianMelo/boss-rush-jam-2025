@@ -3110,6 +3110,9 @@ MonoBehaviour:
   rotationLerp: 0.5
   speed: 1
   camera: {fileID: 330585545}
+  joystickLookSensitivity: 2
+  mouseLookSensitivity: 1
+  joystickDeadzone: 0.2
 --- !u!1 &883912534
 GameObject:
   m_ObjectHideFlags: 0
